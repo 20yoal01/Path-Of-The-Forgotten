@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,17 +11,30 @@ public class PlayerController : MonoBehaviour
     public float walkSpeed = 5f;
     public float runSpeed = 8f;
     public float airWalkSpeed = 3f;
-    public float jumpImpulse = 10f;
-    public bool doubleJump;
     Vector2 moveInput;
     TouchingDirections touchingDirections;
     Damageable damageable;
+
+    public float jumpImpulse = 10f;
+    public bool doubleJumpAvailable = true;
+    public bool usedJumpWhileAir = false;
+
+    [Header("Gravity")]
+    public float baseGravity = 1f;
+    public float maxFallSpeed = 6f;
+    public float fallSpeedMultiplier = 1.2f;
+
+    public float dashDuration = 0.5f;
+    public float dashSpeed = 40f;
+    private TrailRenderer trailRenderer;
+    private bool dashEnabled = true;
+    private bool isDashing = false;
 
     public float CurrentMoveSpeed
     {
         get
         {
-            if (CanMove)
+            if (CanMove && !isDashing)
             {
                 if (IsMoving && !touchingDirections.isOnWall)
                 {
@@ -42,8 +56,12 @@ public class PlayerController : MonoBehaviour
                 }
                 else
                 {
-                    return 0;
+                    return airWalkSpeed;
                 }
+            }
+            else if (isDashing)
+            {
+                return dashSpeed;
             }
             else
             {
@@ -94,6 +112,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public bool CanAirAttack
+    {
+        get
+        {
+            return animator.GetBool(AnimationString.usedAirAttack);
+        }
+    }
+
     public bool CanMove
     {
         get
@@ -112,7 +138,7 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody2D rb;
     Animator animator;
-
+    private float dashCooldown = 2f;
 
     private void Awake()
     {
@@ -120,13 +146,24 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         touchingDirections = GetComponent<TouchingDirections>();
         damageable = GetComponent<Damageable>();
+        trailRenderer = GetComponent<TrailRenderer>();
     }
 
     private void FixedUpdate()
     {
-        if(!damageable.LockVelocity)
+        Gravity();
+        if (!damageable.LockVelocity)
+            
             rb.velocity = new Vector2(moveInput.x * CurrentMoveSpeed, rb.velocity.y);
+            
         animator.SetFloat(AnimationString.yVelocity, rb.velocity.y);
+        if (touchingDirections.isGrounded)
+        {
+            doubleJumpAvailable = true;
+            usedJumpWhileAir = false;
+            animator.SetBool(AnimationString.usedAirAttack, false);
+        }
+
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -168,28 +205,94 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void Gravity()
+    {
+        if(rb.velocity.y <= 0)
+        {
+            rb.gravityScale = baseGravity * fallSpeedMultiplier;
+            rb.velocity = new Vector2(rb.velocity.x, Mathf.Max(rb.velocity.y, -maxFallSpeed));
+        }
+        else
+        {
+            rb.gravityScale = baseGravity;
+        }
+    }
+
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (context.started && touchingDirections.isGrounded)
+        // Reset jump when touching the ground
+        // First jump logic (grounded)
+        if (context.performed && touchingDirections.isGrounded && CanMove)
         {
-            doubleJump = false;
+            PerformJump();
+        }
+        else if(context.canceled && rb.velocity.y > 0)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
         }
 
-
-        //TODO: Check if Alive as well
-        if (context.started && (touchingDirections.isGrounded || doubleJump) && CanMove)
+        // Double jump logic (in air)
+        else if (context.started && !touchingDirections.isGrounded 
+            && !touchingDirections.isOnCeiling 
+            && !touchingDirections.isOnWall
+            && doubleJumpAvailable && !usedJumpWhileAir && CanMove)
         {
-            animator.SetTrigger(AnimationString.jumpTrigger);
-            rb.velocity = new Vector2(rb.velocity.x, jumpImpulse);
-            doubleJump = !doubleJump;
+            usedJumpWhileAir = true;
+            doubleJumpAvailable = false;
+            PerformJump();
         }
+        // Single jump regained after falling from platform
+        else if (context.started && !touchingDirections.isGrounded && !usedJumpWhileAir && CanMove)
+        {
+            usedJumpWhileAir = true;
+            PerformJump();
+        }
+    }
+    private void PerformJump()
+    {
+        animator.SetTrigger(AnimationString.jumpTrigger);
+        rb.velocity = new Vector2(rb.velocity.x, jumpImpulse);
+    }
+
+    public void OnDash(InputAction.CallbackContext context)
+    {
+        if (context.started && dashEnabled)
+        {
+            StartCoroutine(Dash());
+        }
+    }
+
+    private IEnumerator Dash()
+    {
+        isDashing = true;
+        rb.velocity = new Vector2(transform.localScale.x * dashSpeed, rb.velocity.y); // Keep y velocity (for mid-air dashes)
+        rb.gravityScale = 0f; // Disable gravity during dash
+        trailRenderer.emitting = true;
+
+        yield return new WaitForSeconds(dashDuration); // Wait for dash duration
+
+        rb.gravityScale = baseGravity; // Restore gravity after dash
+        trailRenderer.emitting = false; // Stop trail effect
+        dashEnabled = false;
+        isDashing = false;
+
+        yield return new WaitForSeconds(dashCooldown);
+        dashEnabled = true;
     }
 
     public void OnAttack(InputAction.CallbackContext context)
     {
         if (context.started)
         {
-            animator.SetTrigger(AnimationString.attackTrigger);
+            if (!touchingDirections.isGrounded && !CanAirAttack)
+            {
+                animator.SetBool(AnimationString.usedAirAttack, true);
+                animator.SetTrigger(AnimationString.attackTrigger);
+            }
+            if (touchingDirections.isGrounded)
+            {
+                animator.SetTrigger(AnimationString.attackTrigger);
+            }
         }
     }
     public void OnRangedAttack(InputAction.CallbackContext context)

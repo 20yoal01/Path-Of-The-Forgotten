@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 2058695962398186790}
   - component: {fileID: 5535215041513087452}
   - component: {fileID: 7419597471376906139}
+  - component: {fileID: 3625136113507471326}
   - component: {fileID: 8560072978460106534}
-  - component: {fileID: -4625212843422515357}
   m_Layer: 8
   m_Name: KnightEnemy
   m_TagString: Untagged
@@ -32,12 +32,13 @@ Transform:
   m_GameObject: {fileID: 1402657806643359730}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -67.797, y: 0.44, z: 0}
+  m_LocalPosition: {x: 4.7749996, y: 16.1305, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5624048353248280992}
   - {fileID: 7500049555294477773}
+  - {fileID: 3650721529338195223}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8327257580087092569
@@ -166,9 +167,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da8013c4f35bc9d4084d57a7a004dcde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 3
+  walkAcceleration: 50
+  maxSpeed: 3
   walkStopRate: 0.05
   attackZone: {fileID: 8586965071683592090}
+  cliffDetectionZone: {fileID: 5256180620989989425}
   _hasTarget: 0
 --- !u!114 &7419597471376906139
 MonoBehaviour:
@@ -202,6 +205,27 @@ MonoBehaviour:
   _isGrounded: 1
   _isOnWall: 1
   _isOnCeiling: 1
+--- !u!95 &3625136113507471326
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402657806643359730}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4a0536af1d5bbd0469b16e9a5d933bd6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &8560072978460106534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,32 +253,123 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  damageableDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  healthChanged:
+    m_PersistentCalls:
+      m_Calls: []
   _maxHealth: 0
   _health: 100
   _isAlive: 1
   isInvincible: 0
   invincibilityTime: 0.25
---- !u!95 &-4625212843422515357
-Animator:
-  serializedVersion: 5
+--- !u!1 &6602573984019809600
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1402657806643359730}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3650721529338195223}
+  - component: {fileID: 2958949777382460354}
+  - component: {fileID: 5256180620989989425}
+  m_Layer: 11
+  m_Name: CliffDetectionZone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3650721529338195223
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6602573984019809600}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.88, y: -1.611, z: -0.007269878}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 520744309878905808}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &2958949777382460354
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6602573984019809600}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4a0536af1d5bbd0469b16e9a5d933bd6, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.08410239, y: 0.10180807}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8317952, y: 0.79638386}
+  m_EdgeRadius: 0
+--- !u!114 &5256180620989989425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6602573984019809600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef9953c34347bcb4b9fb15ff6a1b1233, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noCollidersRemain:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5535215041513087452}
+        m_TargetAssemblyTypeName: Knight, Assembly-CSharp
+        m_MethodName: OnCliffDetected
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  DetectedColliders: []
 --- !u!1 &8538155572682857265
 GameObject:
   m_ObjectHideFlags: 0
@@ -358,8 +473,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5faf8313a5400042bb3802d22f2b0fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 100
-  knockback: {x: 0, y: 0}
+  attackDamage: 10
+  knockback: {x: 5, y: 2}
 --- !u!1 &8934006543491685968
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,7 +487,7 @@ GameObject:
   - component: {fileID: 5623748777875382962}
   - component: {fileID: 8586965071683592090}
   m_Layer: 10
-  m_Name: DetectionZone
+  m_Name: HitboxDetection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -387,7 +502,7 @@ Transform:
   m_GameObject: {fileID: 8934006543491685968}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.274, y: -0.235, z: -0.07904853}
+  m_LocalPosition: {x: 1.288, y: -0.663, z: -0.07904853}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -425,7 +540,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.0880585, y: 0.052660227}
+  m_Offset: {x: 0.8096647, y: 0.33105397}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -436,7 +551,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.6767578, y: 1.9606957}
+  m_Size: {x: 2.1199703, y: 1.4039083}
   m_EdgeRadius: 0
 --- !u!114 &8586965071683592090
 MonoBehaviour:
@@ -450,4 +565,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef9953c34347bcb4b9fb15ff6a1b1233, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  noCollidersRemain:
+    m_PersistentCalls:
+      m_Calls: []
   DetectedColliders: []
