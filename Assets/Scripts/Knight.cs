@@ -22,10 +22,11 @@ public class Knight : MonoBehaviour
         Right, Left
     }
 
+    public WalkableDirection startDirection;
     private WalkableDirection _walkDirection;
     private Vector2 walkDirectionVector = Vector2.right;
 
-    public WalkableDirection WalkDirection
+    private WalkableDirection WalkDirection
     {
 
     get { return _walkDirection; } 
@@ -76,7 +77,6 @@ public class Knight : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     private void Awake()
@@ -85,6 +85,7 @@ public class Knight : MonoBehaviour
         touchingDirections = GetComponent<TouchingDirections>();
         animator = GetComponent<Animator>();
         damageable = GetComponent<Damageable>();
+        WalkDirection = startDirection;
     }
 
     void Update()

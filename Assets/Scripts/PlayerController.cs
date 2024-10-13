@@ -7,67 +7,89 @@ using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(TouchingDirections), typeof(Damageable))]
 public class PlayerController : MonoBehaviour
-{
+{   
+    //Speed
     public float walkSpeed = 5f;
     public float runSpeed = 8f;
     public float airWalkSpeed = 3f;
+    
+    
     Vector2 moveInput;
     TouchingDirections touchingDirections;
     Damageable damageable;
 
+    // Jump durations
     public float jumpImpulse = 10f;
+    public float jumpTime;
+    private bool isJumping;
+    private float jumpCounter;
+
+    
+    // Double Jumps
     public bool doubleJumpAvailable = true;
     public bool usedJumpWhileAir = false;
 
+    //Gravity | FallSpeed
     [Header("Gravity")]
     public float baseGravity = 1f;
     public float maxFallSpeed = 6f;
     public float fallSpeedMultiplier = 1.2f;
 
+
+    //Dashing
     public float dashDuration = 0.5f;
     public float dashSpeed = 40f;
     private TrailRenderer trailRenderer;
     private bool dashEnabled = true;
     private bool isDashing = false;
+    private float dashCooldown = 1f;
+    public float distanceBetweenImages;
+    private float lastImageXpos;
+
+
+    //WallJumps
+    public float wallSlideSpeed = 2f;
+    public float wallJumpDuration = 0.1f;
+    public Vector2 wallJumpForce = new Vector2(10, 20);
+    bool wallJumping;
+
+    private Vector2 currentMoveInput;
 
     public float CurrentMoveSpeed
     {
         get
         {
-            if (CanMove && !isDashing)
+            if (!CanMove)
             {
-                if (IsMoving && !touchingDirections.isOnWall)
+                // Movement is locked
+                return 0;
+            }
+
+            if (isDashing)
+            {
+                return dashSpeed;
+            }
+
+            if (touchingDirections.isOnWall)
+            {
+                // Movement behavior when on a wall (if different from air movement, adjust accordingly)
+                return 0;
+            }
+
+            if (IsMoving)
+            {
+                if (touchingDirections.isGrounded)
                 {
-                    if (touchingDirections.isGrounded)
-                    {
-                        if (IsRunning)
-                        {
-                            return runSpeed;
-                        }
-                        else
-                        {
-                            return walkSpeed;
-                        }
-                    }
-                    else
-                    {
-                        return airWalkSpeed;
-                    }
+                    return IsRunning ? runSpeed : walkSpeed;
                 }
                 else
                 {
                     return airWalkSpeed;
                 }
             }
-            else if (isDashing)
-            {
-                return dashSpeed;
-            }
-            else
-            {
-                // Movement locked
-                return 0;
-            }
+
+            // Default to air speed if not moving
+            return airWalkSpeed;
         }
     }
 
@@ -78,6 +100,7 @@ public class PlayerController : MonoBehaviour
         {
             return _isMoving;
         } private set { 
+
         
             _isMoving = value;
             animator.SetBool(AnimationString.isMoving, value);
@@ -138,7 +161,6 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody2D rb;
     Animator animator;
-    private float dashCooldown = 2f;
 
     private void Awake()
     {
@@ -148,13 +170,29 @@ public class PlayerController : MonoBehaviour
         damageable = GetComponent<Damageable>();
         trailRenderer = GetComponent<TrailRenderer>();
     }
-
     private void FixedUpdate()
     {
-        Gravity();
-        if (!damageable.LockVelocity)
-            
-            rb.velocity = new Vector2(moveInput.x * CurrentMoveSpeed, rb.velocity.y);
+        if (touchingDirections.isOnWall && !touchingDirections.isGrounded && rb.velocity.y < 0)
+        {
+            rb.velocity = new Vector2(0, Mathf.Clamp(rb.velocity.y, -wallSlideSpeed, float.MaxValue));
+        }
+        else
+        {
+            Gravity();
+        }
+
+
+        float velocityX;
+        if (wallJumping || isDashing)
+        {
+            velocityX = rb.velocity.x;
+        }
+        else
+        {
+            velocityX = moveInput.x * CurrentMoveSpeed;
+        }
+
+        rb.velocity = new Vector2(velocityX, rb.velocity.y);
             
         animator.SetFloat(AnimationString.yVelocity, rb.velocity.y);
         if (touchingDirections.isGrounded)
@@ -164,11 +202,21 @@ public class PlayerController : MonoBehaviour
             animator.SetBool(AnimationString.usedAirAttack, false);
         }
 
+        if (isJumping)
+        {
+            jumpCounter += Time.fixedDeltaTime;
+            if (jumpCounter >= jumpTime)
+            {
+                isJumping = false; // End jump after jumpTime
+                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+            }
+        }
     }
 
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
+        currentMoveInput = moveInput;
 
         if (IsAlive)
         {
@@ -207,6 +255,11 @@ public class PlayerController : MonoBehaviour
 
     private void Gravity()
     {
+        if (isDashing || wallJumping)
+        {
+            return;
+        }
+
         if(rb.velocity.y <= 0)
         {
             rb.gravityScale = baseGravity * fallSpeedMultiplier;
@@ -222,34 +275,64 @@ public class PlayerController : MonoBehaviour
     {
         // Reset jump when touching the ground
         // First jump logic (grounded)
+        if (context.performed && touchingDirections.isOnWall && CanMove && !touchingDirections.isGrounded)
+        {
+            WallJump();
+        }
         if (context.performed && touchingDirections.isGrounded && CanMove)
         {
             PerformJump();
+            isJumping = true;
+            jumpCounter = 0f;
         }
-        else if(context.canceled && rb.velocity.y > 0)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
-        }
-
         // Double jump logic (in air)
-        else if (context.started && !touchingDirections.isGrounded 
+        else if (context.started 
+            && !touchingDirections.isGrounded 
             && !touchingDirections.isOnCeiling 
             && !touchingDirections.isOnWall
-            && doubleJumpAvailable && !usedJumpWhileAir && CanMove)
+            && doubleJumpAvailable 
+            && !usedJumpWhileAir && CanMove)
         {
             usedJumpWhileAir = true;
             doubleJumpAvailable = false;
             PerformJump();
+            jumpCounter = 0f;
+            isJumping = true;
         }
         // Single jump regained after falling from platform
         else if (context.started && !touchingDirections.isGrounded && !usedJumpWhileAir && CanMove)
         {
             usedJumpWhileAir = true;
             PerformJump();
+            jumpCounter = 0f;
+            isJumping = true;
+        }
+        else if (context.canceled && rb.velocity.y > 0)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+            isJumping = false;
         }
     }
+
+    private void WallJump()
+    {
+        IsFacingRight = !IsFacingRight;
+        rb.velocity = new Vector2(wallJumpForce.x * (IsFacingRight ? 1 : -1), jumpImpulse); // Apply horizontal and vertical force
+        wallJumping = true;
+        Invoke("StopWallJump", wallJumpDuration);
+    }
+
+    void StopWallJump()
+    {
+        wallJumping = false;
+        doubleJumpAvailable = true;
+        usedJumpWhileAir = false;
+        SetFacingDirection(currentMoveInput);
+    }
+
     private void PerformJump()
     {
+        dashEnabled = true;
         animator.SetTrigger(AnimationString.jumpTrigger);
         rb.velocity = new Vector2(rb.velocity.x, jumpImpulse);
     }
@@ -265,14 +348,29 @@ public class PlayerController : MonoBehaviour
     private IEnumerator Dash()
     {
         isDashing = true;
-        rb.velocity = new Vector2(transform.localScale.x * dashSpeed, rb.velocity.y); // Keep y velocity (for mid-air dashes)
+        rb.velocity = new Vector2(transform.localScale.x * dashSpeed, 0); // Keep y velocity (for mid-air dashes)
         rb.gravityScale = 0f; // Disable gravity during dash
-        trailRenderer.emitting = true;
+        //trailRenderer.emitting = true;
+        PlayerAfterImagePool.Instance.GetFromPool();
+        lastImageXpos = transform.position.x;
 
-        yield return new WaitForSeconds(dashDuration); // Wait for dash duration
+        float dashTimeElapsed = 0f;
+
+        // Create afterimages while dashing
+        while (dashTimeElapsed < dashDuration)
+        {
+            if (Mathf.Abs(transform.position.x - lastImageXpos) > distanceBetweenImages)
+            {
+                PlayerAfterImagePool.Instance.GetFromPool();
+                lastImageXpos = transform.position.x;
+            }
+
+            dashTimeElapsed += Time.deltaTime;
+            yield return null; // Wait for next frame
+        }
 
         rb.gravityScale = baseGravity; // Restore gravity after dash
-        trailRenderer.emitting = false; // Stop trail effect
+        //trailRenderer.emitting = false; // Stop trail effect
         dashEnabled = false;
         isDashing = false;
 

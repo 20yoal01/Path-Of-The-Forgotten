@@ -17,7 +17,8 @@ public class DetectionZone : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        DetectedColliders.Add(collision);
+        if (collision.gameObject.CompareTag("Player"))
+            DetectedColliders.Add(collision);
     }
 
     private void OnTriggerExit2D(Collider2D collision)

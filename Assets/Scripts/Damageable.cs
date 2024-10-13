@@ -108,9 +108,9 @@ public class Damageable : MonoBehaviour
         }
     }
 
-    public bool Hit(int damage, Vector2 knockback)
+    public bool Hit(int damage, Vector2 knockback, bool shouldInvincible)
     {
-        if (IsAlive && !isInvincible)
+        if (IsAlive && (!shouldInvincible || !isInvincible))
         {
             Health -= damage;
             isInvincible = true;
