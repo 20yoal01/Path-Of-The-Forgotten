@@ -8,22 +8,45 @@ public class Projectile : MonoBehaviour
     public Vector2 moveSpeed = new Vector2(10f, 0);
     public Vector2 knockback = new Vector2(0, 0);
 
+    GameObject player;
     public bool targetPlayer;
 
     Rigidbody2D rb;
+
+    private Vector3 targetPosition; // Target position from 10 frames ago
+    private bool isInitialized = false; // Check if the projectile has been initialized
+
     // Start is called before the first frame update
     private void Awake()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Start()
     {
-        if (targetPlayer)
+        if (!isInitialized)
         {
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
-            Vector2 moveDir = ((player.transform.position - transform.position).normalized * moveSpeed.x);
+            rb.velocity = new Vector2(moveSpeed.x * transform.localScale.x, moveSpeed.y);
+        }
+    }
+
+    public void InitializeProjectile(Vector3 targetPos)
+    {
+        targetPosition = targetPos;
+        isInitialized = true; // Mark that the projectile has received the target position
+
+        // Launch the projectile now that we have the target position
+        LaunchProjectile();
+    }
+
+    // This will handle the logic of moving towards the target position
+    public void LaunchProjectile()
+    {
+        if (isInitialized)
+        {
+
+            Vector2 moveDir = ((targetPosition - transform.position).normalized * moveSpeed.x);
 
             // Determine if the enemy is facing right or left (assuming IsFacingRight is a boolean that tracks this)
             bool isFacingRight = transform.localScale.x > 0; // Example check based on scale
@@ -45,11 +68,6 @@ public class Projectile : MonoBehaviour
             // Set the bullet velocity
             rb.velocity = new Vector2(moveDir.x, moveDir.y);
         }
-        else
-        {
-            rb.velocity = new Vector2(moveSpeed.x, moveSpeed.y);
-        }
-        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

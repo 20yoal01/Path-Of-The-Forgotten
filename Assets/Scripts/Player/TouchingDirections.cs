@@ -72,7 +72,28 @@ public class TouchingDirections : MonoBehaviour
     private void FixedUpdate()
     {
        isGrounded = touchingCol.Cast(Vector2.down, castFilter, groundHits, groundDistance) > 0;
-       isOnWall = touchingCol.Cast(wallCheckDirection, castFilter, wallHits, wallDistance) > 0;
        isOnCeiling = touchingCol.Cast(Vector2.up, castFilter, ceilingHits, ceilingDistance) > 0;
+
+       int isOnWallNum = touchingCol.Cast(wallCheckDirection, castFilter, wallHits, wallDistance);
+       bool damageableTerrain = false;
+       for (int i = 0; i < isOnWallNum; i++)
+       {
+            // Check if the object has the DamageableTile script
+           if (wallHits[i].collider.gameObject.GetComponent<DamageableTile>())
+           {
+                // If no DamageableTile, it's a valid wall for wall jumping
+               damageableTerrain = true;
+               break; // Stop checking once a valid wall is found
+           }
+       }
+
+        if (isOnWallNum > 0 && !damageableTerrain)
+        {
+            isOnWall = true;
+        }
+        else
+        {
+            isOnWall = false;
+        }
     }
 }

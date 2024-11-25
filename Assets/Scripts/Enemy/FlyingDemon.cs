@@ -12,6 +12,9 @@ public class FlyingDemon : MonoBehaviour
     Animator animator;
     private Transform player;
     Damageable damageable;
+    private bool canFire = true;
+    public float fireCooldown = 10f;
+    private float fireCounter = 0f;
 
     public bool CanMove
     {
@@ -54,22 +57,27 @@ public class FlyingDemon : MonoBehaviour
     private void Act()
     {
         float distanceFromPlayer = Vector2.Distance(player.position, transform.position);
+        fireCounter += Time.fixedDeltaTime;
+        if (fireCounter > fireCooldown)
+        {
+            canFire = true;
+        }
 
         if (distanceFromPlayer < lineOfSight && distanceFromPlayer > shootingRange)
         {
 
             transform.position = Vector2.MoveTowards(this.transform.position, player.position, flightSpeed * Time.deltaTime);
             animator.SetBool(AnimationString.isMoving, true);
-            animator.SetBool(AnimationString.hasTarget, false);
         }
-        else if (distanceFromPlayer <= shootingRange)
+        else if (distanceFromPlayer <= shootingRange && canFire)
         {
-            animator.SetBool(AnimationString.hasTarget, true);
+            animator.SetBool(AnimationString.fire, true);
             animator.SetBool(AnimationString.isMoving, false);
+            canFire = false;
+            fireCounter = 0f;
         }
         else
         {
-            animator.SetBool(AnimationString.hasTarget, false);
             animator.SetBool(AnimationString.isMoving, false);
         }
 

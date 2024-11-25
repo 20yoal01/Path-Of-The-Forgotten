@@ -23,7 +23,8 @@ public class PlayerController : MonoBehaviour
     public float jumpTime;
     private bool isJumping;
     private float jumpCounter;
-
+    private float coyoteTime = 0.2f;
+    private float coyoteTimeCounter;
     
     // Double Jumps
     public bool doubleJumpAvailable = true;
@@ -54,6 +55,8 @@ public class PlayerController : MonoBehaviour
     bool wallJumping;
 
     private Vector2 currentMoveInput;
+    private bool isHurt = false;
+    private float hurtDuration = 0.3f;
 
     public float CurrentMoveSpeed
     {
@@ -183,7 +186,7 @@ public class PlayerController : MonoBehaviour
 
 
         float velocityX;
-        if (wallJumping || isDashing)
+        if (wallJumping || isDashing || isHurt)
         {
             velocityX = rb.velocity.x;
         }
@@ -195,11 +198,20 @@ public class PlayerController : MonoBehaviour
         rb.velocity = new Vector2(velocityX, rb.velocity.y);
             
         animator.SetFloat(AnimationString.yVelocity, rb.velocity.y);
-        if (touchingDirections.isGrounded)
+        if (touchingDirections.isGrounded || touchingDirections.isOnWall)
         {
             doubleJumpAvailable = true;
             usedJumpWhileAir = false;
             animator.SetBool(AnimationString.usedAirAttack, false);
+        }
+
+        if (touchingDirections.isGrounded)
+        {
+            coyoteTimeCounter = coyoteTime;
+        }
+        else
+        {
+            coyoteTimeCounter -= Time.deltaTime;
         }
 
         if (isJumping)
@@ -255,7 +267,7 @@ public class PlayerController : MonoBehaviour
 
     private void Gravity()
     {
-        if (isDashing || wallJumping)
+        if (isDashing || wallJumping || isHurt)
         {
             return;
         }
@@ -279,11 +291,13 @@ public class PlayerController : MonoBehaviour
         {
             WallJump();
         }
-        if (context.performed && touchingDirections.isGrounded && CanMove)
+        if (context.started && coyoteTimeCounter > 0 && CanMove)
         {
             PerformJump();
             isJumping = true;
             jumpCounter = 0f;
+            coyoteTimeCounter = 0f;
+            usedJumpWhileAir = false; 
         }
         // Double jump logic (in air)
         else if (context.started 
@@ -291,18 +305,11 @@ public class PlayerController : MonoBehaviour
             && !touchingDirections.isOnCeiling 
             && !touchingDirections.isOnWall
             && doubleJumpAvailable 
-            && !usedJumpWhileAir && CanMove)
+            && !usedJumpWhileAir && CanMove
+            )
         {
             usedJumpWhileAir = true;
             doubleJumpAvailable = false;
-            PerformJump();
-            jumpCounter = 0f;
-            isJumping = true;
-        }
-        // Single jump regained after falling from platform
-        else if (context.started && !touchingDirections.isGrounded && !usedJumpWhileAir && CanMove)
-        {
-            usedJumpWhileAir = true;
             PerformJump();
             jumpCounter = 0f;
             isJumping = true;
@@ -311,6 +318,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
             isJumping = false;
+            coyoteTimeCounter = 0f;
         }
     }
 
@@ -404,6 +412,15 @@ public class PlayerController : MonoBehaviour
 
     public void OnHit(int damage, Vector2 knockback)
     {
+        Invoke("getHurt", hurtDuration);
         rb.velocity = new Vector2(knockback.x, rb.velocity.y + knockback.y);
+        isHurt = true;
+        doubleJumpAvailable = false;
+        Invoke("getHurt", hurtDuration);
+    }
+
+    void getHurt()
+    {
+        isHurt = false;
     }
 }
