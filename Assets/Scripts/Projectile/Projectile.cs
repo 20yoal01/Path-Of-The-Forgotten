@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,20 +16,24 @@ public class Projectile : MonoBehaviour
 
     private Vector3 targetPosition; // Target position from 10 frames ago
     private bool isInitialized = false; // Check if the projectile has been initialized
+    private Animator animator;
 
     // Start is called before the first frame update
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     void Start()
     {
         if (!isInitialized)
         {
-            rb.velocity = new Vector2(moveSpeed.x * transform.localScale.x, moveSpeed.y);
+            // Get the current direction (normalize it to keep the direction but adjust the speed)
+            rb.velocity = rb.velocity.normalized * moveSpeed.x; // Ensures the speed is correct
         }
+        StartCoroutine(DestroyAfterWait());
     }
 
     public void InitializeProjectile(Vector3 targetPos)
@@ -70,6 +75,12 @@ public class Projectile : MonoBehaviour
         }
     }
 
+    private IEnumerator DestroyAfterWait()
+    {
+        yield return new WaitForSeconds(10);
+        Destroy(gameObject);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Damageable damageable = collision.GetComponent<Damageable>();
@@ -79,10 +90,22 @@ public class Projectile : MonoBehaviour
         {
             Vector2 deliveredKnockback = transform.localScale.x > 0 ? knockback : new Vector2(-knockback.x, knockback.y);
 
-            bool gotHit = damageable.Hit(damage, deliveredKnockback, true);
+            bool gotHit = damageable.Hit(damage, deliveredKnockback, false);
+
+            if (gameObject.tag == "PlayerArrow")
+            {
+                CinemachineImpulseSource source = GameObject.FindGameObjectWithTag("Player").GetComponent<CinemachineImpulseSource>();
+                source.m_DefaultVelocity = new Vector3(knockback.x / 20 + 0.05f, knockback.y / 20, 0 + 0.05f);
+                CameraShakeManager.instance.CameraShake(source);
+            }
+
             if (gotHit)
+                if (animator != null)
+                    animator.SetTrigger("hit");
                 Debug.Log(collision.name + "hot for " + damage);
+            if (animator == null)
+                Destroy(gameObject);
         }
-        Destroy(gameObject);
+        //rb.velocity = new Vector2(0, 0);
     }
 }

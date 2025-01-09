@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - DamagableTerrain
+  - PlayerArrow
+  - Platform
+  - Camera Bounds
+  - Virtual Camera
   layers:
   - Default
   - TransparentFX
@@ -20,7 +24,7 @@ TagManager:
   - GroundDetection
   - Pickup
   - EnemyProjectileHitbox
-  - 
+  - Interactable
   - 
   - 
   - 
@@ -48,9 +52,18 @@ TagManager:
   - name: Ground
     uniqueID: 1920588383
     locked: 0
+  - name: Player
+    uniqueID: 3291982145
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Foreground
+    uniqueID: 810894523
+    locked: 0
   - name: Effects
     uniqueID: 748030559
+    locked: 0
+  - name: SortingTexture
+    uniqueID: 1208301919
     locked: 0

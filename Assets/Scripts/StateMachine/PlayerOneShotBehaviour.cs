@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public class PlayerOneShotBehaviour : StateMachineBehaviour
 {
     public AudioClip soundToPlay;
-    public float volume = 1f;
+    public float volume = 0.25f;
     public bool playOnEnter = true, playOnExit = false, playAfterDelay = false;
 
     // Delayed sound timer
@@ -18,7 +19,7 @@ public class PlayerOneShotBehaviour : StateMachineBehaviour
     {
         if (playOnEnter)
         {
-            AudioSource.PlayClipAtPoint(soundToPlay, animator.gameObject.transform.position, volume);
+            playAudioPitchShift(animator);
         }
 
         timeSinceEntered = 0f;
@@ -34,7 +35,7 @@ public class PlayerOneShotBehaviour : StateMachineBehaviour
 
             if (timeSinceEntered > playDelay)
             {
-                AudioSource.PlayClipAtPoint(soundToPlay, animator.gameObject.transform.position, volume);
+                playAudioPitchShift(animator);
                 hasDelayedSoundPlayed = true;
             }
         }
@@ -45,7 +46,27 @@ public class PlayerOneShotBehaviour : StateMachineBehaviour
     {
         if (playOnExit)
         {
-            AudioSource.PlayClipAtPoint(soundToPlay, animator.gameObject.transform.position, volume);
+            playAudioPitchShift(animator);
         }
+    }
+
+    private void playAudioPitchShift(Animator animator)
+    {
+        float pitch = Random.Range(0.9f, 1.1f);
+
+        // Create a temporary GameObject at the specified position
+        GameObject tempAudioSource = new GameObject("TempAudioSource");
+        tempAudioSource.transform.position = animator.gameObject.transform.position;
+
+        // Add an AudioSource component
+        AudioSource audioSource = tempAudioSource.AddComponent<AudioSource>();
+        audioSource.clip = soundToPlay;
+        audioSource.volume = this.volume;
+        audioSource.pitch = pitch;
+
+        audioSource.Play();
+
+        // Destroy the GameObject after the clip finishes playing
+        Destroy(tempAudioSource, soundToPlay.length / Mathf.Abs(audioSource.pitch));
     }
 }

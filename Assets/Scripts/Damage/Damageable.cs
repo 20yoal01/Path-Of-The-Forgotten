@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class Damageable : MonoBehaviour
     public UnityEvent<int, Vector2> damageableHit;
     public UnityEvent damageableDeath;
     public UnityEvent<float, float> healthChanged;
+    public UnityEvent deathEvent;
 
     Animator animator;
 
@@ -43,6 +45,7 @@ public class Damageable : MonoBehaviour
             if(_health <= 0)
             {
                 IsAlive = false;
+                deathEvent?.Invoke();
             }
         }
     }
@@ -73,6 +76,12 @@ public class Damageable : MonoBehaviour
                 damageableDeath.Invoke();
             }
         }
+    }
+
+    public void Revive()
+    {
+        IsAlive = true;
+        Health = MaxHealth;
     }
 
     public bool LockVelocity
@@ -119,6 +128,15 @@ public class Damageable : MonoBehaviour
             LockVelocity = true;
             damageableHit?.Invoke(damage, knockback);
             CharacterEvents.characterDamaged.Invoke(gameObject, damage);
+            
+            if (gameObject.tag == "Player")
+            {
+                CinemachineImpulseSource source = GameObject.FindGameObjectWithTag("Player").GetComponent<CinemachineImpulseSource>();
+                source.m_DefaultVelocity = new Vector3(knockback.x / 10 + 0.05f, knockback.y / 10, 0 + 0.05f);
+                CameraShakeManager.instance.CameraShake(source);
+            }
+
+            
 
             return true;
         }

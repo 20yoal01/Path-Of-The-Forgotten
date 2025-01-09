@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4f2f635cd73b2e4b8a37594268b3fb1, type: 3}
+  m_Name: ChaseEnemyToBite
+  m_EditorClassIdentifier: 
+  decision: {fileID: 11400000, guid: b0853b3ca6aabe74d9b014a63511e2e9, type: 2}
+  TrueState: {fileID: 11400000, guid: 9c920e719052e1e41bbfcfaa729330a9, type: 2}
+  FalseState: {fileID: 11400000, guid: 9d4a2fcc413fee146936e4bb9792b150, type: 2}

@@ -3,11 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(TouchingDirections), typeof(Damageable))]
 public class PlayerController : MonoBehaviour
-{   
+{
+    public Transform previousParent;
+
     //Speed
     public float walkSpeed = 5f;
     public float runSpeed = 8f;
@@ -25,7 +28,11 @@ public class PlayerController : MonoBehaviour
     private float jumpCounter;
     private float coyoteTime = 0.2f;
     private float coyoteTimeCounter;
-    
+    private float jumpLoss = 0.3f;
+
+
+    private float _fallSpeedYDampingChangeThreshold;
+
     // Double Jumps
     public bool doubleJumpAvailable = true;
     public bool usedJumpWhileAir = false;
@@ -46,6 +53,7 @@ public class PlayerController : MonoBehaviour
     private float dashCooldown = 1f;
     public float distanceBetweenImages;
     private float lastImageXpos;
+    public AudioSource dashSF;
 
 
     //WallJumps
@@ -162,8 +170,66 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public bool IsOnWall
+    {
+        get
+        {
+            if (!canWallClimb)
+            {
+                return false;
+            }
+            bool shouldBeOnWall = touchingDirections.isOnWall && canWallClimb;
+            animator.SetBool(AnimationString.isOnWall, shouldBeOnWall);
+            return shouldBeOnWall;
+        }
+    }
+
     Rigidbody2D rb;
     Animator animator;
+
+    [Header("Player Abilities")]
+    public bool canArrowBarrage = false;
+    public bool canShootBow = false;
+    public bool canDoubleJump = false;
+    public bool canWallClimb = false;
+    public int _arrowsRemaining = 0;
+    public UnityEvent<int> ammoRemaningEvent;
+
+    public int ArrowsRemaining { get { 
+            return _arrowsRemaining; } set
+        {
+            if (_arrowsRemaining != value) // Check to avoid unnecessary invocations
+            {
+                _arrowsRemaining = value;
+                ammoRemaningEvent?.Invoke(_arrowsRemaining);
+            }
+        }
+    }
+
+
+    public void OnEnableAbility(Ability ability)
+    {
+        switch (ability)
+        {
+            case Ability.Bow:
+                canShootBow = true;
+                break;
+            case Ability.DoubleJump:
+                canDoubleJump = true;
+                break;
+            case Ability.WallClimb:
+                canWallClimb = true;
+                break;
+            case Ability.ArrowBarrage:
+                canArrowBarrage = true;
+                break;
+        }
+    }
+    private void Start()
+    {
+        _fallSpeedYDampingChangeThreshold = CameraManager.instance._fallSpeedYDampingChangeThreshhold;
+        previousParent = transform.parent;
+    }
 
     private void Awake()
     {
@@ -175,7 +241,18 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (touchingDirections.isOnWall && !touchingDirections.isGrounded && rb.velocity.y < 0)
+        if (rb.velocity.y < _fallSpeedYDampingChangeThreshold && !CameraManager.instance.IsLerpingYDamping && !CameraManager.instance.LerpedFromPlayerFalling)
+        {
+            CameraManager.instance.LerpYDaming(true);
+        }
+
+        if (rb.velocity.y >= 0f && !CameraManager.instance.IsLerpingYDamping && CameraManager.instance.LerpedFromPlayerFalling)
+        {
+            CameraManager.instance.LerpedFromPlayerFalling = false;
+            CameraManager.instance.LerpYDaming(false);
+        }
+
+        if (IsOnWall && !touchingDirections.isGrounded && rb.velocity.y < 0)
         {
             rb.velocity = new Vector2(0, Mathf.Clamp(rb.velocity.y, -wallSlideSpeed, float.MaxValue));
         }
@@ -198,7 +275,7 @@ public class PlayerController : MonoBehaviour
         rb.velocity = new Vector2(velocityX, rb.velocity.y);
             
         animator.SetFloat(AnimationString.yVelocity, rb.velocity.y);
-        if (touchingDirections.isGrounded || touchingDirections.isOnWall)
+        if (touchingDirections.isGrounded || IsOnWall)
         {
             doubleJumpAvailable = true;
             usedJumpWhileAir = false;
@@ -220,7 +297,7 @@ public class PlayerController : MonoBehaviour
             if (jumpCounter >= jumpTime)
             {
                 isJumping = false; // End jump after jumpTime
-                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * jumpLoss);
             }
         }
     }
@@ -250,6 +327,12 @@ public class PlayerController : MonoBehaviour
         else if(moveInput.x < 0 && IsFacingRight)
         {
             IsFacingRight = false;
+        }
+
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("player_bow") || animator.GetCurrentAnimatorStateInfo(0).IsName("player_bow_up"))
+        {
+            bool bowUp = animator.GetBool("bowUp");
+            CameraManager.instance.AdjustCameraForBowCharge(bowUp);
         }
     }
 
@@ -287,7 +370,7 @@ public class PlayerController : MonoBehaviour
     {
         // Reset jump when touching the ground
         // First jump logic (grounded)
-        if (context.performed && touchingDirections.isOnWall && CanMove && !touchingDirections.isGrounded)
+        if (context.performed && IsOnWall && CanMove && !touchingDirections.isGrounded)
         {
             WallJump();
         }
@@ -303,9 +386,10 @@ public class PlayerController : MonoBehaviour
         else if (context.started 
             && !touchingDirections.isGrounded 
             && !touchingDirections.isOnCeiling 
-            && !touchingDirections.isOnWall
+            && !IsOnWall
             && doubleJumpAvailable 
             && !usedJumpWhileAir && CanMove
+            && canDoubleJump
             )
         {
             usedJumpWhileAir = true;
@@ -316,7 +400,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (context.canceled && rb.velocity.y > 0)
         {
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * jumpLoss);
             isJumping = false;
             coyoteTimeCounter = 0f;
         }
@@ -325,6 +409,7 @@ public class PlayerController : MonoBehaviour
     private void WallJump()
     {
         IsFacingRight = !IsFacingRight;
+        animator.SetTrigger(AnimationString.jumpTrigger);
         rb.velocity = new Vector2(wallJumpForce.x * (IsFacingRight ? 1 : -1), jumpImpulse); // Apply horizontal and vertical force
         wallJumping = true;
         Invoke("StopWallJump", wallJumpDuration);
@@ -340,15 +425,35 @@ public class PlayerController : MonoBehaviour
 
     private void PerformJump()
     {
+        float adjustedJumpForce = calculateJumpForce();
+
+
         dashEnabled = true;
         animator.SetTrigger(AnimationString.jumpTrigger);
-        rb.velocity = new Vector2(rb.velocity.x, jumpImpulse);
+        rb.velocity = new Vector2(rb.velocity.x, adjustedJumpForce);
+    }
+
+    private float calculateJumpForce()
+    {
+        float adjustedJumpForce = 0f;
+        if (IsOnPlatform())
+        {
+            MovingPlatform platform = currentPlatform.GetComponent<MovingPlatform>();
+            adjustedJumpForce = platform.GetAdjustedJumpForce(jumpImpulse);
+        }
+        else
+        {
+            adjustedJumpForce = jumpImpulse;
+        }
+
+        return adjustedJumpForce;
     }
 
     public void OnDash(InputAction.CallbackContext context)
     {
         if (context.started && dashEnabled)
         {
+            dashSF.Play();
             StartCoroutine(Dash());
         }
     }
@@ -401,14 +506,138 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-    public void OnRangedAttack(InputAction.CallbackContext context)
+
+    private bool isWindingUp = false;
+    private bool isShooting = false;
+
+
+    public void AddArrowsByOne()
     {
+        ArrowsRemaining++;
+    }
+
+    public void AdjustBowCamera(float diagonalFloat)
+    {
+        bool diagonal = diagonalFloat >= 1;
+        CameraManager.instance.AdjustCameraForBowCharge(diagonal);
+    }
+
+    public void ResetCamera()
+    {
+        CameraManager.instance.ResetCameraOffset();
+    }
+
+    private bool arrowBarrageActive = false;
+    public void ArrowBarrageAbility(InputAction.CallbackContext context)
+    {
+        if (!canArrowBarrage || !touchingDirections.isGrounded)
+            return;
+
         if (context.started)
         {
-            animator.SetTrigger(AnimationString.rangedAttackTrigger);
+            if (ArrowsRemaining < 5)
+            {
+                return;
+            }
+
+            ArrowsRemaining = ArrowsRemaining - 5;
+            animator.SetBool(AnimationString.arrowBarrage, true);
+            arrowBarrageActive = true;
+            StartCoroutine(ArrowBarrageTimer());
         }
     }
 
+    private int arrowBarrageTime = 3;
+    private bool switchActionMap = false;
+    private IEnumerator ArrowBarrageTimer()
+    {
+        yield return new WaitForSeconds(arrowBarrageTime);
+        arrowBarrageActive = false;
+    }
+
+    public void OnRangedAttackWindUp(InputAction.CallbackContext context)
+    {
+        if (!canShootBow || isWindingUp || isShooting || !touchingDirections.isGrounded)
+        {
+            return;
+        }
+
+        if (context.started)
+        {
+            animator.SetFloat("arrowsRemaining", ArrowsRemaining);
+            animator.SetTrigger(AnimationString.rangedAttackTrigger);
+        }
+
+        if (context.performed)
+        {
+            if (!arrowBarrageActive)
+            {
+                animator.SetBool(AnimationString.arrowBarrage, false);
+                if (ArrowsRemaining > 0)
+                    ArrowsRemaining--;
+                isWindingUp = true; // Mark as winding up
+                animator.SetBool(AnimationString.bowUp, false);
+                InputManager.Instance.SwitchToBowActionMap();
+                switchActionMap = true;
+            }
+
+            
+        }
+    }
+
+    private IEnumerator ResetBowStateAfterAnimation()
+    {
+        animator.SetTrigger(AnimationString.shootRangedAttackTrigger);
+
+        while (animator.GetBool("shootRangedAttack"))
+        {
+            yield return null; // Wait for the next frame
+        }
+
+        isShooting = false; // Reset shooting state
+        ammoRemaningEvent?.Invoke(ArrowsRemaining);
+        InputManager.Instance.SwitchToPlayerActionMap();
+    }
+
+    public void OnRangedAttackRelease(InputAction.CallbackContext context)
+    {
+        if (!canShootBow || isShooting)
+        {
+            return;
+        }
+
+        if (context.canceled && switchActionMap)
+        {
+            isWindingUp = false; // Wind-up completed
+            isShooting = true; // Mark as shooting
+
+            StartCoroutine(ResetBowStateAfterAnimation());
+            switchActionMap = false;
+        }
+    }
+
+    public void UpdateBowRotation(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            Vector2 aimInput = context.ReadValue<Vector2>();
+
+            if (aimInput.x == 0 && aimInput.y == 0)
+            {
+                return;
+            }
+
+            bool aimAngle = false;
+            if ((aimInput.x == 1 && aimInput.y == 0) || (aimInput.x < 0 && aimInput.y > 0))
+                aimAngle = true;
+
+            animator.SetBool(AnimationString.bowUp, aimAngle);
+
+            //animator.SetBool(AnimationString.bowUp, isBowUp);
+            SetFacingDirection(aimInput);
+
+        }
+    }
 
     public void OnHit(int damage, Vector2 knockback)
     {
@@ -423,4 +652,47 @@ public class PlayerController : MonoBehaviour
     {
         isHurt = false;
     }
+
+    private MovingPlatform currentPlatform;
+
+    public void SetCurrentPlatform(MovingPlatform platform)
+    {
+        currentPlatform = platform;
+    }
+
+    public void ClearCurrentPlatform()
+    {
+        currentPlatform = null;
+    }
+
+    public bool IsOnPlatform()
+    {
+        return currentPlatform != null;
+    }
+
+    public void Save(ref PlayerSaveData data)
+    {
+        data.Position = transform.position;
+        data.canShootBow = canShootBow;
+        data.canDoubleJump = canDoubleJump;
+        data.canWallClimb = canWallClimb;
+    }
+
+    public void Load(PlayerSaveData data)
+    {
+        transform.position = data.Position;
+        canShootBow = data.canShootBow;
+        canDoubleJump = data.canDoubleJump;
+        canWallClimb = data.canWallClimb;
+    }
+}
+
+
+[System.Serializable]
+public struct PlayerSaveData
+{
+    public Vector3 Position;
+    public bool canShootBow;
+    public bool canDoubleJump;
+    public bool canWallClimb;
 }

@@ -23,5 +23,10 @@ internal class AnimationString
     internal static string rangedAttackTrigger = "rangedAttack";
     internal static string usedAirAttack = "usedAirAttack";
     internal static string fire = "fire";
+    internal static string bite = "bite";
+    internal static string shootRangedAttackTrigger = "shootRangedAttack";
+    internal static string bowUp = "bowUp";
+    internal static string arrowBarrage = "arrowBarrage";
+    internal static string ActiveCheckpoint = "ActiveCheckpoint";
 }
 

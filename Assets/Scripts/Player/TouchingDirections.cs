@@ -17,6 +17,21 @@ public class TouchingDirections : MonoBehaviour
     RaycastHit2D[] ceilingHits = new RaycastHit2D[5];
 
     [SerializeField]
+    private bool _isTrueGrounded = true;
+
+    public bool isTrueGrounded
+    {
+        get
+        {
+            return _isTrueGrounded;
+        }
+        private set
+        {
+            _isTrueGrounded = value;
+        }
+    }
+
+    [SerializeField]
     private bool _isGrounded = true;
 
     public bool isGrounded { get
@@ -41,7 +56,6 @@ public class TouchingDirections : MonoBehaviour
         private set
         {
             _isOnWall = value;
-            animator.SetBool(AnimationString.isOnWall, value);
         }
     }
 
@@ -71,10 +85,15 @@ public class TouchingDirections : MonoBehaviour
 
     private void FixedUpdate()
     {
-       isGrounded = touchingCol.Cast(Vector2.down, castFilter, groundHits, groundDistance) > 0;
-       isOnCeiling = touchingCol.Cast(Vector2.up, castFilter, ceilingHits, ceilingDistance) > 0;
+       Vector2 downDirection = transform.TransformDirection(Vector2.down);
+       Vector2 upDirection = transform.TransformDirection(Vector2.up);
+       Vector2 wallDirection = transform.TransformDirection(wallCheckDirection);
 
-       int isOnWallNum = touchingCol.Cast(wallCheckDirection, castFilter, wallHits, wallDistance);
+       isGrounded = touchingCol.Cast(downDirection, castFilter, groundHits, groundDistance) > 0;
+       isOnCeiling = touchingCol.Cast(upDirection, castFilter, ceilingHits, ceilingDistance) > 0;
+       isTrueGrounded = touchingCol.Cast(Vector2.down, castFilter, ceilingHits, ceilingDistance) > 0;
+
+        int isOnWallNum = touchingCol.Cast(wallDirection, castFilter, wallHits, wallDistance);
        bool damageableTerrain = false;
        for (int i = 0; i < isOnWallNum; i++)
        {
@@ -95,5 +114,25 @@ public class TouchingDirections : MonoBehaviour
         {
             isOnWall = false;
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (touchingCol == null) return;
+
+        // Ground Check
+        Gizmos.color = Color.green;
+        Vector2 groundOrigin = (Vector2)touchingCol.bounds.center + Vector2.down * (touchingCol.bounds.extents.y + groundDistance);
+        Gizmos.DrawLine(touchingCol.bounds.center, groundOrigin);
+
+        // Ceiling Check
+        Gizmos.color = Color.blue;
+        Vector2 ceilingOrigin = (Vector2)touchingCol.bounds.center + Vector2.up * (touchingCol.bounds.extents.y + ceilingDistance);
+        Gizmos.DrawLine(touchingCol.bounds.center, ceilingOrigin);
+
+        // Wall Check
+        Gizmos.color = Color.red;
+        Vector2 wallOrigin = (Vector2)touchingCol.bounds.center + wallCheckDirection * (touchingCol.bounds.extents.x + wallDistance);
+        Gizmos.DrawLine(touchingCol.bounds.center, wallOrigin);
     }
 }

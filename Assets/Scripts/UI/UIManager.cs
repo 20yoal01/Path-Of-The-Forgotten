@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
 {
     public GameObject damageTextPrefab;
     public GameObject healthTextPrefab;
+    public GameObject guidingTextPrefab;
 
     public Canvas gameCanvas;
 
@@ -20,12 +21,14 @@ public class UIManager : MonoBehaviour
     {
         CharacterEvents.characterDamaged += CharacterTookDamage;
         CharacterEvents.characterHealed += CharacterHealed;
+        CharacterEvents.characterAbilityUnlock += CharacterAbilityUnlock;
     }
 
     private void OnDisable()
     {
         CharacterEvents.characterDamaged -=  CharacterTookDamage;
         CharacterEvents.characterHealed -= CharacterHealed;
+        CharacterEvents.characterAbilityUnlock -= CharacterAbilityUnlock;
     }
 
 
@@ -37,6 +40,18 @@ public class UIManager : MonoBehaviour
         TMP_Text tmpText = Instantiate(damageTextPrefab, spawnPosition, Quaternion.identity, gameCanvas.transform).GetComponent<TMP_Text>();
 
         tmpText.text = damageReceived.ToString();
+    }
+
+    public void CharacterAbilityUnlock(GameObject character, Ability ability)
+    {
+        // Set the spawn position to the center of the screen
+        Vector3 spawnPosition = new Vector3(Screen.width / 2, Screen.height / 2, 0);
+
+        // Instantiate the text object at the spawn position within the game canvas
+        TMP_Text tmpText = Instantiate(guidingTextPrefab, spawnPosition, Quaternion.identity, gameCanvas.transform).GetComponent<TMP_Text>();
+
+        // Set the text content
+        tmpText.text = "New " + ability.ToString().ToLower() + " ability unlocked!" + $" {AbilityManager.GetKeybind(ability)}";
     }
 
     public void CharacterHealed(GameObject character, int healthRestored)
