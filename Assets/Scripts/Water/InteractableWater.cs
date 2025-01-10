@@ -127,8 +127,10 @@ public class InteractableWater : MonoBehaviour
         Vector2[] newPoints = new Vector2[2];
 
         Vector2 firstPoint = new Vector2(_vertices[_topVerticesIndex[0]].x, _vertices[_topVerticesIndex[0]].y);
+        newPoints[0] = firstPoint;
 
         Vector2 secondPoint = new Vector2(_vertices[_topVerticesIndex[_topVerticesIndex.Length - 1]].x, _vertices[_topVerticesIndex[_topVerticesIndex.Length - 1]].y);
+        newPoints[1] = secondPoint;
 
         _coll.offset = Vector2.zero;
         _coll.points = newPoints;

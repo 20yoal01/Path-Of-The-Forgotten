@@ -63,15 +63,15 @@ Material:
     - _DistortionScale: 30
     - _DistortionStrength: 0.0025
     - _LineLength: 0.985
-    - _WaveCount: 0.75
+    - _WaveCount: 0.13
     - _WaveFlowDirection: 1
-    - _WaveSize: 0.16
-    - _WaveSpeed: 4
+    - _WaveSize: 0.2
+    - _WaveSpeed: 10
     m_Colors:
     - _BodyColor: {r: 0.4899404, g: 0, b: 0.59607846, a: 0}
     - _CausticColor: {r: 0.2861633, g: 0.9362805, b: 1, a: 0}
     - _CausticScrollDir: {r: 0.045, g: 0, b: 0, a: 0}
     - _CausticTiling: {r: 0.5, g: 1.5, b: 0, a: 0}
     - _DistortionDir: {r: 0.05, g: 0, b: 0, a: 0}
-    - _LineColor: {r: 0.15686277, g: 1, b: 0.9568626, a: 0}
+    - _LineColor: {r: 1, g: 0.64465404, b: 0.9390257, a: 0.3882353}
   m_BuildTextureStacks: []
