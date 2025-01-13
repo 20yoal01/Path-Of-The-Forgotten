@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,7 +22,7 @@ public class AcidParticleOnSplash : MonoBehaviour
 
     }
 
-    private void OnParticleTrigger()
+private void OnParticleTrigger()
     {
         ParticleSystem ps = GetComponent<ParticleSystem>();
         List<ParticleSystem.Particle> enter = new List<ParticleSystem.Particle>();
@@ -34,23 +35,28 @@ public class AcidParticleOnSplash : MonoBehaviour
         {
             ParticleSystem.Particle p = enter[i];
 
-            // Calculate the bounds for the particle
-            Vector2 particleCenter = p.position; // Particle's world position
-            float particleRadius = p.startSize * 0.5f; // Half of the start size (assuming the particle is roughly circular)
+            // Calculate the position of the particle in world space
+            Vector3 worldPosition = ps.transform.TransformPoint(p.position);
 
-            // Create the bounds (AABB)
-            Bounds particleBounds = new Bounds(particleCenter, new Vector3(particleRadius * 2, particleRadius * 2, 0));
+            // Calculate the radius for the particle (using its current size)
+            float particleRadius = p.startSize * p.size * 0.5f;
 
-            // Use the bounds for collision checking or other logic
-            // For example, you can check if the bounds are inside a specific area (like water)
-            Debug.Log($"Particle {i} bounds: {particleBounds}");
+            // Create a temporary GameObject to hold the Collider2D
+            GameObject colliderObject = new GameObject($"ParticleCollider_{i}");
+            CircleCollider2D circleCollider = colliderObject.AddComponent<CircleCollider2D>();
 
-            // Optionally, you can check if the particle intersects with any colliders (like water)
-            Collider2D[] hitColliders = Physics2D.OverlapBoxAll(particleBounds.center, particleBounds.size, 0f);
-            foreach (var hitCollider in hitColliders)
-            {
-                waterObject.GetComponent<WaterTriggerHandler>().BubblePop(hitCollider);
-            }
+            // Set the collider's position and size
+            circleCollider.transform.position = worldPosition;
+            circleCollider.radius = particleRadius;
+
+            // Send the collider to your BubblePop method
+            waterObject.GetComponent<WaterTriggerHandler>().BubblePop(circleCollider);
+
+            // Optionally, destroy the collider object if you don't need it anymore
+            Destroy(colliderObject);
+
+            // Log the particle information for debugging
+            Debug.Log($"Particle {i} collider at {worldPosition} with radius {particleRadius}");
         }
     }
 }

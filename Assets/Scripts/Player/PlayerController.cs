@@ -192,6 +192,7 @@ public class PlayerController : MonoBehaviour
     public bool canShootBow = false;
     public bool canDoubleJump = false;
     public bool canWallClimb = false;
+    public bool canDash = false;
     public int _arrowsRemaining = 0;
     public UnityEvent<int> ammoRemaningEvent;
 
@@ -222,6 +223,9 @@ public class PlayerController : MonoBehaviour
                 break;
             case Ability.ArrowBarrage:
                 canArrowBarrage = true;
+                break;
+            case Ability.Dash:
+                canDash = true;
                 break;
         }
     }
@@ -451,6 +455,9 @@ public class PlayerController : MonoBehaviour
 
     public void OnDash(InputAction.CallbackContext context)
     {
+        if (!canDash)
+            return;
+
         if (context.started && dashEnabled)
         {
             dashSF.Play();

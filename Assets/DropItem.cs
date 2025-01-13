@@ -11,6 +11,17 @@ public class DropItem : MonoBehaviour
     {
         foreach (ItemDrop item in lootTable)
         {
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            bool canShootBow = false;
+            if (player != null)
+            {
+                canShootBow = player.GetComponent<PlayerController>().canShootBow;
+            }
+
+            if (item.itemPrefab.name == "Arrow Pickup" && !canShootBow)
+            {
+                return;
+            }
             if (Random.Range(0, 100f) <= item.dropChance)
             {
                 Instantiate(item.itemPrefab, transform.position, Quaternion.identity);

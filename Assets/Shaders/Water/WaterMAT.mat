@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: WaterMAT
-  m_Shader: {fileID: -6465566751694194690, guid: d638ec859d55dc84ea3a2e5d2e171673, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 389100a6baabee047b11d6ef7a8289ef, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -32,7 +32,7 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
-  m_LockedProperties: 
+  m_LockedProperties: _LineColor
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -54,6 +54,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Bits: 16
     - _BodyTransparency: 1
     - _CausticOffsetSpeed: 1
     - _CausticPower: 9.5
@@ -62,16 +63,16 @@ Material:
     - _DistortionOffsetSpeed: 1
     - _DistortionScale: 30
     - _DistortionStrength: 0.0025
-    - _LineLength: 0.985
-    - _WaveCount: 0.13
+    - _LineLength: 0.99
+    - _WaveCount: 0.75
     - _WaveFlowDirection: 1
-    - _WaveSize: 0.2
-    - _WaveSpeed: 10
+    - _WaveSize: 0.16
+    - _WaveSpeed: 4
     m_Colors:
-    - _BodyColor: {r: 0.4899404, g: 0, b: 0.59607846, a: 0}
+    - _BodyColor: {r: 0, g: 0.34901956, b: 0.8196079, a: 0}
     - _CausticColor: {r: 0.2861633, g: 0.9362805, b: 1, a: 0}
     - _CausticScrollDir: {r: 0.045, g: 0, b: 0, a: 0}
     - _CausticTiling: {r: 0.5, g: 1.5, b: 0, a: 0}
     - _DistortionDir: {r: 0.05, g: 0, b: 0, a: 0}
-    - _LineColor: {r: 1, g: 0.64465404, b: 0.9390257, a: 0.3882353}
+    - _LineColor: {r: 0.15686277, g: 1, b: 0.9568626, a: 0}
   m_BuildTextureStacks: []

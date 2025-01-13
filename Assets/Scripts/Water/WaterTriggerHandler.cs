@@ -66,6 +66,6 @@ public class WaterTriggerHandler : MonoBehaviour
 
     public void BubblePop(Collider2D collision)
     {
-        _water.Splash(collision, -1f);
+        _water.Splash(collision, -0.5f);
     }
 }
