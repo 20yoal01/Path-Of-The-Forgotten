@@ -77,7 +77,7 @@ public class Projectile : MonoBehaviour
 
     private IEnumerator DestroyAfterWait()
     {
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(4);
         Destroy(gameObject);
     }
 

@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public enum Ability
 {
-    DoubleJump, Dash, Bow, WallClimb, ArrowBarrage
+    DoubleJump, Dash, Bow, WallClimb, ArrowBarrage, HealthIncrease
 }
 
 public class AbilityManager : MonoBehaviour
@@ -17,6 +17,7 @@ public class AbilityManager : MonoBehaviour
         { Ability.Bow, "V to shoot | UP + LEFT/RIGHT to aim diagonally" },
         { Ability.WallClimb, "Right/Left arrow to climb" },
         { Ability.ArrowBarrage, "G to activate. Throws a barrage of arrows (5 arrows required to activate)"},
+        { Ability.HealthIncrease, "HP increased by 25!"}
     };
 
     public static string GetKeybind(Ability ability)

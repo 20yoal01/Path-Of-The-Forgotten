@@ -28,11 +28,6 @@ public class InputManager : MonoBehaviour
             PlayerInput = GetComponent<PlayerInput>();
         }
     }
-
-    private void FixedUpdate()
-    {
-        Debug.Log(PlayerInput.currentActionMap.name);
-    }
     public void togglePauseMenu(InputAction.CallbackContext context)
     {
         if (context.started)

@@ -23,7 +23,7 @@ public class Respawn : MonoBehaviour
         if (savedState)
         {
             animator.SetBool(AnimationString.ActiveCheckpoint, true);
-            GameManager.Instance.currentCheckPoint = this;
+            GameManager.Instance.currentCheckPointId = this.id;
         }
     }
 
@@ -44,13 +44,14 @@ public class Respawn : MonoBehaviour
         if (savedState)
             return;
 
-        if (GameManager.Instance.currentCheckPoint != null)
+        if (GameManager.Instance.currentCheckPointId != null)
         {
-            GameManager.Instance.currentCheckPoint.animator.SetBool(AnimationString.ActiveCheckpoint, false); // Deactivate last checkpoint
-            GameManager.Instance.currentCheckPoint.savedState = false;
+            Respawn currentCheckpoint = Respawn.FindRespawnByID(GameManager.Instance.currentCheckPointId);
+            currentCheckpoint.animator.SetBool(AnimationString.ActiveCheckpoint, false); // Deactivate last checkpoint
+            currentCheckpoint.savedState = false;
         }
 
-        GameManager.Instance.currentCheckPoint = this;
+        GameManager.Instance.currentCheckPointId = this.id;
         animator.SetBool(AnimationString.ActiveCheckpoint, true);
         InputManager.Instance.SaveAsync();
         savedState = true;
@@ -80,7 +81,11 @@ public class Respawn : MonoBehaviour
 
     public void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
     {
-        
+        if (id == GameManager.Instance.currentCheckPointId)
+        {
+            savedState = true;
+            animator.SetBool(AnimationString.ActiveCheckpoint, true);
+        }
     }
 
     public void Save(ref RespawnData data)
@@ -91,6 +96,24 @@ public class Respawn : MonoBehaviour
     public void Load(RespawnData data)
     {
         id = data.id;
+    }
+
+    public static Respawn FindRespawnByID(string respawnID)
+    {
+        GameObject[] checkpoints = GameObject.FindGameObjectsWithTag("Respawn");
+        Respawn respawn = null;
+
+        foreach (var checkpoint in checkpoints)
+        {
+            respawn = checkpoint.GetComponent<Respawn>();
+            Animator respawnAnimator = checkpoint.GetComponent<Animator>();
+            if (respawn.id == respawnID)
+            {
+                break;
+            }
+        }
+
+        return respawn;
     }
 }
 

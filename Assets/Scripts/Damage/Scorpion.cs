@@ -107,6 +107,14 @@ public class Scorpion : MonoBehaviour
         currentPoint = pointA;
     }
 
+    private void Start()
+    {
+        if (damageable != null)
+        {
+            damageable.deathEvent.AddListener(GameManager.Instance.ScorpionQuest.OnScorpionKilled);
+        }
+    }
+
     private void Update()
     {
         HasTarget = attackZone.DetectedColliders.Count > 0;

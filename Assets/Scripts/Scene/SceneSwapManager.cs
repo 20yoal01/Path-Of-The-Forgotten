@@ -65,6 +65,7 @@ public class SceneSwapManager : MonoBehaviour
         }
 
         InputManager.Instance.ActivatePlayerControls();
+        GameManager.Instance.SetupOnLoad();
     }
 
     private void OnSceneLoaded (Scene scene, LoadSceneMode loadSceneMode)

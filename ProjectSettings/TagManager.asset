@@ -9,6 +9,8 @@ TagManager:
   - Platform
   - Camera Bounds
   - Virtual Camera
+  - NPC
+  - Door
   layers:
   - Default
   - TransparentFX
@@ -48,6 +50,9 @@ TagManager:
     locked: 0
   - name: Decor
     uniqueID: 1547507259
+    locked: 0
+  - name: Wall
+    uniqueID: 2984588211
     locked: 0
   - name: Ground
     uniqueID: 1920588383

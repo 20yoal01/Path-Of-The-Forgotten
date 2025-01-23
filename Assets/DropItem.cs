@@ -5,7 +5,6 @@ using UnityEngine;
 public class DropItem : MonoBehaviour
 {
     public List<ItemDrop> lootTable = new List<ItemDrop>();
-    private bool isBeingDestroyed = false;
 
     public void DropItems()
     {
@@ -26,15 +25,6 @@ public class DropItem : MonoBehaviour
             {
                 Instantiate(item.itemPrefab, transform.position, Quaternion.identity);
             }
-        }
-    }
-
-    private void OnDestroy()
-    {
-        if (!isBeingDestroyed) // To avoid triggering during scene unloads or other unintended cases
-        {
-            isBeingDestroyed = true;
-            DropItems();
         }
     }
 }

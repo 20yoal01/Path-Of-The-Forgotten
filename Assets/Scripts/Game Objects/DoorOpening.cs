@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum DoorName {None = 0, One, Two, Three, Four, Five, Six}
+
 public class DoorOpening : MonoBehaviour
 {
     public GameObject AttachedLever;
@@ -14,6 +16,8 @@ public class DoorOpening : MonoBehaviour
     public bool doorOpen;
     public enum DoorState {Closed, Open}
     public DoorState defaultState = DoorState.Closed;
+
+    public DoorName assignedDoorName;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +31,12 @@ public class DoorOpening : MonoBehaviour
         {
             doorOpen = true;
         }
+
+        if (assignedDoorName != DoorName.None)
+        {
+            GameManager.Instance.doorNameOpening.TryGetValue(assignedDoorName, out doorOpen);
+        }
+        
         animator.SetBool("doorOpen", doorOpen);
         animator = GetComponent<Animator>();
         if (AttachedLever != null)
@@ -71,8 +81,25 @@ public class DoorOpening : MonoBehaviour
     public void OpenDoor()
     {
         doorOpen = true;
+        if (assignedDoorName != DoorName.None && doorCloseCoolDown == 0)
+        {
+            SaveDoor(doorOpen);
+        }
         animator.SetBool("exitDefaultState", true);
         animator.SetBool("doorOpen", doorOpen);
         CameraShakeManager.instance.CameraShake(impulseSource);
+    }
+
+    public void CloseDoor()
+    {
+        doorOpen = false;
+        animator.SetBool("exitDefaultState", true);
+        animator.SetBool("doorOpen", doorOpen);
+        CameraShakeManager.instance.CameraShake(impulseSource);
+    }
+
+    public void SaveDoor(bool shouldDoorOpen)
+    {
+        GameManager.Instance.doorNameOpening[assignedDoorName] = shouldDoorOpen;
     }
 }

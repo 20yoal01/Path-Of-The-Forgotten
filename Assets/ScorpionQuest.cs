@@ -18,7 +18,12 @@ public class ScorpionQuest : MonoBehaviour
     {
         GameManager.Instance.ScorpionQuest = this;
         gameObject.SetActive(false);
-        scorpionsStatusText.text = $"0 / {scorpionsRequired}";
+        scorpionsStatusText.text = $"0/{scorpionsRequired}";
+    }
+
+    private void Start()
+    {
+        SetupQuestEvents();
     }
 
     public void ActivateQuest()
@@ -38,12 +43,36 @@ public class ScorpionQuest : MonoBehaviour
         if (questTriggered)
         {
             scorpionsKilled++;
-            scorpionsStatusText.text = $"{scorpionsKilled} / {scorpionsRequired}";
+            scorpionsStatusText.text = $"{scorpionsKilled}/{scorpionsRequired}";
 
             if (scorpionsKilled >= scorpionsRequired)
             {
                 questCompleted.Invoke();
                 questComplete = true;
+            }
+        }
+    }
+
+    public void SetupQuestEvents()
+    {
+        GameObject eleonoreNPC = GameObject.FindGameObjectWithTag("NPC");
+        if (eleonoreNPC != null)
+        {
+            Eleonore eleonoreScript = eleonoreNPC.GetComponent<Eleonore>();
+            eleonoreScript.questTrigger.AddListener(ActivateQuest);
+            eleonoreScript.deactivateQuest.AddListener(DeactivateQuest);
+            eleonoreScript.AddScorpionEvent(this);
+
+            if (questComplete)
+            {
+                questCompleted.Invoke();
+                eleonoreScript.TriggerQuestComplete();
+                DeactivateQuest();
+            }
+            else if (questTriggered)
+            {
+                ActivateQuest();
+                eleonoreScript.TriggerQuestLine();
             }
         }
     }
@@ -54,7 +83,7 @@ public class ScorpionQuest : MonoBehaviour
         questTriggered = data.questTriggered;
         questComplete = data.questComplete;
 
-        scorpionsStatusText.text = $"{scorpionsKilled} / {scorpionsRequired}";
+        scorpionsStatusText.text = $"{scorpionsKilled}/{scorpionsRequired}";
 
         if (questComplete)
         {

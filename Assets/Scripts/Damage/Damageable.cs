@@ -44,6 +44,8 @@ public class Damageable : MonoBehaviour
 
             if(_health <= 0)
             {
+                if (_dropItem != null)
+                    _dropItem.DropItems();
                 IsAlive = false;
                 deathEvent?.Invoke();
             }
@@ -58,6 +60,13 @@ public class Damageable : MonoBehaviour
 
     private float timeSinceHit = 0;
     public float invincibilityTime = 0.25f;
+
+    public bool randomizeHitAnimation = false;
+    [Range(0f, 1f)]
+    public float stunChance;
+
+    private DamageFlash _damageFlash;
+    private DropItem _dropItem;
 
     public bool IsAlive
     {
@@ -99,6 +108,8 @@ public class Damageable : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        _damageFlash = GetComponent<DamageFlash>();
+        _dropItem = GetComponent<DropItem>();
     }
 
     private void Update()
@@ -124,7 +135,21 @@ public class Damageable : MonoBehaviour
             Health -= damage;
             isInvincible = true;
 
-            animator.SetTrigger(AnimationString.hitTrigger);
+            bool randomBool = Random.value < stunChance;
+            if (!randomizeHitAnimation)
+            {
+                animator.SetTrigger(AnimationString.hitTrigger);
+            }
+            else if (randomizeHitAnimation && randomBool)
+            {
+                animator.SetTrigger(AnimationString.hitTrigger);
+            }
+            else
+            {
+                if (_damageFlash != null)
+                    _damageFlash.CallDamageFlash();
+            }
+            
             LockVelocity = true;
             damageableHit?.Invoke(damage, knockback);
             CharacterEvents.characterDamaged.Invoke(gameObject, damage);

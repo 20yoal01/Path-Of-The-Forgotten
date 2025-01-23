@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c08298fa2ab612c4e89f0f9125e77aa4, type: 3}
   m_Name: Prison Room 1
   m_EditorClassIdentifier: 
-  UniqueName: PrisonRoomL
+  UniqueName: PrisonRoom1
   SceneIndex: 3

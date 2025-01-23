@@ -10,7 +10,10 @@ public class InRangedAttackDecision : Decision
         bool rangedRange = stateMachine.GetComponent<Mushroom>().inRangedAttackRange;
         bool meleeRange = stateMachine.GetComponent<Mushroom>().inMeleeAttackRange;
 
-        if (rangedRange && !meleeRange)
+        Animator animator = stateMachine.GetComponent<Animator>();
+        bool attackPerform = animator.GetBool("attackPerform");
+
+        if (rangedRange && !meleeRange && !attackPerform)
             return true;
 
         return false;

@@ -10,7 +10,10 @@ public class InMeeleAndBiteRange : Decision
         bool biteRange = stateMachine.GetComponent<Mushroom>().inBiteAttackRange;
         bool attackRange = stateMachine.GetComponent<Mushroom>().inMeleeAttackRange;
 
-        if (attackRange && !biteRange)
+        Animator animator = stateMachine.GetComponent<Animator>();
+        bool attackPerform = animator.GetBool("attackPerform");
+
+        if (attackRange && !biteRange && !attackPerform)
             return true;
 
         return false;

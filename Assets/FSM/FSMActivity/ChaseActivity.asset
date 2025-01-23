@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: ChaseActivity
   m_EditorClassIdentifier: 
   targetTag: Player
-  speed: 8
+  speed: 6.5

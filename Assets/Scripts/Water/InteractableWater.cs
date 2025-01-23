@@ -27,7 +27,7 @@ public class InteractableWater : MonoBehaviour
     [SerializeField, Range(1f, 10f)] private float _playerCollisionRadiusMult = 4.15f;
 
     [Header("Mesh Generation")]
-    [Range(2, 500)] public int NumOfXVertices = 70;
+    [Range(2, 5000)] public int NumOfXVertices = 70;
     public float Width = 10f;
     public float Height = 4f;
     public Material WaterMaterial;
@@ -69,16 +69,17 @@ public class InteractableWater : MonoBehaviour
     private void FixedUpdate()
     {
         //Update all spring positions 23:50
-        for (int i = 1; i < _waterPoints.Count - 1; i++)
+        int skip = Mathf.Max(1, NumOfXVertices / 1800); // Skip factor for optimization
+        for (int i = 1; i < _waterPoints.Count - 1; i += skip)
         {
             WaterPoint point = _waterPoints[i];
-
             float x = point.pos - point.targetHeight;
             float acceleration = -_spriteConstant * x - _damping * point.velocity;
             point.pos += point.velocity * _speedMult * Time.fixedDeltaTime;
             _vertices[_topVerticesIndex[i]].y = point.pos;
             point.velocity += acceleration * _speedMult * Time.fixedDeltaTime;
         }
+
 
 
         //wave propagation
@@ -98,18 +99,38 @@ public class InteractableWater : MonoBehaviour
         _mesh.vertices = _vertices;
     }
 
+    [Header("Wave Behavior")]
+    [SerializeField] private float _waveSpeed = 1f; // Speed of the wave oscillation
+    [SerializeField] private float _waveHeight = 0.5f; // Height of the wave (affects size of the wave)
+    [SerializeField] private float _waveDuration = 0.5f; // Duration the wave lasts before disappearing
+    [SerializeField] private float _waveDamping = 1.1f; // Damping effect on the wave movement
+    [SerializeField] private float _waveSpread = 6.5f; // Spread of the wave's effect
+
+    private float waveTimer = 0f; // Timer to control the lifetime of the wave
+
     public void Splash(Collider2D collision, float force)
     {
         float radius = collision.bounds.extents.x * _playerCollisionRadiusMult;
         Vector2 center = collision.transform.position;
 
-        for(int i = 0; i < _waterPoints.Count; i++)
+        // Increment the wave timer to simulate wave life duration
+        waveTimer += Time.deltaTime;
+
+        for (int i = 0; i < _waterPoints.Count; i++)
         {
             Vector2 vertexWorldPos = transform.TransformPoint(_vertices[_topVerticesIndex[i]]);
 
             if (IsPointInsideCircle(vertexWorldPos, center, radius))
             {
+                // Apply local sine wave effect at the hit point
                 _waterPoints[i].velocity = force;
+
+                // Apply the sine wave formula for local wave effect
+                float distance = Vector2.Distance(center, vertexWorldPos);
+                float sineWaveEffect = Mathf.Sin(Time.time * _waveSpeed + distance * _waveSpread) * _waveHeight;
+
+                // Adjust the wave effect with a lasting decay over time
+                _waterPoints[i].pos += sineWaveEffect * Mathf.Exp(-waveTimer / _waveDuration);
             }
         }
     }

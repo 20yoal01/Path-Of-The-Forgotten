@@ -14,9 +14,9 @@ public class InLineOfSightDecision : Decision
     {
         Vector3 dir =  (stateMachine.transform.position - prevPosition).normalized;
         dir = (dir.Equals(Vector3.zero) ? prevDir : dir);
-        RaycastHit2D hit = Physics2D.Raycast(stateMachine.transform.position, dir, distanceThreshhold, layerMask);
+        bool attackRange = stateMachine.GetComponent<Mushroom>().inRangedAttackRange;
         prevPosition = stateMachine.transform.position;
         prevDir = dir;
-        return (hit.collider != null) ? true : false;
+        return attackRange;
     }
 }

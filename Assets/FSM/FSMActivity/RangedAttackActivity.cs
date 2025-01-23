@@ -42,10 +42,10 @@ public class RangedAttackActivity : Activity
             }
         }
 
-        if (stateMachine.GetComponent<RangedAttackCooldown>().CanFire)
+        if (stateMachine.GetComponent<AttackCooldown>().CanFire)
         {
             stateMachine.GetComponent<Animator>().SetTrigger(AnimationString.fire);
-            stateMachine.GetComponent<RangedAttackCooldown>().fireCounter = 0;
+            stateMachine.GetComponent<AttackCooldown>().fireCounter = 0;
         }
 
     }

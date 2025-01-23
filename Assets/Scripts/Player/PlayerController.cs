@@ -9,6 +9,8 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody2D), typeof(TouchingDirections), typeof(Damageable))]
 public class PlayerController : MonoBehaviour
 {
+    public ParticleSystem dust;
+
     public Transform previousParent;
 
     //Speed
@@ -227,6 +229,10 @@ public class PlayerController : MonoBehaviour
             case Ability.Dash:
                 canDash = true;
                 break;
+            case Ability.HealthIncrease:
+                damageable.MaxHealth = damageable.MaxHealth + 25;
+                damageable.Health = damageable.MaxHealth;
+                break;
         }
     }
     private void Start()
@@ -324,6 +330,8 @@ public class PlayerController : MonoBehaviour
 
     private void SetFacingDirection(Vector2 moveInput)
     {
+        bool oldFacingDir = IsFacingRight;
+
         if (moveInput.x > 0 && !IsFacingRight)
         {
             IsFacingRight = true;
@@ -331,6 +339,11 @@ public class PlayerController : MonoBehaviour
         else if(moveInput.x < 0 && IsFacingRight)
         {
             IsFacingRight = false;
+        }
+
+        if (oldFacingDir != IsFacingRight && touchingDirections.isGrounded)
+        {
+            createDust();
         }
 
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("player_bow") || animator.GetCurrentAnimatorStateInfo(0).IsName("player_bow_up"))
@@ -380,6 +393,7 @@ public class PlayerController : MonoBehaviour
         }
         if (context.started && coyoteTimeCounter > 0 && CanMove)
         {
+            createDust();
             PerformJump();
             isJumping = true;
             jumpCounter = 0f;
@@ -675,6 +689,11 @@ public class PlayerController : MonoBehaviour
     public bool IsOnPlatform()
     {
         return currentPlatform != null;
+    }
+
+    private void createDust()
+    {
+        dust.Play();
     }
 
     public void Save(ref PlayerSaveData data)

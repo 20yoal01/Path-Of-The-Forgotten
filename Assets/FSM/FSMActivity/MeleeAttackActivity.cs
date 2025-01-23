@@ -43,7 +43,13 @@ public class MeleeAttackActivity : Activity
             }
         }
 
-        stateMachine.GetComponent<Animator>().SetTrigger(AnimationString.bite);
+
+        if (stateMachine.GetComponent<AttackCooldown>().CanFire)
+        {
+
+            stateMachine.GetComponent<Animator>().SetTrigger(AnimationString.bite);
+            stateMachine.GetComponent<AttackCooldown>().fireCounter = 0;
+        }
     }
 
     public override void Exit(BaseStateMachine stateMachine)

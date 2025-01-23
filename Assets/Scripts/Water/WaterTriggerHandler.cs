@@ -9,7 +9,7 @@ public class WaterTriggerHandler : MonoBehaviour
 
     private EdgeCollider2D _edgeColl;
     private InteractableWater _water;
-
+    public float bubbleForce = 0.35f;
     private void Awake()
     {
         _edgeColl = GetComponent<EdgeCollider2D>();
@@ -66,6 +66,6 @@ public class WaterTriggerHandler : MonoBehaviour
 
     public void BubblePop(Collider2D collision)
     {
-        _water.Splash(collision, -0.5f);
+        _water.Splash(collision, bubbleForce);
     }
 }

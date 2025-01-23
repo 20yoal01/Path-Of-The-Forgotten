@@ -7,6 +7,9 @@ public class InMeleeAttackRangeDecision : Decision
 {    
     public override bool Decide(BaseStateMachine stateMachine)
     {
-        return stateMachine.GetComponent<Mushroom>().inMeleeAttackRange;
+        Animator animator = stateMachine.GetComponent<Animator>();
+        bool attackPerform = animator.GetBool("attackPerform");
+
+        return stateMachine.GetComponent<Mushroom>().inMeleeAttackRange && !attackPerform;
     }
 }

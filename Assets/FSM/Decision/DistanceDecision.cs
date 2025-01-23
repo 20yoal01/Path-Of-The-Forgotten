@@ -12,6 +12,9 @@ public class DistanceDecision : Decision
     public override bool Decide(BaseStateMachine stateMachine)
     {
         if (target == null) target = GameObject.FindWithTag(targetTag);
-        return (Vector3.Distance(stateMachine.transform.position, target.transform.position) >= distanceThreshhold) ? true : false;
+
+        bool attackRange = stateMachine.GetComponent<Mushroom>().inRangedAttackRange;
+
+        return !attackRange;
     }
 }

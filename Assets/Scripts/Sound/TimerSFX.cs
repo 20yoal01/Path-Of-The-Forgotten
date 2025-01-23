@@ -14,6 +14,8 @@ public class TimerSFX : MonoBehaviour
     private int timerDuration;
     DoorOpening doorOpening;
 
+    private Coroutine pitchOverTimeCoroutine;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,17 +23,30 @@ public class TimerSFX : MonoBehaviour
         doorOpening = gameObject.GetComponent<DoorOpening>();
         timerDuration = doorOpening.doorCloseCoolDown;
         doorOpening.AttachedLever.GetComponent<LeverTrigger>().Initialize(playSound, timerDuration);
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        bool doorAlreadyUnlocked = false;
+        GameManager.Instance.doorNameOpening.TryGetValue(doorOpening.assignedDoorName, out doorAlreadyUnlocked);
+
+        if (doorAlreadyUnlocked)
+        {
+            doorOpening.AttachedLever.GetComponent<LeverTrigger>().enabled = false;
+            doorOpening.AttachedLever.GetComponent<Collider2D>().enabled = false;
+        }
     }
 
     public void playSound()
     {
-        StartCoroutine(IncreasePitchOverTime());
+        pitchOverTimeCoroutine = StartCoroutine(IncreasePitchOverTime());
+    }
+
+    public void CompleteTimer()
+    {
+        StopCoroutine(pitchOverTimeCoroutine);
+        doorOpening.OpenDoor();
+        doorOpening.doorCloseCoolDown = 0;
+        doorOpening.AttachedLever.GetComponent<LeverTrigger>().enabled = false;
+        audioSource.Stop();
+        player.toggleAudioSource(false);
     }
 
     private IEnumerator IncreasePitchOverTime()

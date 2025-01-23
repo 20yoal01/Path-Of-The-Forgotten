@@ -78,7 +78,7 @@ public class SaveSystem
             Animator respawnAnimator = checkpoint.GetComponent<Animator>();
             if (respawn.id == _saveData.respawnData.id)
             {
-                GameManager.Instance.currentCheckPoint = respawn;
+                GameManager.Instance.currentCheckPointId = respawn.id;
                 respawnAnimator.SetBool(AnimationString.ActiveCheckpoint, true);
             }
         }
@@ -93,7 +93,7 @@ public class SaveSystem
 
         GameManager.Instance.Save(ref _saveData.gameManagerData);
         GameManager.Instance.SceneData.Save(ref _saveData.SceneSaveData);
-        GameManager.Instance.currentCheckPoint.Save(ref _saveData.respawnData);
+        Respawn.FindRespawnByID(GameManager.Instance.currentCheckPointId).Save(ref _saveData.respawnData);
         GameManager.Instance.ScorpionQuest.Save(ref _saveData.ScorpionQuestData);
     }
 
@@ -121,7 +121,7 @@ public class SaveSystem
             Animator respawnAnimator = checkpoint.GetComponent<Animator>();
             if (respawn.id == _saveData.respawnData.id)
             {
-                GameManager.Instance.currentCheckPoint = respawn;
+                GameManager.Instance.currentCheckPointId = respawn.id;
                 respawnAnimator.SetBool(AnimationString.ActiveCheckpoint, true);
             }
         }

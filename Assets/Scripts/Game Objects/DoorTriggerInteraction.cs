@@ -24,6 +24,7 @@ public class DoorTriggerInteraction : MonoBehaviour
         Three,
         Four,
         Five,
+        Six
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

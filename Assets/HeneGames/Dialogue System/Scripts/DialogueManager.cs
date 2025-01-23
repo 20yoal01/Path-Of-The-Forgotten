@@ -7,7 +7,7 @@ namespace HeneGames.DialogueSystem
 {
     public class DialogueManager : MonoBehaviour
     {
-        private int currentSentence;
+        public int currentSentence;
         private float coolDownTimer;
         private bool dialogueIsOn;
         private DialogueTrigger dialogueTrigger;
@@ -29,6 +29,8 @@ namespace HeneGames.DialogueSystem
         [Header("Dialogue")]
         [SerializeField] private TriggerState triggerState;
         [SerializeField] public List<NPC_Centence> sentences = new List<NPC_Centence>();
+        private Coroutine gibberishCoroutine;
+
 
         private void Update()
         {
@@ -247,25 +249,41 @@ namespace HeneGames.DialogueSystem
             //Stop audiosource so that the speaker's voice does not play in the background
             if(audioSource != null)
             {
+                if (gibberishCoroutine != null)
+                    StopCoroutine(gibberishCoroutine);
                 audioSource.Stop();
             }
 
             //Remove trigger refence
             dialogueIsOn = false;
             dialogueTrigger = null;
+            if (currentSentence != 0)
+                sentences[currentSentence - 1].sentenceEvent?.Invoke();
         }
 
         private void PlaySound(AudioClip _audioClip)
         {
+            dialogueIsOn = true;
             //Play the sound only if it exists
-            if (_audioClip == null || audioSource == null)
+            if (audioSource.clip == null)
                 return;
 
             //Stop the audioSource so that the new sentence does not overlap with the old one
             audioSource.Stop();
 
-            //Play sentence sound
-            audioSource.PlayOneShot(_audioClip);
+
+            gibberishCoroutine = StartCoroutine(SpeakWordsOnLoopRoutine());
+        }
+
+        IEnumerator SpeakWordsOnLoopRoutine()
+        {
+            float sentenceLength = audioSource.clip.length * 0.6f;
+            while (dialogueIsOn) {
+                audioSource.Stop();
+                audioSource.pitch = Random.Range(1f, 1.25f);
+                audioSource.Play();
+                yield return new WaitForSeconds(sentenceLength);
+            }
         }
 
         private void ShowCurrentSentence()
@@ -274,9 +292,6 @@ namespace HeneGames.DialogueSystem
             {
                 //Show sentence on the screen
                 DialogueUI.instance.ShowSentence(sentences[currentSentence].dialogueCharacter, sentences[currentSentence].sentence);
-
-                //Invoke sentence event
-                sentences[currentSentence].sentenceEvent.Invoke();
             }
             else
             {
@@ -285,9 +300,6 @@ namespace HeneGames.DialogueSystem
                 _dialogueCharacter.characterPhoto = null;
 
                 DialogueUI.instance.ShowSentence(_dialogueCharacter, sentences[currentSentence].sentence);
-
-                //Invoke sentence event
-                sentences[currentSentence].sentenceEvent.Invoke();
             }
         }
 

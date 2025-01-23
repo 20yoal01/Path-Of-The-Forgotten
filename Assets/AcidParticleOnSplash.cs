@@ -39,7 +39,7 @@ private void OnParticleTrigger()
             Vector3 worldPosition = ps.transform.TransformPoint(p.position);
 
             // Calculate the radius for the particle (using its current size)
-            float particleRadius = p.startSize * p.size * 0.5f;
+            float particleRadius = p.startSize  * 0.5f;
 
             // Create a temporary GameObject to hold the Collider2D
             GameObject colliderObject = new GameObject($"ParticleCollider_{i}");
@@ -54,9 +54,6 @@ private void OnParticleTrigger()
 
             // Optionally, destroy the collider object if you don't need it anymore
             Destroy(colliderObject);
-
-            // Log the particle information for debugging
-            Debug.Log($"Particle {i} collider at {worldPosition} with radius {particleRadius}");
         }
     }
 }
