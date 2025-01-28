@@ -12,7 +12,7 @@ public class RangedAttackActivity : Activity
     public override void Enter(BaseStateMachine stateMachine)
     {
         target = GameObject.FindWithTag(targetTag);
-        stateMachine.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        stateMachine.GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
         stateMachine.GetComponent<Animator>().SetBool("roaming", false);
     }
 

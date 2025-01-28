@@ -73,7 +73,7 @@ public class FlyingEye : MonoBehaviour
             }
             else
             {
-                rb.velocity = Vector3.zero;
+                rb.linearVelocity = Vector3.zero;
             }
         }
     }
@@ -86,7 +86,7 @@ public class FlyingEye : MonoBehaviour
         // Check if we have reached the waypoint already
         float distance = Vector2.Distance(nextWaypoint.position, transform.position);
 
-        rb.velocity = directionToWaypoint * flightSpeed;
+        rb.linearVelocity = directionToWaypoint * flightSpeed;
         UpdateDirection();
 
         if(distance <= waypointReachedDistance)
@@ -108,7 +108,7 @@ public class FlyingEye : MonoBehaviour
 
         if(transform.localScale.x > 0){
             // Facing the Right
-            if(rb.velocity.x < 0)
+            if(rb.linearVelocity.x < 0)
             {
                 transform.localScale = new Vector3(-1 * locScale.x, locScale.y, locScale.z);
             }
@@ -116,7 +116,7 @@ public class FlyingEye : MonoBehaviour
         else
         {
             // Facing the Left
-            if (rb.velocity.x > 0)
+            if (rb.linearVelocity.x > 0)
             {
                 transform.localScale = new Vector3(-1 * locScale.x, locScale.y, locScale.z);
             }
@@ -126,7 +126,7 @@ public class FlyingEye : MonoBehaviour
     public void OnDeath()
     {
         rb.gravityScale = 2f;
-        rb.velocity = new Vector2(0, rb.velocity.y);
+        rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
         deathCollider.enabled = true;
     }
 }

@@ -22,7 +22,7 @@ public class ChaseActivity : Activity
         var Transform = stateMachine.GetComponent<Transform>();
 
         Vector2 dir = (target.transform.position + target.transform.forward - Transform.position).normalized;
-        RigidBody.velocity = new Vector2(dir.x * speed, RigidBody.velocity.y);
+        RigidBody.linearVelocity = new Vector2(dir.x * speed, RigidBody.linearVelocity.y);
 
         Vector3 locScale = Transform.localScale;
         if (Transform.localScale.x > 0)

@@ -108,11 +108,11 @@ public class Knight : MonoBehaviour
         {
             if (CanMove && touchingDirections.isGrounded)
             {
-                float xValocity = Mathf.Clamp(rb.velocity.x + (walkAcceleration * walkDirectionVector.x * Time.deltaTime), -maxSpeed, maxSpeed);
-                rb.velocity = new Vector2(xValocity, rb.velocity.y);
+                float xValocity = Mathf.Clamp(rb.linearVelocity.x + (walkAcceleration * walkDirectionVector.x * Time.deltaTime), -maxSpeed, maxSpeed);
+                rb.linearVelocity = new Vector2(xValocity, rb.linearVelocity.y);
             }
             else
-                rb.velocity = new Vector2(Mathf.Lerp(rb.velocity.x, 0, walkStopRate), rb.velocity.y);
+                rb.linearVelocity = new Vector2(Mathf.Lerp(rb.linearVelocity.x, 0, walkStopRate), rb.linearVelocity.y);
         }
     }
 
@@ -134,7 +134,7 @@ public class Knight : MonoBehaviour
 
     public void OnHit(int damage, Vector2 knockback)
     {
-        rb.velocity = new Vector2(knockback.x, rb.velocity.y + knockback.y);
+        rb.linearVelocity = new Vector2(knockback.x, rb.linearVelocity.y + knockback.y);
     }
 
     public void OnCliffDetected()

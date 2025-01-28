@@ -12,9 +12,10 @@ public class HealthBar : MonoBehaviour
 
     Damageable playerDamageable;
 
+    public string TagToAttach;
     private void Awake()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        GameObject player = GameObject.FindGameObjectWithTag(TagToAttach);
 
         if(player == null)
         {
@@ -28,7 +29,8 @@ public class HealthBar : MonoBehaviour
     void Start()
     {
         healthSlider.value = (float) playerDamageable.Health / (float) playerDamageable.MaxHealth;
-        healthBarText.text = "HP " + playerDamageable.Health + " / " + playerDamageable.MaxHealth;
+        if (healthBarText != null)
+            healthBarText.text = "HP " + playerDamageable.Health + " / " + playerDamageable.MaxHealth;
     }
 
     private void OnEnable()
@@ -50,6 +52,7 @@ public class HealthBar : MonoBehaviour
     private void OnPlayerHealthChanged(float newHealth, float maxHealth)
     {
         healthSlider.value = newHealth / maxHealth;
-        healthBarText.text = "HP " + newHealth + " / " + maxHealth;
+        if (healthBarText != null)
+            healthBarText.text = "HP " + newHealth + " / " + maxHealth;
     }
 }

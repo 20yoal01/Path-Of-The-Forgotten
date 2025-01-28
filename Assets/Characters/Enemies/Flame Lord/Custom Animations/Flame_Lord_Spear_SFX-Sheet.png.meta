@@ -1,0 +1,617 @@
+fileFormatVersion: 2
+guid: fe4324d1daa80314a9fef417d38d34bb
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3318176667332849859
+    second: Flame_Lord_Spear_SFX-Sheet_0
+  - first:
+      213: 5900172067805026661
+    second: Flame_Lord_Spear_SFX-Sheet_1
+  - first:
+      213: -3958501192993921596
+    second: Flame_Lord_Spear_SFX-Sheet_2
+  - first:
+      213: 1427893333404696268
+    second: Flame_Lord_Spear_SFX-Sheet_3
+  - first:
+      213: 962017499129294443
+    second: Flame_Lord_Spear_SFX-Sheet_4
+  - first:
+      213: -745598261329120560
+    second: Flame_Lord_Spear_SFX-Sheet_5
+  - first:
+      213: -7525732409826091978
+    second: Flame_Lord_Spear_SFX-Sheet_6
+  - first:
+      213: -2234699358726077041
+    second: Flame_Lord_Spear_SFX-Sheet_7
+  - first:
+      213: 4738644441694670087
+    second: Flame_Lord_Spear_SFX-Sheet_8
+  - first:
+      213: -8628140154878201855
+    second: Flame_Lord_Spear_SFX-Sheet_9
+  - first:
+      213: -1083692644433033435
+    second: Flame_Lord_Spear_SFX-Sheet_10
+  - first:
+      213: 9170673230003059837
+    second: Flame_Lord_Spear_SFX-Sheet_11
+  - first:
+      213: -3713524809018464893
+    second: Flame_Lord_Spear_SFX-Sheet_12
+  - first:
+      213: -1979150159348463376
+    second: Flame_Lord_Spear_SFX-Sheet_13
+  - first:
+      213: 6460212775605489181
+    second: Flame_Lord_Spear_SFX-Sheet_14
+  - first:
+      213: 3301813500270893393
+    second: Flame_Lord_Spear_SFX-Sheet_15
+  - first:
+      213: -5058754061722928577
+    second: Flame_Lord_Spear_SFX-Sheet_16
+  - first:
+      213: 3180431527258318661
+    second: Flame_Lord_Spear_SFX-Sheet_17
+  - first:
+      213: -3261587055387449604
+    second: Flame_Lord_Spear_SFX-Sheet_18
+  - first:
+      213: -7598517050380998195
+    second: Flame_Lord_Spear_SFX-Sheet_19
+  - first:
+      213: 379543969193328537
+    second: Flame_Lord_Spear_SFX-Sheet_20
+  - first:
+      213: 688671416056049434
+    second: Flame_Lord_Spear_SFX-Sheet_21
+  - first:
+      213: -504687734328087279
+    second: Flame_Lord_Spear_SFX-Sheet_22
+  - first:
+      213: -9026251887466959767
+    second: Flame_Lord_Spear_SFX-Sheet_23
+  - first:
+      213: 2284378013213630898
+    second: Flame_Lord_Spear_SFX-Sheet_24
+  - first:
+      213: -9049405816537232952
+    second: Flame_Lord_Spear_SFX-Sheet_25
+  - first:
+      213: -8058813136028004977
+    second: Flame_Lord_Spear_SFX-Sheet_26
+  - first:
+      213: 3819962464749619379
+    second: Flame_Lord_Spear_SFX-Sheet_27
+  - first:
+      213: 3487484376597621536
+    second: Flame_Lord_Spear_SFX-Sheet_28
+  - first:
+      213: 2416797957613155541
+    second: Flame_Lord_Spear_SFX-Sheet_29
+  - first:
+      213: 7323898648127114631
+    second: Flame_Lord_Spear_SFX-Sheet_30
+  - first:
+      213: 6755898854573831177
+    second: Flame_Lord_Spear_SFX-Sheet_31
+  - first:
+      213: 3177616580666196900
+    second: Flame_Lord_Spear_SFX-Sheet_32
+  - first:
+      213: -3030018293421895582
+    second: Flame_Lord_Spear_SFX-Sheet_33
+  - first:
+      213: 4569651472585698357
+    second: Flame_Lord_Spear_SFX-Sheet_34
+  - first:
+      213: 3071930940633255389
+    second: Flame_Lord_Spear_SFX-Sheet_35
+  - first:
+      213: 4362704037728630966
+    second: Flame_Lord_Spear_SFX-Sheet_36
+  - first:
+      213: -5406234550454026675
+    second: Flame_Lord_Spear_SFX-Sheet_37
+  - first:
+      213: -8048362598154382368
+    second: Flame_Lord_Spear_SFX-Sheet_38
+  - first:
+      213: 4403459551167692846
+    second: Flame_Lord_Spear_SFX-Sheet_39
+  - first:
+      213: -5099100698159708925
+    second: Flame_Lord_Spear_SFX-Sheet_40
+  - first:
+      213: -1547898266076373008
+    second: Flame_Lord_Spear_SFX-Sheet_41
+  - first:
+      213: -4261697510006800271
+    second: Flame_Lord_Spear_SFX-Sheet_42
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Flame_Lord_Spear_SFX-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 145
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c03d5639188c0e20800000000000000
+      internalID: 3318176667332849859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flame_Lord_Spear_SFX-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 0
+        width: 145
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56953373c3f91e150800000000000000
+      internalID: 5900172067805026661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flame_Lord_Spear_SFX-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 0
+        width: 145
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c523a453249019c0800000000000000
+      internalID: -3958501192993921596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flame_Lord_Spear_SFX-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 0
+        width: 145
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cce3cb2eb65e0d310800000000000000
+      internalID: 1427893333404696268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flame_Lord_Spear_SFX-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 0
+        width: 145
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6eaf4781d5c95d00800000000000000
+      internalID: 962017499129294443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flame_Lord_Spear_SFX-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 725
+        y: 0
+        width: 145
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d23458e45a17a5f0800000000000000
+      internalID: -745598261329120560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flame_Lord_Spear_SFX-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 870
+        y: 0
+        width: 145
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63cdbad0f3a3f8790800000000000000
+      internalID: -7525732409826091978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flame_Lord_Spear_SFX-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 1015
+        y: 0
+        width: 145
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f85c65fe5c0ccf0e0800000000000000
+      internalID: -2234699358726077041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flame_Lord_Spear_SFX-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 0
+        width: 145
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70d0718630c03c140800000000000000
+      internalID: 4738644441694670087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flame_Lord_Spear_SFX-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 1305
+        y: 0
+        width: 145
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10073343e30b24880800000000000000
+      internalID: -8628140154878201855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flame_Lord_Spear_SFX-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 1450
+        y: 0
+        width: 145
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5278dd21843f5f0f0800000000000000
+      internalID: -1083692644433033435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flame_Lord_Spear_SFX-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 1595
+        y: 0
+        width: 145
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7c3481e6b6c44f70800000000000000
+      internalID: 9170673230003059837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flame_Lord_Spear_SFX-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 1740
+        y: 0
+        width: 145
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 385aadd7cd8e67cc0800000000000000
+      internalID: -3713524809018464893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flame_Lord_Spear_SFX-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 1885
+        y: 0
+        width: 145
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f880e28a65a884e0800000000000000
+      internalID: -1979150159348463376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flame_Lord_Spear_SFX-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 2030
+        y: 0
+        width: 145
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1ec76faa4947a950800000000000000
+      internalID: 6460212775605489181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Flame_Lord_Spear_SFX-Sheet_0: 3318176667332849859
+      Flame_Lord_Spear_SFX-Sheet_1: 5900172067805026661
+      Flame_Lord_Spear_SFX-Sheet_10: -1083692644433033435
+      Flame_Lord_Spear_SFX-Sheet_11: 9170673230003059837
+      Flame_Lord_Spear_SFX-Sheet_12: -3713524809018464893
+      Flame_Lord_Spear_SFX-Sheet_13: -1979150159348463376
+      Flame_Lord_Spear_SFX-Sheet_14: 6460212775605489181
+      Flame_Lord_Spear_SFX-Sheet_2: -3958501192993921596
+      Flame_Lord_Spear_SFX-Sheet_3: 1427893333404696268
+      Flame_Lord_Spear_SFX-Sheet_4: 962017499129294443
+      Flame_Lord_Spear_SFX-Sheet_5: -745598261329120560
+      Flame_Lord_Spear_SFX-Sheet_6: -7525732409826091978
+      Flame_Lord_Spear_SFX-Sheet_7: -2234699358726077041
+      Flame_Lord_Spear_SFX-Sheet_8: 4738644441694670087
+      Flame_Lord_Spear_SFX-Sheet_9: -8628140154878201855
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

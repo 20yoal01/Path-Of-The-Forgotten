@@ -251,20 +251,20 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (rb.velocity.y < _fallSpeedYDampingChangeThreshold && !CameraManager.instance.IsLerpingYDamping && !CameraManager.instance.LerpedFromPlayerFalling)
+        if (rb.linearVelocity.y < _fallSpeedYDampingChangeThreshold && !CameraManager.instance.IsLerpingYDamping && !CameraManager.instance.LerpedFromPlayerFalling)
         {
             CameraManager.instance.LerpYDaming(true);
         }
 
-        if (rb.velocity.y >= 0f && !CameraManager.instance.IsLerpingYDamping && CameraManager.instance.LerpedFromPlayerFalling)
+        if (rb.linearVelocity.y >= 0f && !CameraManager.instance.IsLerpingYDamping && CameraManager.instance.LerpedFromPlayerFalling)
         {
             CameraManager.instance.LerpedFromPlayerFalling = false;
             CameraManager.instance.LerpYDaming(false);
         }
 
-        if (IsOnWall && !touchingDirections.isGrounded && rb.velocity.y < 0)
+        if (IsOnWall && !touchingDirections.isGrounded && rb.linearVelocity.y < 0)
         {
-            rb.velocity = new Vector2(0, Mathf.Clamp(rb.velocity.y, -wallSlideSpeed, float.MaxValue));
+            rb.linearVelocity = new Vector2(0, Mathf.Clamp(rb.linearVelocity.y, -wallSlideSpeed, float.MaxValue));
         }
         else
         {
@@ -275,16 +275,16 @@ public class PlayerController : MonoBehaviour
         float velocityX;
         if (wallJumping || isDashing || isHurt)
         {
-            velocityX = rb.velocity.x;
+            velocityX = rb.linearVelocity.x;
         }
         else
         {
             velocityX = moveInput.x * CurrentMoveSpeed;
         }
 
-        rb.velocity = new Vector2(velocityX, rb.velocity.y);
+        rb.linearVelocity = new Vector2(velocityX, rb.linearVelocity.y);
             
-        animator.SetFloat(AnimationString.yVelocity, rb.velocity.y);
+        animator.SetFloat(AnimationString.yVelocity, rb.linearVelocity.y);
         if (touchingDirections.isGrounded || IsOnWall)
         {
             doubleJumpAvailable = true;
@@ -307,7 +307,7 @@ public class PlayerController : MonoBehaviour
             if (jumpCounter >= jumpTime)
             {
                 isJumping = false; // End jump after jumpTime
-                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * jumpLoss);
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * jumpLoss);
             }
         }
     }
@@ -372,10 +372,10 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        if(rb.velocity.y <= 0)
+        if(rb.linearVelocity.y <= 0)
         {
             rb.gravityScale = baseGravity * fallSpeedMultiplier;
-            rb.velocity = new Vector2(rb.velocity.x, Mathf.Max(rb.velocity.y, -maxFallSpeed));
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, Mathf.Max(rb.linearVelocity.y, -maxFallSpeed));
         }
         else
         {
@@ -416,9 +416,9 @@ public class PlayerController : MonoBehaviour
             jumpCounter = 0f;
             isJumping = true;
         }
-        else if (context.canceled && rb.velocity.y > 0)
+        else if (context.canceled && rb.linearVelocity.y > 0)
         {
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * jumpLoss);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * jumpLoss);
             isJumping = false;
             coyoteTimeCounter = 0f;
         }
@@ -428,7 +428,7 @@ public class PlayerController : MonoBehaviour
     {
         IsFacingRight = !IsFacingRight;
         animator.SetTrigger(AnimationString.jumpTrigger);
-        rb.velocity = new Vector2(wallJumpForce.x * (IsFacingRight ? 1 : -1), jumpImpulse); // Apply horizontal and vertical force
+        rb.linearVelocity = new Vector2(wallJumpForce.x * (IsFacingRight ? 1 : -1), jumpImpulse); // Apply horizontal and vertical force
         wallJumping = true;
         Invoke("StopWallJump", wallJumpDuration);
     }
@@ -448,7 +448,7 @@ public class PlayerController : MonoBehaviour
 
         dashEnabled = true;
         animator.SetTrigger(AnimationString.jumpTrigger);
-        rb.velocity = new Vector2(rb.velocity.x, adjustedJumpForce);
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, adjustedJumpForce);
     }
 
     private float calculateJumpForce()
@@ -482,7 +482,7 @@ public class PlayerController : MonoBehaviour
     private IEnumerator Dash()
     {
         isDashing = true;
-        rb.velocity = new Vector2(transform.localScale.x * dashSpeed, 0); // Keep y velocity (for mid-air dashes)
+        rb.linearVelocity = new Vector2(transform.localScale.x * dashSpeed, 0); // Keep y velocity (for mid-air dashes)
         rb.gravityScale = 0f; // Disable gravity during dash
         //trailRenderer.emitting = true;
         PlayerAfterImagePool.Instance.GetFromPool();
@@ -663,7 +663,7 @@ public class PlayerController : MonoBehaviour
     public void OnHit(int damage, Vector2 knockback)
     {
         Invoke("getHurt", hurtDuration);
-        rb.velocity = new Vector2(knockback.x, rb.velocity.y + knockback.y);
+        rb.linearVelocity = new Vector2(knockback.x, rb.linearVelocity.y + knockback.y);
         isHurt = true;
         doubleJumpAvailable = false;
         Invoke("getHurt", hurtDuration);

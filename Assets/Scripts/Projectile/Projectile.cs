@@ -31,7 +31,7 @@ public class Projectile : MonoBehaviour
         if (!isInitialized)
         {
             // Get the current direction (normalize it to keep the direction but adjust the speed)
-            rb.velocity = rb.velocity.normalized * moveSpeed.x; // Ensures the speed is correct
+            rb.linearVelocity = rb.linearVelocity.normalized * moveSpeed.x; // Ensures the speed is correct
         }
         StartCoroutine(DestroyAfterWait());
     }
@@ -71,7 +71,7 @@ public class Projectile : MonoBehaviour
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
             // Set the bullet velocity
-            rb.velocity = new Vector2(moveDir.x, moveDir.y);
+            rb.linearVelocity = new Vector2(moveDir.x, moveDir.y);
         }
     }
 

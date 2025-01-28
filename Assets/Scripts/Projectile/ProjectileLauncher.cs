@@ -98,10 +98,10 @@ public class ProjectileLauncher : MonoBehaviour
         Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
         if (rb != null)
         {
-            rb.velocity = direction;
+            rb.linearVelocity = direction;
             if (!isFacingRight)
             {
-                rb.velocity = new Vector2(-rb.velocity.x, rb.velocity.y);
+                rb.linearVelocity = new Vector2(-rb.linearVelocity.x, rb.linearVelocity.y);
             }
         }
         float rotationAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
@@ -167,8 +167,8 @@ public class ProjectileLauncher : MonoBehaviour
             {
                 if (rb != null)
                 {
-                    projectileVelocity = rb.velocity;
-                    rb.velocity = new Vector2(0, 0);
+                    projectileVelocity = rb.linearVelocity;
+                    rb.linearVelocity = new Vector2(0, 0);
                 }
 
             }
@@ -179,7 +179,7 @@ public class ProjectileLauncher : MonoBehaviour
         if (rb != null)
         {
             // Assuming you're launching it in the right direction; adjust the velocity as needed
-            rb.velocity = projectileVelocity;
+            rb.linearVelocity = projectileVelocity;
         }
     }
 }

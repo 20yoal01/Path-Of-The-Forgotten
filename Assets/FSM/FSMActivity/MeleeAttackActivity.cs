@@ -11,10 +11,10 @@ public class MeleeAttackActivity : Activity
 
     public override void Enter(BaseStateMachine stateMachine)
     {
-        stateMachine.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        stateMachine.GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
         stateMachine.GetComponent<Animator>().SetBool("roaming", false);
         target = GameObject.FindWithTag(targetTag);
-        stateMachine.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        stateMachine.GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
     }
 
     public override void Execute(BaseStateMachine stateMachine)

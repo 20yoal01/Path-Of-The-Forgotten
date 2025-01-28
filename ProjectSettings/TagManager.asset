@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
+  serializedVersion: 3
   tags:
   - DamagableTerrain
   - PlayerArrow
@@ -11,6 +11,7 @@ TagManager:
   - Virtual Camera
   - NPC
   - Door
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -72,3 +73,5 @@ TagManager:
   - name: SortingTexture
     uniqueID: 1208301919
     locked: 0
+  m_RenderingLayers:
+  - Default

@@ -83,7 +83,7 @@ public class SceneSwapManager : MonoBehaviour
 
     private void FindDoor(DoorTriggerInteraction.DoorToSpawnAt doorSpawnNumber)
     {
-        DoorTriggerInteraction[] doors = FindObjectsOfType<DoorTriggerInteraction>();
+        DoorTriggerInteraction[] doors = FindObjectsByType<DoorTriggerInteraction>(FindObjectsSortMode.InstanceID);
 
         for (int i = 0; i < doors.Length; i++)
         {

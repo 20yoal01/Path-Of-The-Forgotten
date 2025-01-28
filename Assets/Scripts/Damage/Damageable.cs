@@ -156,6 +156,7 @@ public class Damageable : MonoBehaviour
             
             if (gameObject.tag == "Player")
             {
+                animator.ResetTrigger("shootRangedAttack");
                 CinemachineImpulseSource source = GameObject.FindGameObjectWithTag("Player").GetComponent<CinemachineImpulseSource>();
                 source.m_DefaultVelocity = new Vector3(knockback.x / 10 + 0.05f, knockback.y / 10, 0 + 0.05f);
                 CameraShakeManager.instance.CameraShake(source);

@@ -8,6 +8,7 @@ ScriptedImporter:
   assetBundleName: 
   assetBundleVariant: 
   script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  importerVersion: 1
   textureImporterSettings:
     alphaSource: 1
     mipMapMode: 0
@@ -105,6 +106,7 @@ ScriptedImporter:
     pivot: {x: 0, y: 0}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 0
@@ -126,6 +128,7 @@ ScriptedImporter:
     pivot: {x: 0.95270264, y: -0.062499996}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 126
@@ -146,6 +149,7 @@ ScriptedImporter:
     pivot: {x: 0.93999994, y: -0.060606055}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 126
@@ -166,6 +170,7 @@ ScriptedImporter:
     pivot: {x: 0.9285714, y: -0.06666667}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 126
@@ -186,6 +191,7 @@ ScriptedImporter:
     pivot: {x: 0.91447365, y: -0.06666667}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -206,6 +212,7 @@ ScriptedImporter:
     pivot: {x: 0.92763156, y: -0.06451613}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 126
@@ -226,6 +233,7 @@ ScriptedImporter:
     pivot: {x: 1.1370968, y: -0.06451613}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -246,6 +254,7 @@ ScriptedImporter:
     pivot: {x: 0.83125, y: -0.05882353}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 126
@@ -266,6 +275,7 @@ ScriptedImporter:
     pivot: {x: 0.7443182, y: -0.057142854}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 126
@@ -286,6 +296,7 @@ ScriptedImporter:
     pivot: {x: 0.67525774, y: -0.057142854}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 126
@@ -306,6 +317,7 @@ ScriptedImporter:
     pivot: {x: 0.65816325, y: -0.05882353}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 126
@@ -326,6 +338,7 @@ ScriptedImporter:
     pivot: {x: 0.60752684, y: -0.060606055}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 126
@@ -346,6 +359,7 @@ ScriptedImporter:
     pivot: {x: 0.5923913, y: -0.062499996}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 126
@@ -366,6 +380,7 @@ ScriptedImporter:
     pivot: {x: 0.5416667, y: -0.06666667}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 126
@@ -386,6 +401,7 @@ ScriptedImporter:
     pivot: {x: 1.4342105, y: -0.05263158}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 72
@@ -406,6 +422,7 @@ ScriptedImporter:
     pivot: {x: 1.3875, y: -0.05882353}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 310
@@ -426,6 +443,7 @@ ScriptedImporter:
     pivot: {x: 1.3372093, y: -0.05263158}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 211
@@ -446,6 +464,7 @@ ScriptedImporter:
     pivot: {x: 1.3974359, y: -0.049999997}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -466,6 +485,7 @@ ScriptedImporter:
     pivot: {x: 1.3875, y: -0.048780486}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -486,6 +506,7 @@ ScriptedImporter:
     pivot: {x: 1.3875, y: -0.04761905}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -506,6 +527,7 @@ ScriptedImporter:
     pivot: {x: 1.3780488, y: -0.046511628}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -526,6 +548,7 @@ ScriptedImporter:
     pivot: {x: 1.3780488, y: -0.045454547}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -546,6 +569,7 @@ ScriptedImporter:
     pivot: {x: 1.3780488, y: -0.04444444}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -566,6 +590,7 @@ ScriptedImporter:
     pivot: {x: 1.4078947, y: -0.046511628}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -586,6 +611,7 @@ ScriptedImporter:
     pivot: {x: 1.4078947, y: -0.05882353}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 263
@@ -606,6 +632,7 @@ ScriptedImporter:
     pivot: {x: 1.3461537, y: -0.06451613}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 310
@@ -626,6 +653,7 @@ ScriptedImporter:
     pivot: {x: 1.3461537, y: -0.057142854}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 72
@@ -646,6 +674,7 @@ ScriptedImporter:
     pivot: {x: 1.3461537, y: -0.057142854}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 263
@@ -666,6 +695,7 @@ ScriptedImporter:
     pivot: {x: 1.3461537, y: -0.055555556}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 72
@@ -686,6 +716,7 @@ ScriptedImporter:
     pivot: {x: 1.3461537, y: -0.05405405}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 72
@@ -706,6 +737,7 @@ ScriptedImporter:
     pivot: {x: 1.3461537, y: -0.05263158}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -726,6 +758,7 @@ ScriptedImporter:
     pivot: {x: 1.3461537, y: -0.055555556}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 72
@@ -746,6 +779,7 @@ ScriptedImporter:
     pivot: {x: 1.3461537, y: -0.05405405}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 72
@@ -766,6 +800,7 @@ ScriptedImporter:
     pivot: {x: 1.3461537, y: -0.05882353}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 263
@@ -786,6 +821,7 @@ ScriptedImporter:
     pivot: {x: 1.3461537, y: -0.057142854}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 263
@@ -806,6 +842,7 @@ ScriptedImporter:
     pivot: {x: 1.3461537, y: -0.055555556}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 72
@@ -826,6 +863,7 @@ ScriptedImporter:
     pivot: {x: 1.3461537, y: -0.05405405}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 72
@@ -846,6 +884,7 @@ ScriptedImporter:
     pivot: {x: 1.3461537, y: -0.05405405}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 72
@@ -866,6 +905,7 @@ ScriptedImporter:
     pivot: {x: 1.3552631, y: -0.05263158}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 72
@@ -886,6 +926,7 @@ ScriptedImporter:
     pivot: {x: 1.3375, y: -0.055555556}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 72
@@ -906,6 +947,7 @@ ScriptedImporter:
     pivot: {x: 1.3375, y: -0.055555556}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 72
@@ -926,6 +968,7 @@ ScriptedImporter:
     pivot: {x: 1.3375, y: -0.057142854}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 72
@@ -946,6 +989,7 @@ ScriptedImporter:
     pivot: {x: 1.3461537, y: -0.055555556}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 72
@@ -966,6 +1010,7 @@ ScriptedImporter:
     pivot: {x: 1.3375, y: -0.062499996}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -986,6 +1031,7 @@ ScriptedImporter:
     pivot: {x: 1.3461537, y: -0.060606055}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 263
@@ -1006,6 +1052,7 @@ ScriptedImporter:
     pivot: {x: 1.3461537, y: -0.05882353}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 263
@@ -1026,6 +1073,7 @@ ScriptedImporter:
     pivot: {x: 1.3461537, y: -0.057142854}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 263
@@ -1046,6 +1094,7 @@ ScriptedImporter:
     pivot: {x: 1.3292682, y: -0.05882353}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 214
@@ -1066,6 +1115,7 @@ ScriptedImporter:
     pivot: {x: 1.3292682, y: -0.057142854}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 72
@@ -1086,6 +1136,7 @@ ScriptedImporter:
     pivot: {x: 1.3292682, y: -0.055555556}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 72
@@ -1106,6 +1157,7 @@ ScriptedImporter:
     pivot: {x: 1.3375, y: -0.05405405}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -1126,6 +1178,7 @@ ScriptedImporter:
     pivot: {x: 1.3461537, y: -0.05882353}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 263
@@ -1146,6 +1199,7 @@ ScriptedImporter:
     pivot: {x: 1.3461537, y: -0.057142854}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 263
@@ -1166,6 +1220,7 @@ ScriptedImporter:
     pivot: {x: 1.3461537, y: -0.060606055}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 263
@@ -1186,6 +1241,7 @@ ScriptedImporter:
     pivot: {x: 1.3461537, y: -0.05263158}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -1206,6 +1262,7 @@ ScriptedImporter:
     pivot: {x: 1.3815789, y: -0.05128205}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -1226,6 +1283,7 @@ ScriptedImporter:
     pivot: {x: 1.671875, y: -0.05405405}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 310
@@ -1246,6 +1304,7 @@ ScriptedImporter:
     pivot: {x: 1.4673914, y: -0.06896552}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 209
@@ -1266,6 +1325,7 @@ ScriptedImporter:
     pivot: {x: 0.5511364, y: -0.06451613}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 126
@@ -1286,6 +1346,7 @@ ScriptedImporter:
     pivot: {x: 0.5597826, y: -0.06451613}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 126
@@ -1306,6 +1367,7 @@ ScriptedImporter:
     pivot: {x: 1.3461537, y: -0.06451613}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 310
@@ -1326,6 +1388,7 @@ ScriptedImporter:
     pivot: {x: 1.4078947, y: -0.05882353}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 263
@@ -1346,6 +1409,7 @@ ScriptedImporter:
     pivot: {x: 1.4459459, y: -0.057142854}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 263
@@ -1366,6 +1430,7 @@ ScriptedImporter:
     pivot: {x: 1.486111, y: -0.055555556}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 263
@@ -1386,6 +1451,7 @@ ScriptedImporter:
     pivot: {x: 1.3152175, y: -0.057142854}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -1406,6 +1472,7 @@ ScriptedImporter:
     pivot: {x: 1.375, y: -0.074074075}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 310
@@ -1426,6 +1493,7 @@ ScriptedImporter:
     pivot: {x: 1.3522727, y: -0.07692307}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 310
@@ -1446,6 +1514,7 @@ ScriptedImporter:
     pivot: {x: 1.3604652, y: -0.07692307}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 310
@@ -1466,6 +1535,7 @@ ScriptedImporter:
     pivot: {x: 1.3522727, y: -0.074074075}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 310
@@ -1486,6 +1556,7 @@ ScriptedImporter:
     pivot: {x: 1.21, y: -0.083333336}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 310
@@ -1506,6 +1577,7 @@ ScriptedImporter:
     pivot: {x: 1.3666667, y: -0.083333336}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 402
@@ -1526,6 +1598,7 @@ ScriptedImporter:
     pivot: {x: 1.4204545, y: -0.083333336}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 310
@@ -1546,6 +1619,7 @@ ScriptedImporter:
     pivot: {x: 1.5285714, y: -0.083333336}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 218
@@ -1566,6 +1640,7 @@ ScriptedImporter:
     pivot: {x: 1.3552631, y: -0.06451613}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 310
@@ -1586,6 +1661,7 @@ ScriptedImporter:
     pivot: {x: 1.5735292, y: -0.06451613}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 357
@@ -1606,6 +1682,7 @@ ScriptedImporter:
     pivot: {x: 1.6818182, y: -0.06451613}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 222
@@ -1626,6 +1703,7 @@ ScriptedImporter:
     pivot: {x: 1.6818182, y: -0.062499996}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 222
@@ -1646,6 +1724,7 @@ ScriptedImporter:
     pivot: {x: 1.734375, y: -0.060606055}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 358
@@ -1666,6 +1745,7 @@ ScriptedImporter:
     pivot: {x: 0.42792794, y: -0.028571427}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -1686,6 +1766,7 @@ ScriptedImporter:
     pivot: {x: 0.39912283, y: -0.057142854}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -1706,6 +1787,7 @@ ScriptedImporter:
     pivot: {x: 0.36574075, y: -0.055555556}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -1726,6 +1808,7 @@ ScriptedImporter:
     pivot: {x: 0.33823532, y: -0.06896552}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 126
@@ -1746,6 +1829,7 @@ ScriptedImporter:
     pivot: {x: 0.33157894, y: -0.06666667}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 126
@@ -1766,6 +1850,7 @@ ScriptedImporter:
     pivot: {x: 0.32795697, y: -0.06666667}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 126
@@ -1786,6 +1871,7 @@ ScriptedImporter:
     pivot: {x: 0.33157894, y: -0.06666667}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 126
@@ -1806,6 +1892,7 @@ ScriptedImporter:
     pivot: {x: 0.3888889, y: -0.06666667}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 126
@@ -1826,6 +1913,7 @@ ScriptedImporter:
     pivot: {x: 0.40384614, y: -0.062499996}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 126
@@ -1846,6 +1934,7 @@ ScriptedImporter:
     pivot: {x: -0.19736841, y: -0.060606055}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 263
@@ -1866,6 +1955,7 @@ ScriptedImporter:
     pivot: {x: 1.3552631, y: -0.06451613}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 310
@@ -1886,6 +1976,7 @@ ScriptedImporter:
     pivot: {x: 1.5735292, y: -0.06451613}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 357
@@ -1906,6 +1997,7 @@ ScriptedImporter:
     pivot: {x: 1.6818182, y: -0.06451613}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 357
@@ -1926,6 +2018,7 @@ ScriptedImporter:
     pivot: {x: 1.6818182, y: -0.062499996}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 310
@@ -1946,6 +2039,7 @@ ScriptedImporter:
     pivot: {x: 1.734375, y: -0.060606055}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 310
@@ -1966,6 +2060,7 @@ ScriptedImporter:
     pivot: {x: 0.47222224, y: -0.035714284}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 126
@@ -1986,6 +2081,7 @@ ScriptedImporter:
     pivot: {x: 0.45419845, y: -0.07142857}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 263
@@ -2006,6 +2102,7 @@ ScriptedImporter:
     pivot: {x: 0.44573647, y: -0.06896552}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 126
@@ -2026,6 +2123,7 @@ ScriptedImporter:
     pivot: {x: 0.44921875, y: -0.06896552}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 126
@@ -2046,6 +2144,7 @@ ScriptedImporter:
     pivot: {x: 0.45934957, y: -0.06666667}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 126
@@ -2066,6 +2165,7 @@ ScriptedImporter:
     pivot: {x: 0.47033897, y: -0.06666667}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 126
@@ -2086,6 +2186,7 @@ ScriptedImporter:
     pivot: {x: 0.46638656, y: -0.06666667}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 126
@@ -2106,6 +2207,7 @@ ScriptedImporter:
     pivot: {x: 0.56060606, y: -0.06666667}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 126
@@ -2126,6 +2228,7 @@ ScriptedImporter:
     pivot: {x: 1.2692307, y: -0.062499996}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 263
@@ -2146,6 +2249,7 @@ ScriptedImporter:
     pivot: {x: 1.3026316, y: -0.060606055}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 263
@@ -2166,6 +2270,7 @@ ScriptedImporter:
     pivot: {x: 1.3461537, y: -0.06451613}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 310
@@ -2186,6 +2291,7 @@ ScriptedImporter:
     pivot: {x: 1.3815789, y: -0.062499996}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 263
@@ -2206,6 +2312,7 @@ ScriptedImporter:
     pivot: {x: 1.3815789, y: -0.060606055}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 263
@@ -2226,6 +2333,7 @@ ScriptedImporter:
     pivot: {x: 1.3815789, y: -0.05882353}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 263
@@ -2246,6 +2354,7 @@ ScriptedImporter:
     pivot: {x: 1.3815789, y: -0.057142854}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 263
@@ -2266,6 +2375,7 @@ ScriptedImporter:
     pivot: {x: 1.3815789, y: -0.057142854}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 263
@@ -2286,6 +2396,7 @@ ScriptedImporter:
     pivot: {x: 1.3815789, y: -0.055555556}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 72
@@ -2306,6 +2417,7 @@ ScriptedImporter:
     pivot: {x: 1.3815789, y: -0.05405405}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 72
@@ -2326,6 +2438,7 @@ ScriptedImporter:
     pivot: {x: 1.4078947, y: -0.05882353}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 263
@@ -2346,6 +2459,7 @@ ScriptedImporter:
     pivot: {x: 1.4078947, y: -0.057142854}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 263
@@ -2366,6 +2480,7 @@ ScriptedImporter:
     pivot: {x: 1.3461537, y: -0.06451613}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 310
@@ -2386,6 +2501,7 @@ ScriptedImporter:
     pivot: {x: 1.2874999, y: -0.06666667}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 215
@@ -2406,6 +2522,7 @@ ScriptedImporter:
     pivot: {x: 1.1976744, y: -0.06666667}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 212
@@ -2426,6 +2543,7 @@ ScriptedImporter:
     pivot: {x: 1.1744186, y: -0.06451613}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 74
@@ -2446,6 +2564,7 @@ ScriptedImporter:
     pivot: {x: 1.1477271, y: -0.06666667}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 210
@@ -2466,6 +2585,7 @@ ScriptedImporter:
     pivot: {x: 1.1195652, y: -0.06666667}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 208
@@ -2486,6 +2606,7 @@ ScriptedImporter:
     pivot: {x: 1.0294117, y: -0.06451613}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -2506,6 +2627,7 @@ ScriptedImporter:
     pivot: {x: 0.9727273, y: -0.062499996}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -2526,6 +2648,7 @@ ScriptedImporter:
     pivot: {x: 0.95689654, y: -0.06666667}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -2546,6 +2669,7 @@ ScriptedImporter:
     pivot: {x: 0.9396552, y: -0.06451613}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -2566,6 +2690,7 @@ ScriptedImporter:
     pivot: {x: 0.925, y: -0.062499996}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 4
@@ -2586,6 +2711,7 @@ ScriptedImporter:
     pivot: {x: 2.3181818, y: -2.25}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
     rect:
       serializedVersion: 2
       x: 368
@@ -2604,13 +2730,13 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 582920288
+    guid: 1851441632
     name: Lord of the Poisons asp
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Lord of the Poisons asp_Frame_32
+    - name: Frame_32
       frameIndex: 32
       additiveSortOrder: 0
       cellRect:
@@ -2619,7 +2745,7 @@ ScriptedImporter:
         width: 74
         height: 32
       spriteId: 928433c8393c8204e882e96d85b96735
-    - name: Lord of the Poisons asp_Frame_33
+    - name: Frame_33
       frameIndex: 33
       additiveSortOrder: 0
       cellRect:
@@ -2628,7 +2754,7 @@ ScriptedImporter:
         width: 75
         height: 33
       spriteId: 1614ae25b9e2f844eb0c99f8777996c4
-    - name: Lord of the Poisons asp_Frame_34
+    - name: Frame_34
       frameIndex: 34
       additiveSortOrder: 0
       cellRect:
@@ -2637,7 +2763,7 @@ ScriptedImporter:
         width: 77
         height: 30
       spriteId: 3fc6fd548e5cde84c90c17208cb1b20b
-    - name: Lord of the Poisons asp_Frame_35
+    - name: Frame_35
       frameIndex: 35
       additiveSortOrder: 0
       cellRect:
@@ -2646,7 +2772,7 @@ ScriptedImporter:
         width: 76
         height: 30
       spriteId: 27895270ee14e00438d8706115ac0732
-    - name: Lord of the Poisons asp_Frame_36
+    - name: Frame_36
       frameIndex: 36
       additiveSortOrder: 0
       cellRect:
@@ -2655,7 +2781,7 @@ ScriptedImporter:
         width: 76
         height: 31
       spriteId: 0e701626b55d6774aa6a27f332121eb8
-    - name: Lord of the Poisons asp_Frame_37
+    - name: Frame_37
       frameIndex: 37
       additiveSortOrder: 0
       cellRect:
@@ -2664,7 +2790,7 @@ ScriptedImporter:
         width: 62
         height: 31
       spriteId: 41a15e25c31d4e54fba52c64beeae3c4
-    - name: Lord of the Poisons asp_Frame_39
+    - name: Frame_39
       frameIndex: 39
       additiveSortOrder: 0
       cellRect:
@@ -2673,7 +2799,7 @@ ScriptedImporter:
         width: 80
         height: 34
       spriteId: e286ee1d6d59f2149925aa5554c3e422
-    - name: Lord of the Poisons asp_Frame_40
+    - name: Frame_40
       frameIndex: 40
       additiveSortOrder: 0
       cellRect:
@@ -2682,7 +2808,7 @@ ScriptedImporter:
         width: 88
         height: 35
       spriteId: 7da40410b39ca014bb26c52385ec50a1
-    - name: Lord of the Poisons asp_Frame_41
+    - name: Frame_41
       frameIndex: 41
       additiveSortOrder: 0
       cellRect:
@@ -2691,7 +2817,7 @@ ScriptedImporter:
         width: 97
         height: 35
       spriteId: 159dda8ff2a5d9c47b398bce696df565
-    - name: Lord of the Poisons asp_Frame_42
+    - name: Frame_42
       frameIndex: 42
       additiveSortOrder: 0
       cellRect:
@@ -2700,7 +2826,7 @@ ScriptedImporter:
         width: 98
         height: 34
       spriteId: 6662bc9c23faa3547b6cf300c3d033cc
-    - name: Lord of the Poisons asp_Frame_43
+    - name: Frame_43
       frameIndex: 43
       additiveSortOrder: 0
       cellRect:
@@ -2709,7 +2835,7 @@ ScriptedImporter:
         width: 93
         height: 33
       spriteId: 08dafc81837a1b943a349def51bab624
-    - name: Lord of the Poisons asp_Frame_44
+    - name: Frame_44
       frameIndex: 44
       additiveSortOrder: 0
       cellRect:
@@ -2718,7 +2844,7 @@ ScriptedImporter:
         width: 92
         height: 32
       spriteId: 27dfaca5ad711b84a9dde508e689bbd8
-    - name: Lord of the Poisons asp_Frame_45
+    - name: Frame_45
       frameIndex: 45
       additiveSortOrder: 0
       cellRect:
@@ -2727,7 +2853,7 @@ ScriptedImporter:
         width: 84
         height: 30
       spriteId: 0efb1454899692945841677cf852ead2
-    - name: Lord of the Poisons asp_Frame_99
+    - name: Frame_99
       frameIndex: 99
       additiveSortOrder: 0
       cellRect:
@@ -2736,7 +2862,7 @@ ScriptedImporter:
         width: 38
         height: 38
       spriteId: dea6bfb4377f92f458cd0a75f56b05b7
-    - name: Lord of the Poisons asp_Frame_100
+    - name: Frame_100
       frameIndex: 100
       additiveSortOrder: 0
       cellRect:
@@ -2745,7 +2871,7 @@ ScriptedImporter:
         width: 40
         height: 34
       spriteId: b80fd16893818694ea9253dfd943a9e9
-    - name: Lord of the Poisons asp_Frame_101
+    - name: Frame_101
       frameIndex: 101
       additiveSortOrder: 0
       cellRect:
@@ -2754,7 +2880,7 @@ ScriptedImporter:
         width: 43
         height: 38
       spriteId: 098a75477d48d8d4fa58403a28d04d9a
-    - name: Lord of the Poisons asp_Frame_102
+    - name: Frame_102
       frameIndex: 102
       additiveSortOrder: 0
       cellRect:
@@ -2763,7 +2889,7 @@ ScriptedImporter:
         width: 39
         height: 40
       spriteId: 53056ccdfbce1c34388987a365ce0f94
-    - name: Lord of the Poisons asp_Frame_103
+    - name: Frame_103
       frameIndex: 103
       additiveSortOrder: 0
       cellRect:
@@ -2772,7 +2898,7 @@ ScriptedImporter:
         width: 40
         height: 41
       spriteId: 3a3392833b430bf4bbca6cb2e48ebbf8
-    - name: Lord of the Poisons asp_Frame_104
+    - name: Frame_104
       frameIndex: 104
       additiveSortOrder: 0
       cellRect:
@@ -2781,7 +2907,7 @@ ScriptedImporter:
         width: 40
         height: 42
       spriteId: 285654402ef0007429357f86aec95c53
-    - name: Lord of the Poisons asp_Frame_105
+    - name: Frame_105
       frameIndex: 105
       additiveSortOrder: 0
       cellRect:
@@ -2790,7 +2916,7 @@ ScriptedImporter:
         width: 41
         height: 43
       spriteId: 9da4fb09239f53946b6fc1dba9b3589f
-    - name: Lord of the Poisons asp_Frame_106
+    - name: Frame_106
       frameIndex: 106
       additiveSortOrder: 0
       cellRect:
@@ -2799,7 +2925,7 @@ ScriptedImporter:
         width: 41
         height: 44
       spriteId: 9bca3208cd4acac42967893a5eba7870
-    - name: Lord of the Poisons asp_Frame_107
+    - name: Frame_107
       frameIndex: 107
       additiveSortOrder: 0
       cellRect:
@@ -2808,7 +2934,7 @@ ScriptedImporter:
         width: 41
         height: 45
       spriteId: 52f9e7132d35cf24886e73c8a6708260
-    - name: Lord of the Poisons asp_Frame_108
+    - name: Frame_108
       frameIndex: 108
       additiveSortOrder: 0
       cellRect:
@@ -2817,7 +2943,7 @@ ScriptedImporter:
         width: 38
         height: 43
       spriteId: 11addfc3a746f8744804be968e99cb90
-    - name: Lord of the Poisons asp_Frame_109
+    - name: Frame_109
       frameIndex: 109
       additiveSortOrder: 0
       cellRect:
@@ -2826,7 +2952,7 @@ ScriptedImporter:
         width: 38
         height: 34
       spriteId: 231095ea8eab350499160bda070b0edb
-    - name: Lord of the Poisons asp_Frame_0
+    - name: Frame_0
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
@@ -2835,7 +2961,7 @@ ScriptedImporter:
         width: 39
         height: 31
       spriteId: ec416b02501f4bc49b183519d2bcfa45
-    - name: Lord of the Poisons asp_Frame_1
+    - name: Frame_1
       frameIndex: 1
       additiveSortOrder: 0
       cellRect:
@@ -2844,7 +2970,7 @@ ScriptedImporter:
         width: 39
         height: 35
       spriteId: dbdc0a11fe71329469859e9a6b6b3d9e
-    - name: Lord of the Poisons asp_Frame_2
+    - name: Frame_2
       frameIndex: 2
       additiveSortOrder: 0
       cellRect:
@@ -2853,7 +2979,7 @@ ScriptedImporter:
         width: 39
         height: 35
       spriteId: fc75aac57fb52c045953fab206cd57c8
-    - name: Lord of the Poisons asp_Frame_3
+    - name: Frame_3
       frameIndex: 3
       additiveSortOrder: 0
       cellRect:
@@ -2862,7 +2988,7 @@ ScriptedImporter:
         width: 39
         height: 36
       spriteId: 9d83858c31b3e774ebcdf9a9521887b5
-    - name: Lord of the Poisons asp_Frame_4
+    - name: Frame_4
       frameIndex: 4
       additiveSortOrder: 0
       cellRect:
@@ -2871,7 +2997,7 @@ ScriptedImporter:
         width: 39
         height: 37
       spriteId: ebf38350cbbfa634bb67c5673d1131d4
-    - name: Lord of the Poisons asp_Frame_5
+    - name: Frame_5
       frameIndex: 5
       additiveSortOrder: 0
       cellRect:
@@ -2880,7 +3006,7 @@ ScriptedImporter:
         width: 39
         height: 38
       spriteId: b7cd8f252088ee345b02b1621041e913
-    - name: Lord of the Poisons asp_Frame_6
+    - name: Frame_6
       frameIndex: 6
       additiveSortOrder: 0
       cellRect:
@@ -2889,7 +3015,7 @@ ScriptedImporter:
         width: 39
         height: 36
       spriteId: 8bd372b4c27c2de4d97ba9cbf08fbb36
-    - name: Lord of the Poisons asp_Frame_7
+    - name: Frame_7
       frameIndex: 7
       additiveSortOrder: 0
       cellRect:
@@ -2898,7 +3024,7 @@ ScriptedImporter:
         width: 39
         height: 37
       spriteId: 1591de079b27eb24a9c04446808d9fba
-    - name: Lord of the Poisons asp_Frame_8
+    - name: Frame_8
       frameIndex: 8
       additiveSortOrder: 0
       cellRect:
@@ -2907,7 +3033,7 @@ ScriptedImporter:
         width: 39
         height: 34
       spriteId: 7f4c2033b12373a429ed7b339d3fe5b7
-    - name: Lord of the Poisons asp_Frame_9
+    - name: Frame_9
       frameIndex: 9
       additiveSortOrder: 0
       cellRect:
@@ -2916,7 +3042,7 @@ ScriptedImporter:
         width: 39
         height: 35
       spriteId: 6920e18f38ef4d149a536a1cec7fd143
-    - name: Lord of the Poisons asp_Frame_10
+    - name: Frame_10
       frameIndex: 10
       additiveSortOrder: 0
       cellRect:
@@ -2925,7 +3051,7 @@ ScriptedImporter:
         width: 39
         height: 36
       spriteId: fce4b7b08cd93494fb9960478972fe6b
-    - name: Lord of the Poisons asp_Frame_11
+    - name: Frame_11
       frameIndex: 11
       additiveSortOrder: 0
       cellRect:
@@ -2934,7 +3060,7 @@ ScriptedImporter:
         width: 39
         height: 37
       spriteId: c27921c136bb0444c81474d4360597cc
-    - name: Lord of the Poisons asp_Frame_12
+    - name: Frame_12
       frameIndex: 12
       additiveSortOrder: 0
       cellRect:
@@ -2943,7 +3069,7 @@ ScriptedImporter:
         width: 39
         height: 37
       spriteId: b708295dc96bfe64482c67768837da64
-    - name: Lord of the Poisons asp_Frame_13
+    - name: Frame_13
       frameIndex: 13
       additiveSortOrder: 0
       cellRect:
@@ -2952,7 +3078,7 @@ ScriptedImporter:
         width: 38
         height: 38
       spriteId: aacb80d5ab73db848a54f57b9a043198
-    - name: Lord of the Poisons asp_Frame_14
+    - name: Frame_14
       frameIndex: 14
       additiveSortOrder: 0
       cellRect:
@@ -2961,7 +3087,7 @@ ScriptedImporter:
         width: 40
         height: 36
       spriteId: b613de8690e69004ab9d2041d5015666
-    - name: Lord of the Poisons asp_Frame_15
+    - name: Frame_15
       frameIndex: 15
       additiveSortOrder: 0
       cellRect:
@@ -2970,7 +3096,7 @@ ScriptedImporter:
         width: 40
         height: 36
       spriteId: c28e00afb4637a947897425d494e6f4f
-    - name: Lord of the Poisons asp_Frame_16
+    - name: Frame_16
       frameIndex: 16
       additiveSortOrder: 0
       cellRect:
@@ -2979,7 +3105,7 @@ ScriptedImporter:
         width: 40
         height: 35
       spriteId: e3cb144908d289b4fac13f72dfd2699d
-    - name: Lord of the Poisons asp_Frame_17
+    - name: Frame_17
       frameIndex: 17
       additiveSortOrder: 0
       cellRect:
@@ -2988,7 +3114,7 @@ ScriptedImporter:
         width: 39
         height: 36
       spriteId: f72109675a522c74b98ec9a0a5af2b7a
-    - name: Lord of the Poisons asp_Frame_18
+    - name: Frame_18
       frameIndex: 18
       additiveSortOrder: 0
       cellRect:
@@ -2997,7 +3123,7 @@ ScriptedImporter:
         width: 40
         height: 32
       spriteId: 8d0cc597dfaa8f74bae7881fe82b63c1
-    - name: Lord of the Poisons asp_Frame_19
+    - name: Frame_19
       frameIndex: 19
       additiveSortOrder: 0
       cellRect:
@@ -3006,7 +3132,7 @@ ScriptedImporter:
         width: 39
         height: 33
       spriteId: 1d612c8712d80474d82a7db11a699ff9
-    - name: Lord of the Poisons asp_Frame_20
+    - name: Frame_20
       frameIndex: 20
       additiveSortOrder: 0
       cellRect:
@@ -3015,7 +3141,7 @@ ScriptedImporter:
         width: 39
         height: 34
       spriteId: fd67a9981240c884caa275ef70e553b1
-    - name: Lord of the Poisons asp_Frame_21
+    - name: Frame_21
       frameIndex: 21
       additiveSortOrder: 0
       cellRect:
@@ -3024,7 +3150,7 @@ ScriptedImporter:
         width: 39
         height: 35
       spriteId: 15040e7911622b144aa42259b1f8c4b7
-    - name: Lord of the Poisons asp_Frame_22
+    - name: Frame_22
       frameIndex: 22
       additiveSortOrder: 0
       cellRect:
@@ -3033,7 +3159,7 @@ ScriptedImporter:
         width: 41
         height: 34
       spriteId: 6ff4756874a026947bbaf1d57bd341d0
-    - name: Lord of the Poisons asp_Frame_23
+    - name: Frame_23
       frameIndex: 23
       additiveSortOrder: 0
       cellRect:
@@ -3042,7 +3168,7 @@ ScriptedImporter:
         width: 41
         height: 35
       spriteId: 1a27dc4b2c609aa4cae8e7eab7be3a23
-    - name: Lord of the Poisons asp_Frame_24
+    - name: Frame_24
       frameIndex: 24
       additiveSortOrder: 0
       cellRect:
@@ -3051,7 +3177,7 @@ ScriptedImporter:
         width: 41
         height: 36
       spriteId: 90606cf865240dd4e86c9bcc66969c0f
-    - name: Lord of the Poisons asp_Frame_25
+    - name: Frame_25
       frameIndex: 25
       additiveSortOrder: 0
       cellRect:
@@ -3060,7 +3186,7 @@ ScriptedImporter:
         width: 40
         height: 37
       spriteId: e47b4a9530b6e364580fa1f757215b9b
-    - name: Lord of the Poisons asp_Frame_26
+    - name: Frame_26
       frameIndex: 26
       additiveSortOrder: 0
       cellRect:
@@ -3069,7 +3195,7 @@ ScriptedImporter:
         width: 39
         height: 34
       spriteId: ad8f9bc4ef09cdb4e8537fc9a0dd5436
-    - name: Lord of the Poisons asp_Frame_27
+    - name: Frame_27
       frameIndex: 27
       additiveSortOrder: 0
       cellRect:
@@ -3078,7 +3204,7 @@ ScriptedImporter:
         width: 39
         height: 35
       spriteId: 0deca8b7f14c7494299ddf7cceb94ead
-    - name: Lord of the Poisons asp_Frame_28
+    - name: Frame_28
       frameIndex: 28
       additiveSortOrder: 0
       cellRect:
@@ -3087,7 +3213,7 @@ ScriptedImporter:
         width: 39
         height: 33
       spriteId: 696f97f47c582e64c8a94afdd4896755
-    - name: Lord of the Poisons asp_Frame_29
+    - name: Frame_29
       frameIndex: 29
       additiveSortOrder: 0
       cellRect:
@@ -3096,7 +3222,7 @@ ScriptedImporter:
         width: 39
         height: 38
       spriteId: a29e389bf32fb2e41841566137c7186f
-    - name: Lord of the Poisons asp_Frame_30
+    - name: Frame_30
       frameIndex: 30
       additiveSortOrder: 0
       cellRect:
@@ -3105,7 +3231,7 @@ ScriptedImporter:
         width: 38
         height: 39
       spriteId: eb409107bc5e4094ca9226c1c06639a4
-    - name: Lord of the Poisons asp_Frame_31
+    - name: Frame_31
       frameIndex: 31
       additiveSortOrder: 0
       cellRect:
@@ -3114,7 +3240,7 @@ ScriptedImporter:
         width: 32
         height: 37
       spriteId: 25294de6514de5d42ba7b0bb69dd6354
-    - name: Lord of the Poisons asp_Frame_38
+    - name: Frame_38
       frameIndex: 38
       additiveSortOrder: 0
       cellRect:
@@ -3123,7 +3249,7 @@ ScriptedImporter:
         width: 46
         height: 29
       spriteId: 2c82e654cec54a34bb4d537acd5355f2
-    - name: Lord of the Poisons asp_Frame_46
+    - name: Frame_46
       frameIndex: 46
       additiveSortOrder: 0
       cellRect:
@@ -3132,7 +3258,7 @@ ScriptedImporter:
         width: 88
         height: 31
       spriteId: 4308bfa13cc2f1c4fa43ae0537e31675
-    - name: Lord of the Poisons asp_Frame_47
+    - name: Frame_47
       frameIndex: 47
       additiveSortOrder: 0
       cellRect:
@@ -3141,7 +3267,7 @@ ScriptedImporter:
         width: 92
         height: 31
       spriteId: b39184ef9357cee409782006f2e805d1
-    - name: Lord of the Poisons asp_Frame_48
+    - name: Frame_48
       frameIndex: 48
       additiveSortOrder: 0
       cellRect:
@@ -3150,7 +3276,7 @@ ScriptedImporter:
         width: 39
         height: 31
       spriteId: 092f3fb2e8acd9d4082cbf499d08d9f5
-    - name: Lord of the Poisons asp_Frame_49
+    - name: Frame_49
       frameIndex: 49
       additiveSortOrder: 0
       cellRect:
@@ -3159,7 +3285,7 @@ ScriptedImporter:
         width: 38
         height: 34
       spriteId: 7967c6d79d2a1ee44993237bd2123b15
-    - name: Lord of the Poisons asp_Frame_50
+    - name: Frame_50
       frameIndex: 50
       additiveSortOrder: 0
       cellRect:
@@ -3168,7 +3294,7 @@ ScriptedImporter:
         width: 37
         height: 35
       spriteId: 6926d258aafd92c4abf79a3b3658029a
-    - name: Lord of the Poisons asp_Frame_51
+    - name: Frame_51
       frameIndex: 51
       additiveSortOrder: 0
       cellRect:
@@ -3177,7 +3303,7 @@ ScriptedImporter:
         width: 36
         height: 36
       spriteId: 602cd011df4c0bd4f952e2acffbf977a
-    - name: Lord of the Poisons asp_Frame_52
+    - name: Frame_52
       frameIndex: 52
       additiveSortOrder: 0
       cellRect:
@@ -3186,7 +3312,7 @@ ScriptedImporter:
         width: 46
         height: 35
       spriteId: 816cb0c1739a3d24a8b1e327656f1a89
-    - name: Lord of the Poisons asp_Frame_53
+    - name: Frame_53
       frameIndex: 53
       additiveSortOrder: 0
       cellRect:
@@ -3195,7 +3321,7 @@ ScriptedImporter:
         width: 44
         height: 27
       spriteId: fd8de21fee635dd4f86ebc970f7fec0a
-    - name: Lord of the Poisons asp_Frame_54
+    - name: Frame_54
       frameIndex: 54
       additiveSortOrder: 0
       cellRect:
@@ -3204,7 +3330,7 @@ ScriptedImporter:
         width: 44
         height: 26
       spriteId: b165b40dd22902d46925ec9cc1ccc5ee
-    - name: Lord of the Poisons asp_Frame_55
+    - name: Frame_55
       frameIndex: 55
       additiveSortOrder: 0
       cellRect:
@@ -3213,7 +3339,7 @@ ScriptedImporter:
         width: 43
         height: 26
       spriteId: 801b4d22683714048905187046489406
-    - name: Lord of the Poisons asp_Frame_56
+    - name: Frame_56
       frameIndex: 56
       additiveSortOrder: 0
       cellRect:
@@ -3222,7 +3348,7 @@ ScriptedImporter:
         width: 44
         height: 27
       spriteId: 7e1e6e9221f6f3540b5c0ad80ca01c63
-    - name: Lord of the Poisons asp_Frame_57
+    - name: Frame_57
       frameIndex: 57
       additiveSortOrder: 0
       cellRect:
@@ -3231,7 +3357,7 @@ ScriptedImporter:
         width: 50
         height: 24
       spriteId: f39be885c75070441b9e31a84a7ef0d1
-    - name: Lord of the Poisons asp_Frame_58
+    - name: Frame_58
       frameIndex: 58
       additiveSortOrder: 0
       cellRect:
@@ -3240,7 +3366,7 @@ ScriptedImporter:
         width: 45
         height: 24
       spriteId: 3898f0b69fa9f994ab5a61a478241f4c
-    - name: Lord of the Poisons asp_Frame_59
+    - name: Frame_59
       frameIndex: 59
       additiveSortOrder: 0
       cellRect:
@@ -3249,7 +3375,7 @@ ScriptedImporter:
         width: 44
         height: 24
       spriteId: a45fe5e0e77230240990f859d72f94ad
-    - name: Lord of the Poisons asp_Frame_60
+    - name: Frame_60
       frameIndex: 60
       additiveSortOrder: 0
       cellRect:
@@ -3258,7 +3384,7 @@ ScriptedImporter:
         width: 35
         height: 24
       spriteId: 736b9c087383cbb4bbffd1a9c4cd4245
-    - name: Lord of the Poisons asp_Frame_61
+    - name: Frame_61
       frameIndex: 61
       additiveSortOrder: 0
       cellRect:
@@ -3267,7 +3393,7 @@ ScriptedImporter:
         width: 38
         height: 31
       spriteId: aee0a2c184d96e043aad9610ee0a3bbd
-    - name: Lord of the Poisons asp_Frame_62
+    - name: Frame_62
       frameIndex: 62
       additiveSortOrder: 0
       cellRect:
@@ -3276,7 +3402,7 @@ ScriptedImporter:
         width: 34
         height: 31
       spriteId: f1bf8fa2659869a428f290aee3b794b4
-    - name: Lord of the Poisons asp_Frame_63
+    - name: Frame_63
       frameIndex: 63
       additiveSortOrder: 0
       cellRect:
@@ -3285,7 +3411,7 @@ ScriptedImporter:
         width: 33
         height: 31
       spriteId: 67a9ebf5a3df78c4fa0a258f2aa309ca
-    - name: Lord of the Poisons asp_Frame_64
+    - name: Frame_64
       frameIndex: 64
       additiveSortOrder: 0
       cellRect:
@@ -3294,7 +3420,7 @@ ScriptedImporter:
         width: 33
         height: 32
       spriteId: c6be4fb157eb6aa468104d9bc3a7771e
-    - name: Lord of the Poisons asp_Frame_65
+    - name: Frame_65
       frameIndex: 65
       additiveSortOrder: 0
       cellRect:
@@ -3303,7 +3429,7 @@ ScriptedImporter:
         width: 32
         height: 33
       spriteId: 6ecf8996935e8594aa541bd81888a84e
-    - name: Lord of the Poisons asp_Frame_66
+    - name: Frame_66
       frameIndex: 66
       additiveSortOrder: 0
       cellRect:
@@ -3312,7 +3438,7 @@ ScriptedImporter:
         width: 111
         height: 35
       spriteId: ac3a2f0c9c3b0a44da970685db90ea91
-    - name: Lord of the Poisons asp_Frame_67
+    - name: Frame_67
       frameIndex: 67
       additiveSortOrder: 0
       cellRect:
@@ -3321,7 +3447,7 @@ ScriptedImporter:
         width: 114
         height: 35
       spriteId: b94e993e89d854f41b910e0393f971c1
-    - name: Lord of the Poisons asp_Frame_68
+    - name: Frame_68
       frameIndex: 68
       additiveSortOrder: 0
       cellRect:
@@ -3330,7 +3456,7 @@ ScriptedImporter:
         width: 108
         height: 36
       spriteId: 05a73006a4066014383e3d458efe8765
-    - name: Lord of the Poisons asp_Frame_69
+    - name: Frame_69
       frameIndex: 69
       additiveSortOrder: 0
       cellRect:
@@ -3339,7 +3465,7 @@ ScriptedImporter:
         width: 102
         height: 29
       spriteId: ba7cdfad72b66b8438659ad896b447e1
-    - name: Lord of the Poisons asp_Frame_70
+    - name: Frame_70
       frameIndex: 70
       additiveSortOrder: 0
       cellRect:
@@ -3348,7 +3474,7 @@ ScriptedImporter:
         width: 95
         height: 30
       spriteId: bfae498952e6eaa4788cdcb414d03475
-    - name: Lord of the Poisons asp_Frame_71
+    - name: Frame_71
       frameIndex: 71
       additiveSortOrder: 0
       cellRect:
@@ -3357,7 +3483,7 @@ ScriptedImporter:
         width: 93
         height: 30
       spriteId: 0e574c0954f87cf4f8951ee4579019ae
-    - name: Lord of the Poisons asp_Frame_72
+    - name: Frame_72
       frameIndex: 72
       additiveSortOrder: 0
       cellRect:
@@ -3366,7 +3492,7 @@ ScriptedImporter:
         width: 95
         height: 30
       spriteId: c3d3b06817544a2499dbc40d7ad166e9
-    - name: Lord of the Poisons asp_Frame_73
+    - name: Frame_73
       frameIndex: 73
       additiveSortOrder: 0
       cellRect:
@@ -3375,7 +3501,7 @@ ScriptedImporter:
         width: 81
         height: 30
       spriteId: cd245a3da64bf974caf9e638e20634cb
-    - name: Lord of the Poisons asp_Frame_74
+    - name: Frame_74
       frameIndex: 74
       additiveSortOrder: 0
       cellRect:
@@ -3384,7 +3510,7 @@ ScriptedImporter:
         width: 78
         height: 32
       spriteId: 4e293f5638ecd1948b53b47cce73aac2
-    - name: Lord of the Poisons asp_Frame_75
+    - name: Frame_75
       frameIndex: 75
       additiveSortOrder: 0
       cellRect:
@@ -3393,7 +3519,7 @@ ScriptedImporter:
         width: 38
         height: 33
       spriteId: 8d21e1f6d19693f4e9545030d8bb2755
-    - name: Lord of the Poisons asp_Frame_76
+    - name: Frame_76
       frameIndex: 76
       additiveSortOrder: 0
       cellRect:
@@ -3402,7 +3528,7 @@ ScriptedImporter:
         width: 38
         height: 31
       spriteId: 5f024bb4633e9384fa3c01a41979c848
-    - name: Lord of the Poisons asp_Frame_77
+    - name: Frame_77
       frameIndex: 77
       additiveSortOrder: 0
       cellRect:
@@ -3411,7 +3537,7 @@ ScriptedImporter:
         width: 34
         height: 31
       spriteId: 1b73d91436056d845afd7d475aee8cda
-    - name: Lord of the Poisons asp_Frame_78
+    - name: Frame_78
       frameIndex: 78
       additiveSortOrder: 0
       cellRect:
@@ -3420,7 +3546,7 @@ ScriptedImporter:
         width: 33
         height: 31
       spriteId: 07d8d6aad2f68d14e9ebb67e372bcfba
-    - name: Lord of the Poisons asp_Frame_79
+    - name: Frame_79
       frameIndex: 79
       additiveSortOrder: 0
       cellRect:
@@ -3429,7 +3555,7 @@ ScriptedImporter:
         width: 33
         height: 32
       spriteId: f5a9c6055ab3f07428a1f81e42101c48
-    - name: Lord of the Poisons asp_Frame_80
+    - name: Frame_80
       frameIndex: 80
       additiveSortOrder: 0
       cellRect:
@@ -3438,7 +3564,7 @@ ScriptedImporter:
         width: 32
         height: 33
       spriteId: 11e9faed93d4cce458d65ddc3924bfb5
-    - name: Lord of the Poisons asp_Frame_81
+    - name: Frame_81
       frameIndex: 81
       additiveSortOrder: 0
       cellRect:
@@ -3447,7 +3573,7 @@ ScriptedImporter:
         width: 126
         height: 28
       spriteId: 9d93563ee08ac514cbf20ebeb73ff73e
-    - name: Lord of the Poisons asp_Frame_82
+    - name: Frame_82
       frameIndex: 82
       additiveSortOrder: 0
       cellRect:
@@ -3456,7 +3582,7 @@ ScriptedImporter:
         width: 131
         height: 28
       spriteId: 1cbbfd69a7f68974db467930cefca9e9
-    - name: Lord of the Poisons asp_Frame_83
+    - name: Frame_83
       frameIndex: 83
       additiveSortOrder: 0
       cellRect:
@@ -3465,7 +3591,7 @@ ScriptedImporter:
         width: 129
         height: 29
       spriteId: 8e69b90700032ee4f8809b901ab5dfba
-    - name: Lord of the Poisons asp_Frame_84
+    - name: Frame_84
       frameIndex: 84
       additiveSortOrder: 0
       cellRect:
@@ -3474,7 +3600,7 @@ ScriptedImporter:
         width: 128
         height: 29
       spriteId: 6f707ab49b6bea9419f570c28f555d7d
-    - name: Lord of the Poisons asp_Frame_85
+    - name: Frame_85
       frameIndex: 85
       additiveSortOrder: 0
       cellRect:
@@ -3483,7 +3609,7 @@ ScriptedImporter:
         width: 123
         height: 30
       spriteId: f4bcdd5342343094796e3880d590a1ac
-    - name: Lord of the Poisons asp_Frame_86
+    - name: Frame_86
       frameIndex: 86
       additiveSortOrder: 0
       cellRect:
@@ -3492,7 +3618,7 @@ ScriptedImporter:
         width: 118
         height: 30
       spriteId: 494bd5c0f81c5bd499838fbdfff2513e
-    - name: Lord of the Poisons asp_Frame_87
+    - name: Frame_87
       frameIndex: 87
       additiveSortOrder: 0
       cellRect:
@@ -3501,7 +3627,7 @@ ScriptedImporter:
         width: 119
         height: 30
       spriteId: 68ebf9ea6a2668a4f98119e2a823c341
-    - name: Lord of the Poisons asp_Frame_88
+    - name: Frame_88
       frameIndex: 88
       additiveSortOrder: 0
       cellRect:
@@ -3510,7 +3636,7 @@ ScriptedImporter:
         width: 99
         height: 30
       spriteId: eac5b92f34ff0684f854ae27c2df2451
-    - name: Lord of the Poisons asp_Frame_89
+    - name: Frame_89
       frameIndex: 89
       additiveSortOrder: 0
       cellRect:
@@ -3519,7 +3645,7 @@ ScriptedImporter:
         width: 39
         height: 32
       spriteId: 70efb07fa51d8334891a60a80ce5ce47
-    - name: Lord of the Poisons asp_Frame_90
+    - name: Frame_90
       frameIndex: 90
       additiveSortOrder: 0
       cellRect:
@@ -3528,7 +3654,7 @@ ScriptedImporter:
         width: 38
         height: 33
       spriteId: 0334cac6a3f67944090ffa7b02e4c4b0
-    - name: Lord of the Poisons asp_Frame_91
+    - name: Frame_91
       frameIndex: 91
       additiveSortOrder: 0
       cellRect:
@@ -3537,7 +3663,7 @@ ScriptedImporter:
         width: 39
         height: 31
       spriteId: c9d03f139c402c347ab8a8cf22cf2dbd
-    - name: Lord of the Poisons asp_Frame_92
+    - name: Frame_92
       frameIndex: 92
       additiveSortOrder: 0
       cellRect:
@@ -3546,7 +3672,7 @@ ScriptedImporter:
         width: 38
         height: 32
       spriteId: 48a1560e75ac8a141813de2019dc12d3
-    - name: Lord of the Poisons asp_Frame_93
+    - name: Frame_93
       frameIndex: 93
       additiveSortOrder: 0
       cellRect:
@@ -3555,7 +3681,7 @@ ScriptedImporter:
         width: 38
         height: 33
       spriteId: 4f956d6b98cf4fd4abc0fc18f32aad28
-    - name: Lord of the Poisons asp_Frame_94
+    - name: Frame_94
       frameIndex: 94
       additiveSortOrder: 0
       cellRect:
@@ -3564,7 +3690,7 @@ ScriptedImporter:
         width: 38
         height: 34
       spriteId: 7db8dde0850365f4a86467d66fd4d756
-    - name: Lord of the Poisons asp_Frame_95
+    - name: Frame_95
       frameIndex: 95
       additiveSortOrder: 0
       cellRect:
@@ -3573,7 +3699,7 @@ ScriptedImporter:
         width: 38
         height: 35
       spriteId: 982f05abaf64a1446994ac599913d7d5
-    - name: Lord of the Poisons asp_Frame_96
+    - name: Frame_96
       frameIndex: 96
       additiveSortOrder: 0
       cellRect:
@@ -3582,7 +3708,7 @@ ScriptedImporter:
         width: 38
         height: 35
       spriteId: 7c1a37c763c3bd341838b0662e8b8a3f
-    - name: Lord of the Poisons asp_Frame_97
+    - name: Frame_97
       frameIndex: 97
       additiveSortOrder: 0
       cellRect:
@@ -3591,7 +3717,7 @@ ScriptedImporter:
         width: 38
         height: 36
       spriteId: 4e1ad6941caf8444b952d3ed2b4f2e69
-    - name: Lord of the Poisons asp_Frame_98
+    - name: Frame_98
       frameIndex: 98
       additiveSortOrder: 0
       cellRect:
@@ -3600,7 +3726,7 @@ ScriptedImporter:
         width: 38
         height: 37
       spriteId: aed28e48b1b6682449f268c00d8f257a
-    - name: Lord of the Poisons asp_Frame_110
+    - name: Frame_110
       frameIndex: 110
       additiveSortOrder: 0
       cellRect:
@@ -3609,7 +3735,7 @@ ScriptedImporter:
         width: 38
         height: 34
       spriteId: a8b898aa6ccc6134a9628f9c6d4a4180
-    - name: Lord of the Poisons asp_Frame_111
+    - name: Frame_111
       frameIndex: 111
       additiveSortOrder: 0
       cellRect:
@@ -3618,7 +3744,7 @@ ScriptedImporter:
         width: 38
         height: 35
       spriteId: 4ff36d867ce3b6d44b96bfc673b5af63
-    - name: Lord of the Poisons asp_Frame_112
+    - name: Frame_112
       frameIndex: 112
       additiveSortOrder: 0
       cellRect:
@@ -3627,7 +3753,7 @@ ScriptedImporter:
         width: 39
         height: 31
       spriteId: e5921b6d892536d4fab9e88e83f038d7
-    - name: Lord of the Poisons asp_Frame_113
+    - name: Frame_113
       frameIndex: 113
       additiveSortOrder: 0
       cellRect:
@@ -3636,7 +3762,7 @@ ScriptedImporter:
         width: 40
         height: 30
       spriteId: a3efe7f609b10274cbf000f3998dbe7a
-    - name: Lord of the Poisons asp_Frame_114
+    - name: Frame_114
       frameIndex: 114
       additiveSortOrder: 0
       cellRect:
@@ -3645,7 +3771,7 @@ ScriptedImporter:
         width: 43
         height: 30
       spriteId: dec46349a45050e469967dce9a6e1964
-    - name: Lord of the Poisons asp_Frame_115
+    - name: Frame_115
       frameIndex: 115
       additiveSortOrder: 0
       cellRect:
@@ -3654,7 +3780,7 @@ ScriptedImporter:
         width: 43
         height: 31
       spriteId: a2067d230122e7440a65681b6980f4a6
-    - name: Lord of the Poisons asp_Frame_116
+    - name: Frame_116
       frameIndex: 116
       additiveSortOrder: 0
       cellRect:
@@ -3663,7 +3789,7 @@ ScriptedImporter:
         width: 44
         height: 30
       spriteId: fde1490a1c463dd4f82c2bb3d538eb9d
-    - name: Lord of the Poisons asp_Frame_117
+    - name: Frame_117
       frameIndex: 117
       additiveSortOrder: 0
       cellRect:
@@ -3672,7 +3798,7 @@ ScriptedImporter:
         width: 46
         height: 30
       spriteId: e84f29a9259e6d743b6fddab8169bc84
-    - name: Lord of the Poisons asp_Frame_118
+    - name: Frame_118
       frameIndex: 118
       additiveSortOrder: 0
       cellRect:
@@ -3681,7 +3807,7 @@ ScriptedImporter:
         width: 51
         height: 31
       spriteId: 60c117e7d8cfffb45894b29b30e21dbe
-    - name: Lord of the Poisons asp_Frame_119
+    - name: Frame_119
       frameIndex: 119
       additiveSortOrder: 0
       cellRect:
@@ -3690,7 +3816,7 @@ ScriptedImporter:
         width: 55
         height: 32
       spriteId: 9cc31b25a8d24f645bab22aa460207d2
-    - name: Lord of the Poisons asp_Frame_120
+    - name: Frame_120
       frameIndex: 120
       additiveSortOrder: 0
       cellRect:
@@ -3699,7 +3825,7 @@ ScriptedImporter:
         width: 58
         height: 30
       spriteId: a095fd6a48300b246be87bab42cbe737
-    - name: Lord of the Poisons asp_Frame_121
+    - name: Frame_121
       frameIndex: 121
       additiveSortOrder: 0
       cellRect:
@@ -3708,7 +3834,7 @@ ScriptedImporter:
         width: 58
         height: 31
       spriteId: d1fcd94259217e7498fa43f8ba29e959
-    - name: Lord of the Poisons asp_Frame_122
+    - name: Frame_122
       frameIndex: 122
       additiveSortOrder: 0
       cellRect:
@@ -3717,7 +3843,7 @@ ScriptedImporter:
         width: 60
         height: 32
       spriteId: 5d55b2e553b56744ca5b3d509a94e8b2
-    - name: Lord of the Poisons asp_Frame_123
+    - name: Frame_123
       frameIndex: 123
       additiveSortOrder: 0
       cellRect:
@@ -3733,3 +3859,4 @@ ScriptedImporter:
   secondarySpriteTextures: []
   spritePackingTag: 
   canvasSize: {x: 145, y: 47}
+  previousTextureSize: {x: 512, y: 1024}

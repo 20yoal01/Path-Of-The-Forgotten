@@ -137,7 +137,7 @@ public class Scorpion : MonoBehaviour
                 Movement();
             else
             {
-                rb.velocity = new Vector2(0, 0);
+                rb.linearVelocity = new Vector2(0, 0);
             }
         }
 
@@ -150,7 +150,7 @@ public class Scorpion : MonoBehaviour
 
     void Movement()
     {
-        rb.velocity = -transform.right * speed * getDirectionFloat;
+        rb.linearVelocity = -transform.right * speed * getDirectionFloat;
     }
 
     void Environment()

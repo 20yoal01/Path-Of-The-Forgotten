@@ -7,7 +7,7 @@ public class WaitActivity : Activity
 {
     public override void Enter(BaseStateMachine stateMachine)
     {
-        stateMachine.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        stateMachine.GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
         stateMachine.GetComponent<Animator>().SetBool("roaming", false);
     }
 
