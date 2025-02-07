@@ -17,6 +17,7 @@ public partial class StageBasedSelectorSequence : Composite
     int m_RandomIndex = 0;
 
     private BoxCollider2D _bossRoomCollider;
+    private FlameLord _agentFlameLord;
 
     enum ArenaLocation {Corner, Center, Closeup}
 
@@ -27,19 +28,21 @@ public partial class StageBasedSelectorSequence : Composite
         var bossTransform = Boss.Value.transform;
         var arenaBounds = _bossRoomCollider;
 
+        Vector2 arenaCenter = (Vector2)Arena.Value.transform.position;
+
         // Calculate relative position within the arena in world space
-        var relativeArenaPosX = bossTransform.position.x - arenaBounds.size.x;
+        var relativeArenaPosX = bossTransform.localPosition.x - arenaBounds.bounds.center.x;
 
         // Get facing direction from local scale
         var facing = Mathf.Sign(bossTransform.localScale.x);
 
         // Normalize the position using half the arena width
-        var normalizedArenaPosX = relativeArenaPosX / (arenaBounds.size.x / 2) * facing;
+        var normalizedArenaPosX = relativeArenaPosX / ((arenaBounds.size.x / 2) * facing);
 
         // Determine arena location
         if (normalizedArenaPosX < -0.33f)
             return ArenaLocation.Corner;
-        if (normalizedArenaPosX <= 0.33f) // Inclusive boundary
+        if (normalizedArenaPosX < 0.3f) // Inclusive boundary
             return ArenaLocation.Center;
         else
             return ArenaLocation.Closeup;
@@ -50,6 +53,11 @@ public partial class StageBasedSelectorSequence : Composite
     /// <inheritdoc cref="OnStart" />
     protected override Status OnStart()
     {
+        if (!Boss.Value.TryGetComponent(out _agentFlameLord))
+        {
+            Debug.LogError("Could not retreive Flame Lord script");
+        }
+
         if (!Arena.Value.TryGetComponent(out _bossRoomCollider))
         {
             Debug.LogError("Agent Doesn't have a Animator!");
@@ -63,9 +71,18 @@ public partial class StageBasedSelectorSequence : Composite
             ArenaLocation.Center => 2,
             ArenaLocation.Closeup => 3,
         };
-        Debug.Log(arenaLocation.ToString());
-
+            
         List<int> childrenExecutionOrder = IncludedTasks.Value[Stage.Value].Split(",").Select(int.Parse).ToList();
+
+        if (_agentFlameLord.meteoriteTimer > 0)
+        {
+            childrenExecutionOrder.RemoveAt(0);
+        }
+        else
+        {
+            Debug.Log("Cooldown is back!");
+        }
+
         m_RandomIndex = UnityEngine.Random.Range(0, childrenExecutionOrder.Count);
         m_RandomIndex = childrenExecutionOrder[m_RandomIndex];
         if (m_RandomIndex < Children.Count)

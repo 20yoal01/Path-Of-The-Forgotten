@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Playables;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -21,10 +20,15 @@ public class ItemPickup : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            AudioSource.PlayClipAtPoint(pickupSource.clip, gameObject.transform.position, pickupSource.volume);
             if (itemType == ItemType.Arrow)
             {
-                GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().AddArrowsByOne();
+                PlayerController playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+                if (playerController.ArrowsRemaining >= playerController.maxArrows)
+                {
+                    return;
+                }
+                AudioSource.PlayClipAtPoint(pickupSource.clip, gameObject.transform.position, pickupSource.volume);
+                playerController.AddArrowsByOne();
             }
             Destroy(gameObject);
         }

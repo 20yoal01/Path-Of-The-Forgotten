@@ -192,10 +192,12 @@ public class PlayerController : MonoBehaviour
     [Header("Player Abilities")]
     public bool canArrowBarrage = false;
     public bool canShootBow = false;
+    public bool canArrowHeal = false;
     public bool canDoubleJump = false;
     public bool canWallClimb = false;
     public bool canDash = false;
     public int _arrowsRemaining = 0;
+    public int maxArrows = 8;
     public UnityEvent<int> ammoRemaningEvent;
 
     public int ArrowsRemaining { get { 
@@ -232,6 +234,9 @@ public class PlayerController : MonoBehaviour
             case Ability.HealthIncrease:
                 damageable.MaxHealth = damageable.MaxHealth + 25;
                 damageable.Health = damageable.MaxHealth;
+                break;
+            case Ability.ArrowHeal:
+                canArrowHeal = true;
                 break;
         }
     }
@@ -534,6 +539,8 @@ public class PlayerController : MonoBehaviour
 
     public void AddArrowsByOne()
     {
+        if (_arrowsRemaining >= maxArrows)
+            return;
         ArrowsRemaining++;
     }
 
@@ -702,6 +709,8 @@ public class PlayerController : MonoBehaviour
         data.canShootBow = canShootBow;
         data.canDoubleJump = canDoubleJump;
         data.canWallClimb = canWallClimb;
+        data.arrowBarrage = canArrowBarrage;
+        data.canArrowHeal = canArrowHeal;
     }
 
     public void Load(PlayerSaveData data)
@@ -710,6 +719,8 @@ public class PlayerController : MonoBehaviour
         canShootBow = data.canShootBow;
         canDoubleJump = data.canDoubleJump;
         canWallClimb = data.canWallClimb;
+        canArrowHeal = data.canArrowHeal;
+        canArrowBarrage = data.arrowBarrage;
     }
 }
 
@@ -721,4 +732,6 @@ public struct PlayerSaveData
     public bool canShootBow;
     public bool canDoubleJump;
     public bool canWallClimb;
+    public bool canArrowHeal;
+    public bool arrowBarrage;
 }

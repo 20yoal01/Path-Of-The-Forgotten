@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ArrowType { ChargedArrow, BarrageArrow, WeakArrow, EnemyArrow}
 public class Projectile : MonoBehaviour
 {
     public int damage = 10;
@@ -17,6 +18,10 @@ public class Projectile : MonoBehaviour
     private Vector3 targetPosition; // Target position from 10 frames ago
     private bool isInitialized = false; // Check if the projectile has been initialized
     private Animator animator;
+    public ArrowType arrowType;
+    public GameObject trail;
+
+    public int DestroyAfterTimeOut = 4;
 
     // Start is called before the first frame update
     private void Awake()
@@ -77,7 +82,12 @@ public class Projectile : MonoBehaviour
 
     private IEnumerator DestroyAfterWait()
     {
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(DestroyAfterTimeOut);
+        if (trail != null)
+        {
+            Destroy(trail);
+        }
+
         Destroy(gameObject);
     }
 
@@ -94,11 +104,20 @@ public class Projectile : MonoBehaviour
 
             if (gameObject.tag == "PlayerArrow")
             {
+                GameObject player = GameObject.FindGameObjectWithTag("Player");
+                if (player.GetComponent<PlayerController>().canArrowHeal && arrowType == ArrowType.ChargedArrow)
+                {
+                    player.GetComponent<Damageable>().Heal(20);
+                }
                 CinemachineImpulseSource source = GameObject.FindGameObjectWithTag("Player").GetComponent<CinemachineImpulseSource>();
                 source.m_DefaultVelocity = new Vector3(knockback.x / 20 + 0.05f, knockback.y / 20, 0 + 0.05f);
                 CameraShakeManager.instance.CameraShake(source);
             }
 
+            if (trail != null)
+            {
+                Destroy(trail);
+            }
             if (gotHit)
                 if (animator != null)
                     animator.SetTrigger("hit");

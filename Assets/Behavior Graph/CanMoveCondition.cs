@@ -8,9 +8,17 @@ public partial class CanMoveCondition : Condition
 {
     [SerializeReference] public BlackboardVariable<GameObject> Agent;
 
+    private Animator _agentAnimator;
+
     public override bool IsTrue()
     {
-        return true;
+        if (!Agent.Value.TryGetComponent(out _agentAnimator))
+        {
+            Debug.Log("Could not find a Animator in your Agent object");
+            return false;
+        }
+
+        return _agentAnimator.GetBool(AnimationString.canMove);
     }
 
     public override void OnStart()

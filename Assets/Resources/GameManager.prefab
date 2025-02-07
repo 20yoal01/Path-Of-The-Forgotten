@@ -45,7 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5cad05664ad1d0428795bf5879454e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentCheckPoint: {fileID: 0}
+  currentCheckPointId: 
+  LeverPrison1: 0
+  LeverPrison2: 0
 --- !u!114 &6457975503075756349
 MonoBehaviour:
   m_ObjectHideFlags: 0

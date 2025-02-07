@@ -18,6 +18,10 @@ public class GameManager : MonoBehaviour
     public bool LeverPrison1 = true;
     public bool LeverPrison2 = false;
     public Dictionary<DoorName, bool> doorNameOpening = new Dictionary<DoorName, bool>();
+    
+    public bool isRespawning = false;
+    public string currentCheckPointSceneIndex;
+
     public static GameManager Instance
     {
         get
@@ -46,6 +50,7 @@ public class GameManager : MonoBehaviour
     {
         InputManager.Instance.SaveAsync();
         ScorpionQuest.SetupQuestEvents();
+        EffectManager.Instance.InitEffects();
     }
 
     private void Awake()
@@ -54,7 +59,6 @@ public class GameManager : MonoBehaviour
         {
             doorNameOpening = new Dictionary<DoorName, bool>();
             instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else
         {

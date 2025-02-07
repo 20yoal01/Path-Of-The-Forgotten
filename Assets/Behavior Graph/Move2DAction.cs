@@ -32,6 +32,10 @@ public partial class Move2DAction : Action
         return Initialize();
     }
 
+    protected override void OnEnd()
+    {
+    }
+
     protected override Status OnUpdate()
     {
         if (ReferenceEquals(Agent?.Value, null) ||ReferenceEquals(Target, null))
@@ -75,7 +79,7 @@ public partial class Move2DAction : Action
             _agentRb.linearVelocity = new Vector2(xValocity, _agentRb.linearVelocity.y);
             _animator.SetBool(AnimationString.canMove, true);
         }
-        else
+        else if (_animator.GetBool(AnimationString.attackTrigger) || !_animator.GetBool(AnimationString.canMove))
         {
             _agentRb.linearVelocity = Vector2.zero;
             _animator.SetBool(AnimationString.canMove, false);

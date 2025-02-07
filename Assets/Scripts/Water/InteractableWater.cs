@@ -243,6 +243,7 @@ public class InteractableWater : MonoBehaviour
     }
 }
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(InteractableWater))]
 public class InteractableWaterEditor : Editor
 {
@@ -342,4 +343,6 @@ public class InteractableWaterEditor : Editor
             _water.GenerateMesh();
         }
     }
+
 }
+#endif

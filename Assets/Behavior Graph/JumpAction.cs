@@ -68,6 +68,8 @@ public partial class JumpAction : Action
 
     protected override void OnEnd()
     {
+        if (!hasLanded)
+            _agentAnimator.SetTrigger("dashFail");
         buildupTween?.Kill();
         hasLanded = false;
         jumpTween?.Kill();

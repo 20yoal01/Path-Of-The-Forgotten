@@ -4,6 +4,22 @@ public class EffectManager : MonoBehaviour
 {
     public static EffectManager Instance;
 
+    private GameObject DustEffect;
+    private GameObject FogEffect;
+
+    public void InitEffects()
+    {
+        if (DustEffect == null || FogEffect == null)
+        {
+            Debug.LogError("DustEffect or FogEffect has an empty game object");
+        }
+        else
+        {        
+            DustEffect.SetActive(GameManager.Instance.SceneData.IncludeDustEffect);
+            FogEffect.SetActive(GameManager.Instance.SceneData.IncludeFogEffect);
+        }
+    }
+
     private void Awake()
     {
         if (Instance == null)
@@ -14,6 +30,13 @@ public class EffectManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void Start()
+    {
+        DustEffect = GameObject.FindGameObjectWithTag("DustEffect");
+        FogEffect = GameObject.FindGameObjectWithTag("FogEffect");
+        InitEffects();
     }
 
     public void PlayEffect(GameObject effectPrefab, Vector2 position, float direction = 1, Quaternion? rotation = null)

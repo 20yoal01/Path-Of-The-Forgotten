@@ -45,7 +45,7 @@ public class UIManager : MonoBehaviour
     public void CharacterAbilityUnlock(GameObject character, Ability ability)
     {
         // Set the spawn position to the center of the screen
-        Vector3 spawnPosition = new Vector3(Screen.width / 2, Screen.height / 2, 0);
+        Vector3 spawnPosition = new Vector3(Screen.width / 2 + 100, Screen.height / 2, 0);
 
         // Instantiate the text object at the spawn position within the game canvas
         TMP_Text tmpText = Instantiate(guidingTextPrefab, spawnPosition, Quaternion.identity, gameCanvas.transform).GetComponent<TMP_Text>();

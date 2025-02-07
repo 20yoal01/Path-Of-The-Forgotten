@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class PauseMenu : MonoBehaviour
     GameObject pauseMenu;
     
     public GameObject globalVolume;
+    public SceneFadeManager sceneFade;
 
     public void Pause()
     {
@@ -35,6 +37,31 @@ public class PauseMenu : MonoBehaviour
         BlurGame(false);
     }
 
+    public void ReturnToTitle()
+    {
+        Time.timeScale = 1.0f;
+        StartCoroutine(FadeOutThenChangeScene());
+        SceneManager.activeSceneChanged += sceneUnloaded;
+    }
+
+    private IEnumerator FadeOutThenChangeScene()
+    {
+        sceneFade.StartFadeOut();
+
+        while (sceneFade.IsFadingOut)
+        {
+            yield return null;
+        }
+        SceneManager.LoadScene(0);
+        InputManager.PlayerInput.SwitchCurrentActionMap("Player");
+    }
+
+    private void sceneUnloaded(Scene oldScene, Scene newScene )
+    {
+        if (pauseMenu != null && pauseMenu.activeSelf)
+            Resume();
+    }
+
     public void BlurGame(bool shouldBlur)
     {
         Volume globalVolumeController = globalVolume.GetComponent<Volume>();
@@ -47,5 +74,15 @@ public class PauseMenu : MonoBehaviour
                 depthOfField.active = shouldBlur;
             }
         }
+    }
+
+    public void QuitGame()
+    {
+#if UNITY_STANDALONE
+        Application.Quit();
+#endif
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
     }
 }

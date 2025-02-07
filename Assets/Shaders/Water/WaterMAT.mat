@@ -74,7 +74,7 @@ Material:
     - _CausticScrollDir: {r: 0.045, g: 0, b: 0, a: 0}
     - _CausticTiling: {r: 0.5, g: 1.5, b: 0, a: 0}
     - _DistortionDir: {r: 0.05, g: 0, b: 0, a: 0}
-    - _LineColor: {r: 0.11320752, g: 0, b: 0.08830184, a: 0}
+    - _LineColor: {r: 0.41509432, g: 0, b: 0.32921264, a: 0}
     - _Tiling: {r: 0, g: 0, b: 0, a: 0}
     - _meshSize: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []

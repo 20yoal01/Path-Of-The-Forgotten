@@ -13,8 +13,7 @@ public class Eleonore : MonoBehaviour
 
     public GameObject questReward;
     public Transform spawnPoint;
-
-    private void Awake()
+    private void Start()
     {
         AddScorpionEvent(GameManager.Instance.ScorpionQuest);
         GameManager.Instance.ScorpionQuest.SetupQuestEvents();

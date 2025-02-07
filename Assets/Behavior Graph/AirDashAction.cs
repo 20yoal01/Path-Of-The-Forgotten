@@ -136,6 +136,8 @@ public partial class AirDashAction : Action
 
     protected override void OnEnd()
     {
+        if (!hasLanded)
+            _agentAnimator.SetTrigger("dashFail");
         buildupTween?.Kill();
         hasLanded = false;
         jumpTween?.Kill();
@@ -151,7 +153,7 @@ public partial class AirDashAction : Action
         _agentRb.gravityScale = defaultGravity;
         var direction = Agent.Value.transform.localScale.x > 0 ? 1 : -1;
         var distance = Mathf.Abs(_agentRb.transform.position.x - Target.Value.GetComponent<Transform>().position.x);
-        var downwardsDirection = distance < 4f ? -1 : -0.5f;
+        var downwardsDirection = distance < 4f ? -1f : -0.5f;
 
         _agentRb.AddForce(new Vector2(direction, downwardsDirection) * dashForce, ForceMode2D.Impulse);
 

@@ -21,13 +21,22 @@ public class HealthBar : MonoBehaviour
         {
             Debug.Log("No player found in the scene. Make sure it has tag 'Player'");
         }
+        else
+        {
+            playerDamageable = player.GetComponent<Damageable>();
+        }
 
-        playerDamageable = player.GetComponent<Damageable>();
+        
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        if (playerDamageable == null)
+        {
+            return;
+        }
+
         healthSlider.value = (float) playerDamageable.Health / (float) playerDamageable.MaxHealth;
         if (healthBarText != null)
             healthBarText.text = "HP " + playerDamageable.Health + " / " + playerDamageable.MaxHealth;
@@ -35,12 +44,14 @@ public class HealthBar : MonoBehaviour
 
     private void OnEnable()
     {
-        playerDamageable.healthChanged.AddListener(OnPlayerHealthChanged);
+        if (playerDamageable != null)
+            playerDamageable.healthChanged.AddListener(OnPlayerHealthChanged);
     }
 
     private void OnDisable()
     {
-        playerDamageable.healthChanged.RemoveListener(OnPlayerHealthChanged);
+        if (playerDamageable != null)
+            playerDamageable.healthChanged.RemoveListener(OnPlayerHealthChanged);
     }
 
     // Update is called once per frame
@@ -51,6 +62,10 @@ public class HealthBar : MonoBehaviour
 
     private void OnPlayerHealthChanged(float newHealth, float maxHealth)
     {
+        if (playerDamageable == null)
+        {
+            return;
+        }
         healthSlider.value = newHealth / maxHealth;
         if (healthBarText != null)
             healthBarText.text = "HP " + newHealth + " / " + maxHealth;

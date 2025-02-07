@@ -26,7 +26,7 @@ public class SceneFadeManager : MonoBehaviour
         _fadeOutStartColor.a = 0f;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (IsFadingOut)
         {

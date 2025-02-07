@@ -11,11 +11,18 @@ public class Respawn : MonoBehaviour
     public bool savedState;
     Damageable damageable;
     public string id;
+    public Vector3 savedPlayerPosition;
+    public string sceneDataIndex;
 
     private void Awake()
     {
-        damageable = GameObject.FindWithTag("Player").GetComponent<Damageable>();
+        GameObject game = GameManager.Instance.gameObject;
+        GameObject player = GameObject.FindWithTag("Player");
         animator = GetComponent<Animator>();
+        if (player != null)
+        {
+            damageable = GameObject.FindWithTag("Player").GetComponent<Damageable>();
+        }
     }
 
     private void Start()
@@ -29,13 +36,20 @@ public class Respawn : MonoBehaviour
 
     private void OnEnable()
     {
-        damageable.deathEvent.AddListener(RespawnPlayer);
+        if (damageable != null)
+        {
+            damageable.deathEvent.AddListener(RespawnPlayer);
+        }
+        
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void OnDisable()
     {
-        damageable.deathEvent.RemoveListener(RespawnPlayer);
+        if (damageable != null)
+        {
+            damageable.deathEvent.RemoveListener(RespawnPlayer);
+        }       
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
@@ -44,27 +58,40 @@ public class Respawn : MonoBehaviour
         if (savedState)
             return;
 
-        if (GameManager.Instance.currentCheckPointId != null)
+        if (GameManager.Instance.currentCheckPointId != null && GameManager.Instance.currentCheckPointId != "")
         {
             Respawn currentCheckpoint = Respawn.FindRespawnByID(GameManager.Instance.currentCheckPointId);
-            currentCheckpoint.animator.SetBool(AnimationString.ActiveCheckpoint, false); // Deactivate last checkpoint
-            currentCheckpoint.savedState = false;
+            if (currentCheckpoint != null)
+            {
+                currentCheckpoint.animator.SetBool(AnimationString.ActiveCheckpoint, false); // Deactivate last checkpoint
+                currentCheckpoint.savedState = false;
+            }
         }
 
         GameManager.Instance.currentCheckPointId = this.id;
         animator.SetBool(AnimationString.ActiveCheckpoint, true);
-        InputManager.Instance.SaveAsync();
         savedState = true;
+
+        GameObject currentPlayer = GameObject.FindGameObjectWithTag("Player");
+        if (currentPlayer != null)
+        {
+            savedPlayerPosition = currentPlayer.transform.position;
+            sceneDataIndex = GameManager.Instance.SceneData.Data.UniqueName;
+            GameManager.Instance.currentCheckPointSceneIndex = sceneDataIndex;
+        }
+        
+        InputManager.Instance.SaveAsync();
     }
 
     private void RespawnPlayer()
     {
-        if (savedState)
+        if (damageable != null && damageable.Health <= 0)
         {
             StartCoroutine(FadeOutThenRespawn());
             SceneFadeManager.instance.StartFadeIn();
             damageable.Revive();
             InputManager.Instance.ActivatePlayerControls();
+            GameManager.Instance.isRespawning = true;
         }
     }
 
@@ -86,22 +113,37 @@ public class Respawn : MonoBehaviour
             savedState = true;
             animator.SetBool(AnimationString.ActiveCheckpoint, true);
         }
+
+        if (GameManager.Instance.isRespawning && id == GameManager.Instance.currentCheckPointId)
+        {
+            GameManager.Instance.isRespawning = false;
+            GameObject currentPlayer = GameObject.FindGameObjectWithTag("Player");
+            if (currentPlayer != null && savedPlayerPosition != null)
+            {
+                currentPlayer.transform.position = savedPlayerPosition;
+            }
+        }
     }
 
     public void Save(ref RespawnData data)
     {
         data.id = id;
+        data.savedPlayerPosition = savedPlayerPosition;
+        data.sceneDataIndex = sceneDataIndex;
     }
 
     public void Load(RespawnData data)
     {
         id = data.id;
+        savedPlayerPosition = data.savedPlayerPosition;
+        sceneDataIndex = data.sceneDataIndex;
     }
 
     public static Respawn FindRespawnByID(string respawnID)
     {
         GameObject[] checkpoints = GameObject.FindGameObjectsWithTag("Respawn");
         Respawn respawn = null;
+        bool foundRespawn = false;
 
         foreach (var checkpoint in checkpoints)
         {
@@ -109,11 +151,12 @@ public class Respawn : MonoBehaviour
             Animator respawnAnimator = checkpoint.GetComponent<Animator>();
             if (respawn.id == respawnID)
             {
+                foundRespawn = true;
                 break;
             }
         }
 
-        return respawn;
+        return foundRespawn ? respawn : null;
     }
 }
 
@@ -121,4 +164,6 @@ public class Respawn : MonoBehaviour
 public struct RespawnData
 {
     public string id;
+    public Vector3 savedPlayerPosition;
+    public string sceneDataIndex;
 }

@@ -27,7 +27,7 @@
                     "name": "Attack",
                     "type": "Button",
                     "id": "4fe401c6-2e17-4534-a6af-4e3669995a3e",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -90,7 +90,7 @@
                     "name": "Save",
                     "type": "Button",
                     "id": "350be237-05e7-47fc-b38c-4ff6c36ae644",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -394,6 +394,17 @@
                 },
                 {
                     "name": "",
+                    "id": "fd1a6ba6-6857-40f7-b486-2ae9c8497a78",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause/Resume",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "7f760161-33af-4fe4-963a-18fe53153cfc",
                     "path": "<Keyboard>/g",
                     "interactions": "",
@@ -444,7 +455,7 @@
                     "name": "Pause/Resume",
                     "type": "Button",
                     "id": "2fdf1a33-a51b-4edb-a927-7aa18c9210e2",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -453,7 +464,7 @@
                     "name": "Submit",
                     "type": "Button",
                     "id": "7527424d-4dc8-48da-a8f4-fd3e4c40ff8b",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -954,6 +965,17 @@
                     "name": "",
                     "id": "beba427e-236f-42c2-a80b-376cb7955a61",
                     "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause/Resume",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a9d3ae33-dae6-4ed6-9980-28d8e0c7cb54",
+                    "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

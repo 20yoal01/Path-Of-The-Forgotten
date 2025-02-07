@@ -12,6 +12,9 @@ TagManager:
   - NPC
   - Door
   - Boss
+  - FogEffect
+  - DustEffect
+  - Persistant
   layers:
   - Default
   - TransparentFX

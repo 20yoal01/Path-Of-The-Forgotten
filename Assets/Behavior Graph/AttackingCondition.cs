@@ -24,7 +24,7 @@ public partial class AttackingCondition : Condition
             Debug.Log("Attacking");
         }
 
-        return !isAttacking;
+        return isAttacking;
     }
 
     public override void OnStart()

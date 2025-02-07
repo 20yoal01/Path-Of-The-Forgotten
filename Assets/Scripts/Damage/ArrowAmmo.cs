@@ -24,6 +24,8 @@ public class ArrowAmmo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerController.ammoRemaningEvent.AddListener(OnPlayerAmmoChanged);
+
         ammoText.text = "x" + playerController.ArrowsRemaining;
         if (!playerController.canShootBow)
             gameObject.SetActive(false);
@@ -31,12 +33,8 @@ public class ArrowAmmo : MonoBehaviour
 
     public void OnBowAbilityUnlock()
     {
-        gameObject.SetActive(true);
-    }
-
-    private void OnEnable()
-    {
-        playerController.ammoRemaningEvent.AddListener(OnPlayerAmmoChanged);
+        if (playerController.canShootBow)
+            gameObject.SetActive(true);
     }
 
     private void OnDisable()

@@ -78,6 +78,7 @@ public class SaveSystem
             Animator respawnAnimator = checkpoint.GetComponent<Animator>();
             if (respawn.id == _saveData.respawnData.id)
             {
+                respawn.Load(_saveData.respawnData);
                 GameManager.Instance.currentCheckPointId = respawn.id;
                 respawnAnimator.SetBool(AnimationString.ActiveCheckpoint, true);
             }
@@ -93,7 +94,14 @@ public class SaveSystem
 
         GameManager.Instance.Save(ref _saveData.gameManagerData);
         GameManager.Instance.SceneData.Save(ref _saveData.SceneSaveData);
-        Respawn.FindRespawnByID(GameManager.Instance.currentCheckPointId).Save(ref _saveData.respawnData);
+
+        Respawn respawn = Respawn.FindRespawnByID(GameManager.Instance.currentCheckPointId);
+
+        if (respawn != null && (respawn.sceneDataIndex != "" && respawn.sceneDataIndex != null))
+        {
+            respawn.Save(ref _saveData.respawnData);
+        }
+        
         GameManager.Instance.ScorpionQuest.Save(ref _saveData.ScorpionQuestData);
     }
 
@@ -121,10 +129,28 @@ public class SaveSystem
             Animator respawnAnimator = checkpoint.GetComponent<Animator>();
             if (respawn.id == _saveData.respawnData.id)
             {
+                respawn.Load(_saveData.respawnData);
                 GameManager.Instance.currentCheckPointId = respawn.id;
                 respawnAnimator.SetBool(AnimationString.ActiveCheckpoint, true);
             }
         }
 
+    }
+
+    public static void DeleteSave()
+    {
+        string saveFile = SaveFileName();
+
+        if (File.Exists(saveFile))
+        {
+            File.Delete(saveFile);
+            Debug.Log("Save file deleted.");
+        }
+    }
+
+    public static bool SaveFileExists()
+    {
+        string saveFile = SaveFileName();
+        return File.Exists(saveFile);
     }
 }

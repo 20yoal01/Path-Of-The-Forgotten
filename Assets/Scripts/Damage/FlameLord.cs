@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -12,16 +14,59 @@ public enum FlameLordAttackType
 
 public class FlameLord : MonoBehaviour
 {
+    public int ChaseCooldown; // Time before the flame lord can chase again
+    public int MeteoriteCooldown; // Time before meteorite can be launched again
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public float chaseTimer;
+    public float meteoriteTimer;
+
+    // Method to start the chase cooldown timer
+    public void StartChaseCooldown()
     {
-        
+        chaseTimer = ChaseCooldown;
+        StartCoroutine(ChaseCooldownTimer());
     }
 
-    // Update is called once per frame
-    void Update()
+    // Method to start the meteorite cooldown timer
+    public void StartMeteoriteCooldown()
     {
-        
+        meteoriteTimer = MeteoriteCooldown;
+        StartCoroutine(MeteoriteCooldownTimer());
+    }
+
+    private IEnumerator ChaseCooldownTimer()
+    {
+        while (true)
+        {
+            if (chaseTimer > 0)
+            {
+                chaseTimer -= Time.deltaTime; // Decrease the timer
+            }
+            else
+            {
+                // Trigger action when cooldown is done
+                Debug.Log("Chase cooldown complete!");
+                yield break; // Exit the coroutine when cooldown is complete
+            }
+            yield return null;
+        }
+    }
+
+    private IEnumerator MeteoriteCooldownTimer()
+    {
+        while (true)
+        {
+            if (meteoriteTimer > 0)
+            {
+                meteoriteTimer -= Time.deltaTime; // Decrease the timer
+            }
+            else
+            {
+                // Trigger action when cooldown is done
+                Debug.Log("Meteorite cooldown complete!");
+                yield break; // Exit the coroutine when cooldown is complete
+            }
+            yield return null;
+        }
     }
 }

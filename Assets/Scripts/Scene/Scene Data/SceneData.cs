@@ -7,10 +7,26 @@ using UnityEngine.SceneManagement;
 public class SceneData : MonoBehaviour
 {
     public SceneDataSO Data;
+    public bool IncludePersistantData = true;
+    public bool IncludeDustEffect;
+    public bool IncludeFogEffect;
+
+    private GameObject persistentObject;
 
     private void Awake()
     {
         GameManager.Instance.SceneData = this;
+
+        persistentObject = GameObject.FindGameObjectWithTag("Persistant");
+        if (persistentObject != null && !IncludePersistantData)
+        {
+            Destroy(persistentObject);
+        }
+        else if(persistentObject == null)
+        {
+            persistentObject = Object.Instantiate(Resources.Load("Persistant Objects")) as GameObject;
+            DontDestroyOnLoad(persistentObject);
+        }
     }
 
     public void Save(ref SceneSaveData data)
@@ -20,12 +36,40 @@ public class SceneData : MonoBehaviour
 
     public void Load(SceneSaveData data)
     {
-        GameManager.Instance.SceneLoader.LoadSceneByIndex(data.SceneID);
+        string sceneIndex = data.SceneID;
+        if (GameManager.Instance.isRespawning)
+        {
+            Respawn respawn = Respawn.FindRespawnByID(GameManager.Instance.currentCheckPointId);
+            if (respawn == null)
+            {
+                sceneIndex = GameManager.Instance.currentCheckPointSceneIndex;
+            }
+            else
+            {
+                sceneIndex = respawn.sceneDataIndex;
+            }
+
+        }
+        GameManager.Instance.SceneLoader.LoadSceneByIndex(sceneIndex);
     }
 
     public async Task LoadAsync(SceneSaveData data)
     {
-        await GameManager.Instance.SceneLoader.LoadSceneByIndexAsync(data.SceneID);
+        string sceneIndex = data.SceneID;
+        if (GameManager.Instance.isRespawning)
+        {
+            Respawn respawn = Respawn.FindRespawnByID(GameManager.Instance.currentCheckPointId);
+            if (GameManager.Instance.currentCheckPointSceneIndex != "")
+            {
+                sceneIndex = GameManager.Instance.currentCheckPointSceneIndex;
+            }
+            else if (respawn != null && respawn.sceneDataIndex != "")
+            {
+                sceneIndex = respawn.sceneDataIndex;
+            }
+
+        }
+        await GameManager.Instance.SceneLoader.LoadSceneByIndexAsync(sceneIndex);
     }
 
     public Task WaitForSceneToBeFullyLoaded()
