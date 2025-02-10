@@ -2,6 +2,7 @@ using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public enum ArrowType { ChargedArrow, BarrageArrow, WeakArrow, EnemyArrow}
 public class Projectile : MonoBehaviour
@@ -22,6 +23,8 @@ public class Projectile : MonoBehaviour
     public GameObject trail;
 
     public int DestroyAfterTimeOut = 4;
+    public AudioSource explosionSound;
+    private bool isBeingDestroyed = false;
 
     // Start is called before the first frame update
     private void Awake()
@@ -88,6 +91,12 @@ public class Projectile : MonoBehaviour
             Destroy(trail);
         }
 
+        if (explosionSound != null)
+        {
+            explosionSound.transform.parent = null;
+            explosionSound.Play();
+        }
+
         Destroy(gameObject);
     }
 
@@ -119,8 +128,18 @@ public class Projectile : MonoBehaviour
                 Destroy(trail);
             }
             if (gotHit)
+            {
                 if (animator != null)
+                {
                     animator.SetTrigger("hit");
+                }
+                if (explosionSound != null)
+                {
+                    explosionSound.transform.parent = null;
+                    explosionSound.Play();
+                }
+            }
+
                 Debug.Log(collision.name + "hot for " + damage);
             if (animator == null)
                 Destroy(gameObject);

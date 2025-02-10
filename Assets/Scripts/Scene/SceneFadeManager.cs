@@ -69,4 +69,9 @@ public class SceneFadeManager : MonoBehaviour
             IsFadingIn = true;
         }
     }
+
+    public void SetScreenBlack()
+    {
+        _fadeOutImage.color = _fadeOutStartColor;
+    }
 }

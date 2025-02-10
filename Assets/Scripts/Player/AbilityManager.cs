@@ -13,11 +13,11 @@ public class AbilityManager : MonoBehaviour
     public static readonly Dictionary<Ability, string> AbilityKeybinds = new Dictionary<Ability, string>
     {
         { Ability.DoubleJump, "Space/Z To Double Jump" },
-        { Ability.Dash, "Shift To Dash" },
+        { Ability.Dash, "\nShift To Dash" },
         { Ability.Bow, "\nV To Shoot \nUP + ←/→ To Aim Diagonally" },
         { Ability.WallClimb, " ←/→ | W/S To Climb" },
         { Ability.ArrowBarrage, "G To Activate. (Requires 5 Arrows)"},
-        { Ability.HealthIncrease, "HP Increased By 25!"},
+        { Ability.HealthIncrease, "\nHP Increased By 25!"},
         { Ability.ArrowHeal, "Arrows Can Now Heal"}
     };
 

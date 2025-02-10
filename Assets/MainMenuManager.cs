@@ -1,32 +1,50 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour
 {
     public SceneFadeManager sceneFade;
-    public Button LoadGameButton;
-    bool SaveFileExists = false;
+    public GameObject LoadGameButton;
 
+    bool SaveFileExists = false;
+    public GameState gameState;
+     
     private void Awake()
     {
         SaveFileExists = SaveSystem.SaveFileExists();
-        LoadGameButton.interactable = SaveFileExists;
+
+        Button LoadGameButtonUI;
+        EventTrigger LoadGameButtonES;
+
+        LoadGameButton.TryGetComponent(out LoadGameButtonUI);
+        LoadGameButton.TryGetComponent(out LoadGameButtonES);
+
+        if (LoadGameButtonUI != null && LoadGameButtonES != null)
+        {
+            LoadGameButtonUI.interactable = SaveFileExists;
+            LoadGameButtonES.enabled = SaveFileExists;
+        }
     }
 
     public void PlayGame()
     {
-        SaveSystem.DeleteSave();
-        StartCoroutine(FadeOutThenChangeScene());
+        CutsceneManager.Instance.StartCutscene(() =>
+        {
+            SaveSystem.DeleteSave();
+            Initializer.ResetState = true;
+            Initializer.gameState = gameState;
+            StartCoroutine(FadeOutThenChangeScene());
+        });
     }
 
     public void LoadExistingGame()
     {
         if (SaveFileExists)
         {
-            LoadGame();
-            StartCoroutine(FadeOutThenChangeScene());
+            StartCoroutine(LoadGameWithDelay());
         }
     }
     public void LoadGame()
@@ -51,6 +69,14 @@ public class MainMenuManager : MonoBehaviour
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #endif
+    }
+
+    private IEnumerator LoadGameWithDelay()
+    {
+        yield return new WaitForSeconds(1f);
+
+        LoadGame();
+        StartCoroutine(FadeOutThenChangeScene());
     }
 
     private IEnumerator FadeOutThenChangeScene()

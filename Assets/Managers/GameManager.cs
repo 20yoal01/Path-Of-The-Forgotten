@@ -5,7 +5,6 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
-
     public SceneData SceneData { get; set; }
     public SceneLoader SceneLoader { get; set;}
 
@@ -21,6 +20,7 @@ public class GameManager : MonoBehaviour
     
     public bool isRespawning = false;
     public string currentCheckPointSceneIndex;
+
 
     public static GameManager Instance
     {
@@ -51,6 +51,54 @@ public class GameManager : MonoBehaviour
         InputManager.Instance.SaveAsync();
         ScorpionQuest.SetupQuestEvents();
         EffectManager.Instance.InitEffects();
+    }
+
+    public void StartNewGame(GameState gameState)
+    {
+        GameObject player = GameObject.FindWithTag("Player");
+        currentCheckPointSceneIndex = "";
+        if (player != null)
+        {
+            player.transform.localPosition = gameState.playerPosition;
+
+            PlayerController playerController;
+            Damageable damageable;
+
+            player.TryGetComponent(out playerController);
+            player.TryGetComponent(out damageable);
+
+            if (playerController != null)
+            {
+                playerController.canArrowBarrage = gameState.arrowBarrage;
+                playerController.canWallClimb = gameState.wallJump;
+                playerController.canDash = gameState.dash;
+                playerController.canShootBow = gameState.shootBow;
+                playerController.maxArrows = gameState.maxArrows;
+                playerController.canDoubleJump = gameState.doubleJump;
+                playerController.increasedHP = gameState.increasedHP;
+            }
+
+            if (damageable != null)
+            {
+                damageable.MaxHealth = gameState.playerMaxHealth;
+                damageable.Health = gameState.playerHealth;
+            }
+        }
+
+        LeverPrison1 = gameState.LeverPrison1;
+        LeverPrison2 = gameState.LeverPrison2;
+        keyPickedUp = gameState.keyPickedUp;
+
+        ScorpionQuest.scorpionsKilled = gameState.scorpionsKilled;
+        ScorpionQuest.scorpionsRequired = gameState.scorpionsRequired;
+        ScorpionQuest.scorpionsStatusText.text = $"0/{ScorpionQuest.scorpionsRequired}";
+        ScorpionQuest.DeactivateQuest();
+
+        GameObject.FindAnyObjectByType<ArrowAmmo>()?.Deactivate();
+
+        SceneFadeManager.instance.SetScreenBlack();
+        SceneFadeManager.instance.StartFadeIn();
+        InputManager.Instance.SaveAsync();
     }
 
     private void Awake()

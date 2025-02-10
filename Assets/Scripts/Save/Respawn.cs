@@ -56,7 +56,9 @@ public class Respawn : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (savedState)
-            return;
+        {
+            animator.SetBool(AnimationString.ActiveCheckpoint, false);
+        }
 
         if (GameManager.Instance.currentCheckPointId != null && GameManager.Instance.currentCheckPointId != "")
         {
@@ -69,7 +71,7 @@ public class Respawn : MonoBehaviour
         }
 
         GameManager.Instance.currentCheckPointId = this.id;
-        animator.SetBool(AnimationString.ActiveCheckpoint, true);
+        StartCoroutine(DeactivateAndReactivateCheckpoint());
         savedState = true;
 
         GameObject currentPlayer = GameObject.FindGameObjectWithTag("Player");
@@ -81,6 +83,15 @@ public class Respawn : MonoBehaviour
         }
         
         InputManager.Instance.SaveAsync();
+    }
+
+    private IEnumerator DeactivateAndReactivateCheckpoint()
+    {
+        // Wait until the animation finishes
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+
+        // Reactivate the checkpoint
+        animator.SetBool(AnimationString.ActiveCheckpoint, true);
     }
 
     private void RespawnPlayer()

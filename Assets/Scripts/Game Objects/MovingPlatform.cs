@@ -94,13 +94,18 @@ public class MovingPlatform : MonoBehaviour
             {
                 player.ClearCurrentPlatform();
             }
-            collision.gameObject.transform.parent = null;
-            if (player.previousParent != null)
+            
+            if (player.previousParent != null && gameObject.activeInHierarchy)
             {
+                collision.gameObject.transform.parent = null;
                 player.transform.SetParent(player.previousParent);
             }
 
-            StartCoroutine(ResetParentAfterDelay(collision.gameObject, player));
+            if (gameObject.activeInHierarchy)
+            {
+                StartCoroutine(ResetParentAfterDelay(collision.gameObject, player));
+            }
+            
 
         }
     }

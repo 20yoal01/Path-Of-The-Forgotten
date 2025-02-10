@@ -196,9 +196,12 @@ public class PlayerController : MonoBehaviour
     public bool canDoubleJump = false;
     public bool canWallClimb = false;
     public bool canDash = false;
+    public bool increasedHP = false;
     public int _arrowsRemaining = 0;
     public int maxArrows = 8;
-    public UnityEvent<int> ammoRemaningEvent;
+    public UnityEvent<int> ammoRemaningEvent = new UnityEvent<int>();
+
+    public UnityEvent<bool> healthUpgradedEvent = new UnityEvent<bool>();
 
     public int ArrowsRemaining { get { 
             return _arrowsRemaining; } set
@@ -232,8 +235,12 @@ public class PlayerController : MonoBehaviour
                 canDash = true;
                 break;
             case Ability.HealthIncrease:
-                damageable.MaxHealth = damageable.MaxHealth + 25;
+                damageable.MaxHealth = 125;
                 damageable.Health = damageable.MaxHealth;
+                if (!increasedHP)
+                    healthUpgradedEvent?.Invoke(true);
+                increasedHP = true;
+
                 break;
             case Ability.ArrowHeal:
                 canArrowHeal = true;
@@ -711,6 +718,7 @@ public class PlayerController : MonoBehaviour
         data.canWallClimb = canWallClimb;
         data.arrowBarrage = canArrowBarrage;
         data.canArrowHeal = canArrowHeal;
+        data.increasedHP = increasedHP;
     }
 
     public void Load(PlayerSaveData data)
@@ -721,6 +729,13 @@ public class PlayerController : MonoBehaviour
         canWallClimb = data.canWallClimb;
         canArrowHeal = data.canArrowHeal;
         canArrowBarrage = data.arrowBarrage;
+        increasedHP = data.increasedHP;
+        if (damageable != null && increasedHP)
+        {
+            damageable.MaxHealth = 125;
+            damageable.Health = damageable.MaxHealth;
+        }
+        healthUpgradedEvent?.Invoke(increasedHP);
     }
 }
 
@@ -734,4 +749,5 @@ public struct PlayerSaveData
     public bool canWallClimb;
     public bool canArrowHeal;
     public bool arrowBarrage;
+    public bool increasedHP;
 }

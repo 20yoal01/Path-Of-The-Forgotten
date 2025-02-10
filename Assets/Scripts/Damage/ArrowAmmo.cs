@@ -21,6 +21,11 @@ public class ArrowAmmo : MonoBehaviour
         playerController = player.GetComponent<PlayerController>();
     }
 
+    public void Deactivate()
+    {
+        gameObject.SetActive(false);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +40,11 @@ public class ArrowAmmo : MonoBehaviour
     {
         if (playerController.canShootBow)
             gameObject.SetActive(true);
+    }
+
+    private void OnEnable()
+    {
+        playerController.ammoRemaningEvent.AddListener(OnPlayerAmmoChanged);
     }
 
     private void OnDisable()

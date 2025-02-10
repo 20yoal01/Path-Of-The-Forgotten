@@ -15,6 +15,8 @@ TagManager:
   - FogEffect
   - DustEffect
   - Persistant
+  - GameManager
+  - Fade
   layers:
   - Default
   - TransparentFX

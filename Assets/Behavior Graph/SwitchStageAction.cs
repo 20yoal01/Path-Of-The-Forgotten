@@ -28,7 +28,7 @@ public partial class SwitchStageAction : Action
 
         Another.Value++;
         Color colorToChange;
-        if (ColorUtility.TryParseHtmlString("#FF2412", out colorToChange))  // Hex color for #FF4B4B (a redish color)
+        if (light2D != null && ColorUtility.TryParseHtmlString("#FF2412", out colorToChange))  // Hex color for #FF4B4B (a redish color)
         {
             ChangeLightColor(colorToChange, 2f);
         }
@@ -36,7 +36,6 @@ public partial class SwitchStageAction : Action
         {
             Debug.LogError("Invalid hex color");
         }
-        ChangeLightColor(colorToChange, 2f);
         return Status.Running;
     }
 

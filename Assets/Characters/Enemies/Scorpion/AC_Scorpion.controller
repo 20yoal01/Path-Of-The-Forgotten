@@ -39,6 +39,24 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &-7603917738425366780
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10aa0576c2c028c4dbe97a61d79cb99e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundToPlay: {fileID: 8300000, guid: c61c1e4ab40ec30479409707cde05f32, type: 3}
+  volume: 0.25
+  playOnEnter: 1
+  playOnExit: 0
+  playAfterDelay: 0
+  playDelay: 0.25
 --- !u!1102 &-7508431998641852573
 AnimatorState:
   serializedVersion: 6
@@ -54,6 +72,7 @@ AnimatorState:
   m_StateMachineBehaviours:
   - {fileID: 496373604369941174}
   - {fileID: 1054516130193002218}
+  - {fileID: 331810673847729928}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -96,6 +115,7 @@ AnimatorState:
   - {fileID: 1812520058740556994}
   m_StateMachineBehaviours:
   - {fileID: -1207401731600119538}
+  - {fileID: -756362939315870657}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -258,6 +278,24 @@ MonoBehaviour:
   updateOnStateMachineExit: 0
   valueOnEnter: 0
   valueOnExit: 1
+--- !u!114 &-756362939315870657
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10aa0576c2c028c4dbe97a61d79cb99e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundToPlay: {fileID: 8300000, guid: d53f25b9265df194693fb0b1d473d751, type: 3}
+  volume: 0.25
+  playOnEnter: 1
+  playOnExit: 0
+  playAfterDelay: 0
+  playDelay: 0.25
 --- !u!1101 &-213009462136292906
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -362,6 +400,24 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
+--- !u!114 &331810673847729928
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10aa0576c2c028c4dbe97a61d79cb99e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundToPlay: {fileID: 8300000, guid: 5a98ac6567de3b240815068d73503bb6, type: 3}
+  volume: 0.25
+  playOnEnter: 1
+  playOnExit: 0
+  playAfterDelay: 0
+  playDelay: 0.25
 --- !u!114 &496373604369941174
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -472,6 +528,7 @@ AnimatorState:
   m_StateMachineBehaviours:
   - {fileID: 3256139248760852332}
   - {fileID: -4835037847941950152}
+  - {fileID: -7603917738425366780}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1

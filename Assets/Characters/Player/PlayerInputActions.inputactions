@@ -540,6 +540,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "97762e9c-554a-4c1f-ac8e-b2fc4dfc5084",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Continue Dialogue",
+                    "type": "Button",
+                    "id": "8b76bfef-a401-4d49-8f37-b6a13ec3874e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -980,6 +998,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Pause/Resume",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0ca941f2-02e7-4f2c-864b-93f03e4609c3",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9af4992e-37c2-40ce-9cdd-f1098582299d",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Continue Dialogue",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

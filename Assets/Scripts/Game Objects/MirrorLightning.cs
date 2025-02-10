@@ -39,8 +39,17 @@ public class MirrorLightning : MonoBehaviour
             initialFalloff = Light.falloffIntensity;
         }
 
-        if (GameManager.Instance.LeverPrison1)
+        if ((GameManager.Instance.LeverPrison1 && level == PrisonLevel.Prison1) ||
+           (GameManager.Instance.LeverPrison2 && level == PrisonLevel.Prison2))
+        {
             isTurningOn = true;
+
+            // Activate the linked mirror if applicable
+            if (mirrorToActivate != null)
+            {
+                mirrorToActivate.isTurningOn = true;
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -52,7 +61,7 @@ public class MirrorLightning : MonoBehaviour
         }
         else if (level == PrisonLevel.Prison2)
         {
-            LeverPrison = GameManager.Instance.LeverPrison1;
+            LeverPrison = GameManager.Instance.LeverPrison2;
         }
 
         if (collision.CompareTag("PlayerArrow") && !LeverPrison)

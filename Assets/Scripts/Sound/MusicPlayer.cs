@@ -10,12 +10,25 @@ public class MusicPlayer : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+        }
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        introSource.Play();
+        loopSource.PlayScheduled(AudioSettings.dspTime + introSource.clip.length);
+        audioLowPassFilter = GetComponent<AudioLowPassFilter>();
+    }
+
+    public void RestartMusic()
+    {
+        loopSource.Stop();
+        introSource.Stop();
+
         introSource.Play();
         loopSource.PlayScheduled(AudioSettings.dspTime + introSource.clip.length);
         audioLowPassFilter = GetComponent<AudioLowPassFilter>();

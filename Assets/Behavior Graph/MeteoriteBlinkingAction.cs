@@ -28,6 +28,7 @@ public partial class MeteoriteBlinkingAction : Action
     private BoxCollider2D _bossRoomCollider;
     private Damageable _agentDamageable;
     private ParticleSystem meteoriteParticleSystem;
+    private MeteoriteShower meteoriteShower;
     private FlameLord _agentFlameLord;
 
     private bool hasInitialized = false;
@@ -93,9 +94,15 @@ public partial class MeteoriteBlinkingAction : Action
             {
                 Debug.LogError("No ParticleSystem found in instantiated Meteorite!");
                 return Status.Failure;
-            } 
+            }
+            if (!meteoriteInstance.TryGetComponent(out meteoriteShower))
+            {
+                Debug.LogError("No ParticleSystem found in instantiated Meteorite!");
+                return Status.Failure;
+            }
         }
         meteoriteParticleSystem.Play();
+        meteoriteShower.PlayStackedSounds();
 
         positionBeforeAttack = Agent.Value.transform.position;
 
@@ -210,7 +217,15 @@ public partial class MeteoriteBlinkingAction : Action
                 spriteRenderer.DOFade(1, 0.5f);
                 _agentRb.gravityScale = defaultGravity;
             });
-        meteoriteParticleSystem?.Stop();
+        if (meteoriteShower != null)
+        {
+            meteoriteShower.StopStackedSounds();
+            meteoriteShower.PlayMeteoriteEndingSound();
+        }
+        if (meteoriteParticleSystem != null)
+        {
+            meteoriteParticleSystem.Stop();
+        }
         jumpTween?.Kill();
         buildUpTween?.Kill();
 

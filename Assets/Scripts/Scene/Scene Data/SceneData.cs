@@ -17,7 +17,7 @@ public class SceneData : MonoBehaviour
     {
         GameManager.Instance.SceneData = this;
 
-        persistentObject = GameObject.FindGameObjectWithTag("Persistant");
+        /*persistentObject = GameObject.FindGameObjectWithTag("Persistant");
         if (persistentObject != null && !IncludePersistantData)
         {
             Destroy(persistentObject);
@@ -26,7 +26,7 @@ public class SceneData : MonoBehaviour
         {
             persistentObject = Object.Instantiate(Resources.Load("Persistant Objects")) as GameObject;
             DontDestroyOnLoad(persistentObject);
-        }
+        }*/
     }
 
     public void Save(ref SceneSaveData data)
